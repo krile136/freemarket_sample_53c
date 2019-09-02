@@ -39,7 +39,7 @@
 - has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
-- has_one :delivery_adoress
+- has_one :delivery_address
 - has_one :creditcard
 - belongs_to :prefecture（Active_hash)
 - belongs_to :city（Active_hash)
@@ -49,7 +49,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, add_index|
 |price|integer|null: false,|
 |description|text|null: false|
 |condition|int|null: false|
@@ -138,7 +138,7 @@
 |name|string||
 
 ### Association
-- has_many :item
+- has_many :items
 
 
 ## categoriesテーブル
@@ -294,7 +294,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|point|text|null: false|
+|point|integer|null: false|
 |point_limit|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
 
