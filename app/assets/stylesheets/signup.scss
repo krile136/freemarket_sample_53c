@@ -1,0 +1,110 @@
+.signup{
+  width: 100vw;
+  height: 100vh;
+  background-color: $background-beige;
+  padding: 0, 0, 220px;
+  position: relative;
+  &__header{
+    display: table;
+    height: 128px;
+    text-align: center;
+    width: 100%;
+    &--logo{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  &__main{
+    background-color: $background-white;
+    width: 700px;
+    margin: auto;
+    &--registration{
+      height: 97px;
+      font-size: 22px;
+      color: $text-black;
+      line-height: 97px;
+      position: relative;
+      text-align: center;
+    }
+    &--registration-form{
+      padding-top:30px;
+      padding-bottom: 30px;
+      border-top-color: $line-thinblack;
+      border-top-style: solid;
+      border-top-width: 1px;
+
+      &--btn{
+        display: block;
+        height: 48px;
+        width: 343px;
+        margin: 0 auto 16px;
+        font-size: 14px;
+        border-radius: 4px;
+        text-decoration: none;
+        line-height: 48px;
+        &--logo{
+          position: absolute;
+          margin-left: 15px;
+          margin-top: 10px;
+        }
+        &--center{
+          text-align: center;
+        }
+        &--mail{
+          background-color: $mercari-red;
+          color: white;
+        }
+        &--facebook{
+          background-color: $link-facebook;
+          color: white;
+        }
+        &--google{
+          border-style: solid;
+          border-width: 1px;
+          border-color: $text-black;
+          background-color: $background-white;
+          color: $text-black;
+        }
+      }
+    }
+  }
+  &__footer{
+    width: 456px;
+    height: 220px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: auto; 
+    color: $text-black;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    display: table;
+    text-align: center;
+    &--link{
+      padding: 3px;
+      margin-right: 3px;
+      display: inline;
+    }
+    &--logo{
+      margin-top: 35px;
+    }
+     &--copyright{
+       font-size: 13px;
+       margin-top: 8px;
+     }
+  }
+}
+
+.logo-opacity:hover{
+  opacity: 0.7;
+}
+
+.link_decoration_reset{
+  text-decoration: none;
+  color: $text-black;
+}
