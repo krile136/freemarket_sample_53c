@@ -27,7 +27,7 @@
 |receivable|int||
 
 ### Association
-- has_many :items
+- has_many :items, dependent: :destroy
 - has_many :postpays
 - has_many :receivables
 - has_many :comments
@@ -71,7 +71,7 @@
 |delivery_day|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :images
+- has_many :images, dependent: :destroy
 - has_many :comments
 - has_many :likes
 - belongs_to :postpays
