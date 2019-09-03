@@ -31,7 +31,7 @@
 - has_many :postpays
 - has_many :receivables
 - has_many :comments
-- has_many :likes
+- has_many :likes, dependent: :destroy
 - has_many :receivables
 - has_many :evaluations
 - has_many :points
@@ -39,8 +39,8 @@
 - has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
 - has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
-- has_one :delivery_address
-- has_one :creditcard
+- has_one :delivery_address, dependent: :destroy
+- has_one :creditcard, dependent: :destroy
 - belongs_to :prefecture（Active_hash)
 - belongs_to :city（Active_hash)
 
@@ -105,7 +105,7 @@
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_one :user
+- belongs_to :user
 - belongs_to :prefecture（Active_hash)
 - belongs_to :city（Active_hash)
 
@@ -274,7 +274,7 @@
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_one :user
+- belongs_to :user
 
 
 ## evaluationsテーブル
