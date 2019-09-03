@@ -1,0 +1,21 @@
+.sell-button {
+  height: 160px;
+  width: 160px;
+  background-color: $mercari-red;
+  color: $text-white;
+  display: block;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 22px;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  &__text {
+    padding-top: 26px;
+    font-size: 22px;
+  }
+  &__icon {
+    margin-top: 6px;
+    font-size: 2.5em;
+  }
+}
