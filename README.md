@@ -66,8 +66,6 @@
 |prefecture_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
-|category_child_id|references|null: false, foreign_key: true|
-|category_grandchild_id|references|null: false, foreign_key: true|
 |delivery_day|references|null: false, foreign_key: true|
 
 ### Association
@@ -78,8 +76,6 @@
 - belongs_to :brand
 - belongs_to :brand_group
 - belongs_to :category
-- belongs_to :category_child
-- belongs_to :category_grandchild
 - belongs_to :prefecture（Active_hash)
 - belongs_to :buyer_id, class_name: "User"
 - belongs_to :saller_id, class_name: "User"
@@ -146,34 +142,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
+|ancestry|string||
 
 ### Association
-- has_many :category_children
+- has_ancestry
 - has_many :items
 
-
-## category_childrenテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-|category_id|references|null: false, foreign_key: true|
-
-### Association
-- has_many :items
-- has_many :category_grandchildren
-- belongs_to :category
-
-## category_grandchildrenテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-|category_child_id|references|null: false, foreign_key: true|
-
-### Association
-- has_many :items
-- belongs_to :category_children
 
 ## imagesテーブル
 
