@@ -2,3 +2,19 @@
   width: 100vw;
   color: $text-black;
 }
+.top-content {
+  &__news {
+    height: 390px;
+    background-color: #EEEDE9;
+    &__wrapper {
+      width: 1020px;
+      margin: auto;
+      &__img {
+        display: block;
+        padding: 2px 0;
+        margin: auto;
+        height: 390px;
+      }
+    }
+  }
+}
