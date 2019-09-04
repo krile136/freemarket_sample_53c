@@ -26,7 +26,7 @@
 - has_many :postpays
 - has_many :receivables
 - has_many :comments
-- has_many :likes, dependent: :destroy
+- has_many :item_likes, dependent: :destroy
 - has_many :receivables
 - has_many :evaluations
 - has_many :points
@@ -65,7 +65,7 @@
 ### Association
 - has_many :images, dependent: :destroy
 - has_many :comments
-- has_many :likes
+- has_many :item_likes
 - belongs_to :postpays
 - belongs_to :brand
 - belongs_to :brand_group
@@ -236,7 +236,7 @@
 - belongs_to :item
 
 
-## likesテーブル
+## item_likesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
