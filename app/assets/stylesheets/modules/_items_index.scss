@@ -17,4 +17,93 @@
       }
     }
   }
+  &__items {
+    background-color:  $background-beige;
+    &__class {
+      color: $text-black;
+      background-color: $background-white;
+      padding: 56px 0 30px;
+      text-align: center;
+      &__title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      &__detail {
+        display: flex;
+        justify-content: center;
+        &__list {
+          background-color: #EFEFEF;
+          margin-left: 10px;
+          &__link {
+            display: inline-block;
+            padding: 8px 16px;
+            color: $text-black;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    &__list {
+      width: 1020px;
+      margin: auto;
+      padding: 42px 0 100px;
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__title {
+        font-size: 24px;
+        font-weight: 600;
+        }
+        &__more {
+          color: #0095ee;
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+      &__cards {
+        display: grid;
+        grid-template-rows: 252px 252px;
+        grid-template-columns: 188px 188px 188px 188px 188px;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        &__card {
+          display: block;
+          box-shadow: 0 2px 4px rgba(0,0,0,.18);
+          &__f {
+            margin: 0;
+            position: relative;
+            &__img {
+              height: 188px;
+              width: 100%;
+            }
+            &__caption {
+              display: block;
+              height: 64;
+              padding: 0 12px;
+              font-size: 14px;
+              color: $text-black;
+            }
+            &__price {
+              position: absolute;
+              left: 0;
+              top: 152px;
+              height: 28px;
+              line-height: 28px;
+              display: inline-block;
+              color: $text-white;
+              font-size: 17px;
+              letter-spacing: .02em;
+              border-radius: 0 14px 14px 0;
+              background-color: rgba(0,0,0,.4);
+              padding: 0 12px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
