@@ -1,5 +1,18 @@
 %footer.main-footer
   .main-footer__ads
+    .main-footer__ads__wrapper
+      .main-footer__ads__wrapper__left
+        %h3.main-footer__ads__wrapper__left__text-top スマホでかんたんフリマアプリ
+        %p.main-footer__ads__wrapper__left__text-bottom 今すぐ無料ダウンロード！
+        %ul.main-footer__ads__wrapper__left__icon
+          %li.main-footer__ads__wrapper__left__icon__mercari
+            =image_tag 'mercari_icon.png', class: "main-footer__ads__wrapper__left__icon__mercari__img"
+          %li.main-footer__ads__wrapper__left__icon__app
+            =image_tag 'app-store.svg', class: "main-footer__ads__wrapper__left__icon__app__img"
+          %li.main-footer__ads__wrapper__left__icon__google
+            =image_tag 'google-play.svg', class: "main-footer__ads__wrapper__left__icon__google__img"
+      .main-footer__ads__wrapper__right
+        =image_tag 'footer_ads_image.png', class: "main-footer__ads__wrapper__right__image"
   .main-footer__info
     %nav.main-footer__info__nav
       .main-footer__info__nav__about
