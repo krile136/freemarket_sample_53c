@@ -17,11 +17,6 @@
 |birth_year|integer|null: false|
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
-|postal_code|integer|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
-|city_id|references|null: false, foreign_key: true|
-|address|string|null: false|
-|building|string||
 |icon|string||
 |active|boolean||
 |receivable|int||
@@ -41,8 +36,7 @@
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 - has_one :delivery_address, dependent: :destroy
 - has_one :creditcard, dependent: :destroy
-- belongs_to :prefecture（Active_hash)
-- belongs_to :city（Active_hash)
+- has_one :address
 
 
 ## itemsテーブル
@@ -106,6 +100,23 @@
 - belongs_to :city（Active_hash)
 
 
+## addressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|integer|null: false|
+|prefecture_id|references|null: false, foreign_key: true|
+|city_id|references|null: false, foreign_key: true|
+|address|string|null: false|
+|building|string||
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :prefecture（Active_hash)
+- belongs_to :city（Active_hash)
+- belongs_to :user
+
+
 ## imagesテーブル
 
 |Column|Type|Options|
@@ -166,7 +177,7 @@
 |name|string||
 
 ### Association
-- has_many :users
+- has_many :addresses
 - has_many :items
 - has_many :delivery_address
 
@@ -178,7 +189,7 @@
 |name|string||
 
 ### Association
-- has_many :users
+- has_many :addresses
 - has_many :delivery_address
 
 
