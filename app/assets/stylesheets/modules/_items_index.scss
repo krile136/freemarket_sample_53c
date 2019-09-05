@@ -6,14 +6,58 @@
   &__news {
     height: 390px;
     background-color: #EEEDE9;
-    &__wrapper {
-      width: 1020px;
-      margin: auto;
-      &__img {
-        display: block;
-        padding: 2px 0;
-        margin: auto;
-        height: 390px;
+    position: relative;
+    &__camp {
+      height: 390px;
+      background-image: image-url('top-banner-camp.jpg');
+      background-position: center;
+    }
+    &__leftarrow {
+      position: absolute;
+      top: 45%;
+      left: 0;
+      margin-left: 60px;
+      height: 46px;
+      width: 31px;
+      background-image: image-url('carousel-prev.png');
+    }
+    &__rightarrow {
+      position: absolute;
+      top: 45%;
+      right: 0;
+      margin-right: 60px;
+      height: 46px;
+      width: 31px;
+      background-image: image-url('carousel-next.png');
+    }
+    &__dots {
+      position: absolute;
+      bottom: 0;
+      left: 48%;
+      margin-bottom: 20px;
+      font-size: 0;
+      &__left {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: $background-white;
+      }
+      &__center {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin-left: 12px;
+        border-radius: 50%;
+        background-color: hsla(0,0%,100%,.6);
+      }
+      &__right {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin-left: 12px;
+        border-radius: 50%;
+        background-color: hsla(0,0%,100%,.6);
       }
     }
   }
