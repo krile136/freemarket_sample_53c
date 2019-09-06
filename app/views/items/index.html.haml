@@ -1,1 +1,33 @@
-hello world
+.top-wrapper
+  = render 'shared/global_header'
+  .top-content
+    .top-content__news
+      .top-content__news__camp
+      .top-content__news__leftarrow
+      .top-content__news__rightarrow
+      .top-content__news__dots
+        %span.top-content__news__dots__left
+        %span.top-content__news__dots__center
+        %span.top-content__news__dots__right
+    .top-content__items
+      .top-content__items__class
+        %h2.top-content__items__class__title 人気の◯◯◯◯◯
+        %ul.top-content__items__class__detail
+          %li.top-content__items__class__detail__list
+            =link_to "あいうえお", '', class: "top-content__items__class__detail__list__link"
+          %li.top-content__items__class__detail__list
+            =link_to "かきく", '', class: "top-content__items__class__detail__list__link"
+          %li.top-content__items__class__detail__list
+            =link_to "さしすせそ・たちつてと", '', class: "top-content__items__class__detail__list__link"
+          %li.top-content__items__class__detail__list
+            =link_to "なにぬねの・はひふ", '', class: "top-content__items__class__detail__list__link"
+      .top-content__items__list
+        .top-content__items__list__header
+          %h3.top-content__items__list__header__title ★★新着アイテム
+          =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
+        .top-content__items__list__cards
+          -# FIXME: eachで回すのではなく、collectionを使いたい
+          - [1000, 2000, 30000, 4567890, 300, 500, 1500, 6666, 100000, 5000].each do |item|
+            = render partial: 'item_card', locals: {item: item}
+  = render 'shared/global_footer'
+  = render 'shared/sell_button'
