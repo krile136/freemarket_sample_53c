@@ -1,0 +1,252 @@
+.registration{
+  width: 100vw;
+  background-color: $background-beige;
+  padding: 0 0 220px;
+  position: relative;
+  &__header{
+    display: table;
+    height: 128px;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    &--logo{
+      display: inline-block;
+      padding-top: 40px;
+    }
+    &--progress{
+      padding: 40px 0 0 44px;
+      border: 0;
+      display: inline-block;
+      vertical-align: top;
+      font-size: 0;
+      text-align: center;
+      &-bar{
+        margin: 0;
+        li{
+          margin: 0 40px 0 0;
+          padding: 0;
+          position: relative;
+          z-index: 40;
+          display: inline-block;
+          min-width: 60px;
+          font-size: 12px;
+          color: gray;
+          .progress-status{
+            position: absolute;
+            left: 40%;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: gray;
+            border-radius: 50%;
+            z-index: 30;
+          }
+        }
+      }
+    }
+  }
+  &__main{
+    background-color: $background-white;
+    width: 700px;
+    margin: auto;
+    &--title{
+      height: 97px;
+      font-size: 22px;
+      color: $text-black;
+      line-height: 97px;
+      position: relative;
+      text-align: center;
+    }
+    &--content{
+      padding: 24px 16px 40px;
+      border-top-color: $line-thinblack;
+      border-top-style: solid;
+      border-top-width: 1px;
+      &--spacer{
+        width: 100%;
+        height: 24px;
+      }
+      &--spacer-double{
+        width: 100%;
+        height: 48px;
+      }
+      &--notice-text{
+        margin-top: 8px;
+        color: $notice-text;
+      }
+      &--agree-text{
+        text-align: center;
+      }
+      &--inner{
+        width: 343px;
+        margin: 0 auto;
+        font-size: 14px;
+        &--redmsg{
+          display: inline-block;
+          width: 32px;
+          height: 19px;
+          font-size: 12px;
+          line-height: 19px;
+          background-color: $mercari-red;
+          color: white;
+          border-radius: 2px;
+          text-align: center;
+        }
+        &--input-full{
+          width: 100%;
+          height: 48px;
+          border-radius: 5px;
+          outline: 0;
+          border: 1px solid #ccc;
+          margin-top: 8px;
+          padding: 10px 16px 8px;
+        }
+        &--input-left{
+          display: inline-block;
+          width: calc(50% - 8px);
+          height: 48px;
+          border-radius: 5px;
+          outline: 0;
+          border: 1px solid #ccc;
+          margin-top: 8px;
+          margin-right: 6px;
+          padding: 10px 16px 8px;
+        }
+        &--input-right{
+          display: inline-block;
+          width: calc(50% - 8px);
+          height: 48px;
+          border-radius: 5px;
+          outline: 0;
+          border: 1px solid #ccc;
+          margin-top: 8px;
+          padding: 10px 16px 8px;
+        }
+        &--pulldown{
+          background-color: $background-white;
+          height: 48px;
+          width: 76px;
+          margin-top: 8px;
+          padding-left: 10px;
+          padding-right: 10px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          -webkit-rtl-ordering: logical;
+        }
+        &--arrow-left{
+          position: absolute;
+          pointer-events: none;
+          top: 20px;
+          left: 50px;
+        }
+        &--arrow-middle{
+          position: absolute;
+          pointer-events: none;
+          top: 20px;
+          left: 150px;
+        }
+        &--arrow-right{
+          position: absolute;
+          pointer-events: none;
+          top: 20px;
+          left: 250px;
+        }
+        &--terms{
+          text-decoration: none;
+          color: $link-skyblue;
+        }
+        &--about-registration{
+          text-decoration: none;
+          color: $link-skyblue;
+          float:right;
+        }
+        &--next-btn{
+          background-color: $mercari-red;
+          width: 100%;
+          height: 50px;
+          border-style: none;
+          &--text{
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+          }
+        }
+        p{
+          position: relative;
+        }
+        h3{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.progress {
+  padding: 40px 0 0 44px;
+  border: 0;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  text-align: center;
+  &-bar{
+    margin: 0;
+    li{
+      margin: 0 40px 0 0;
+      padding: 0;
+      position: relative;
+      z-index: 40;
+      display: inline-block;
+      min-width: 60px;
+      font-size: 12px;
+      color: gray;
+      .progress-status{
+        position: absolute;
+        left: 40%;
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: gray;
+        border-radius: 50%;
+        z-index: 30;
+      }
+    }
+  }
+}
+
+.progress-status_bar {
+  position: absolute;
+  left: 50%;
+  top: 31px;
+  bottom: 5px;
+  display: block;
+  width: 130px;
+  height: 2px;
+  background: gray;
+  z-index: 10;
+}
+
+.end .progress-status_bar {
+  width: 0px;
+}
+.payment .progress-status_bar {
+  width: 100px;
+}
+#through{
+  color: #ea352d;
+  .progress-status{
+    background: #ea352d;
+  }
+}
+
+#through .progress-status_bar{
+  // background: #ea352d;
+}
+#active{
+  // color: #ea352d;
+  .progress-status{
+    // background: #ea352d;
+  }
+}

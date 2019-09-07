@@ -7,7 +7,7 @@
     .signup__main--registration
       新規会員登録
     .signup__main--registration-form
-      = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--mail" do
+      = link_to new_user_registration_path(), class: "signup__main--registration-form--btn signup__main--registration-form--btn--mail" do
         = fa_icon 'envelope', class: "fa-2x signup__main--registration-form--btn--logo"
         .signup__main--registration-form--btn--center
           メールアドレスで登録する
@@ -18,22 +18,25 @@
       = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--google" do
         .signup__main--registration-form--btn--center
           Googleで登録する
-  .signup__footer
-    %ul
-      %li.signup__footer--link
-        = link_to "#", class: "link_decoration_reset"do
-          プライバシーポリシー
-      %li.signup__footer--link
-        = link_to "#", class: "link_decoration_reset" do
-          メルカリ利用規約
-      %li.signup__footer--link
-        = link_to "#", class: "link_decoration_reset" do
-          特定商取引に関する表記
-    .signup__footer--logo
-      = link_to "#" do
-        = image_tag "logo-gray.svg", size: "80x65", alt: "mercari",class: "logo-opacity" 
-    .signup__footer--copyright
-      © 2019 Mercari
+  = render 'shared/logo-footer'
+
+  
+  -# .signup__footer
+  -#   %ul
+  -#     %li.signup__footer--link
+  -#       = link_to "#", class: "link_decoration_reset"do
+  -#         プライバシーポリシー
+  -#     %li.signup__footer--link
+  -#       = link_to "#", class: "link_decoration_reset" do
+  -#         メルカリ利用規約
+  -#     %li.signup__footer--link
+  -#       = link_to "#", class: "link_decoration_reset" do
+  -#         特定商取引に関する表記
+  -#   .signup__footer--logo
+  -#     = link_to "#" do
+  -#       = image_tag "logo-gray.svg", size: "80x65", alt: "mercari",class: "logo-opacity" 
+  -#   .signup__footer--copyright
+  -#     © 2019 Mercari
 -# %h1 テストログイン画面
 -# - if user_signed_in?
 -#   / ユーザーがログインしているか調べる
