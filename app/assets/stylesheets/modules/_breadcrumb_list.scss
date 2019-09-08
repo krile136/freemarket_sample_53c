@@ -1,0 +1,28 @@
+.breadcrumb {
+  width: 100vw;
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 4px solid #cccccc;
+  &__list {
+    display: flex;
+    width: 1020px;
+    margin: auto;
+    padding: 14px 0;
+    font-size: 14px;
+    
+    &__piece {
+      display: inline-block;
+      &__link {
+        color: $text-black;
+      }
+      &__arrow {
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 8px;
+        color: #888888;
+      }
+      &-bold {
+        font-weight: bold;
+      }
+    }
+  }
+}
