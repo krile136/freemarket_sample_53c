@@ -1,4 +1,3 @@
-
 .registration
   .registration__header
     .registration__header--logo
@@ -29,11 +28,10 @@
   .registration__main
     .registration__main--title#registration-title
       会員情報入力
-    .registration__main--content
-      .registration__main--content--inner
-        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f|
-          = render partial: 'users/registration-member-info', locals: { f: f }
-      
+    = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f|
+      = render partial: 'users/registration-member-info', locals: { f: f }
+      = render partial: 'users/confirm-phone-number', locals: {f: f}
+      = render partial: 'users/phone-number-authentication', locals: {f: f}
   = render 'shared/logo-footer'
 
 -# %h2 Sign up

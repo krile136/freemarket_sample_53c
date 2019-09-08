@@ -1,0 +1,27 @@
+#phone-number-authentication
+  .registration__main--content
+    .registration__main--content--inner
+      認証番号
+      = f.text_field :certification_number, placeholder: "認証番号を入力", class: "registration__main--content--inner--input-full"
+      %p
+        SMSで届いた認証番号を入力してください
+      .registration__main--content--spacer-double
+      %button#user-phone-authentication.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          認証して完了
+  .registration__main--content
+    .registration__main--content--inner
+      ３０秒たっても認証番号が届かない方へ
+      電話で認証番号を聞くこともできます。
+      .registration__main--content-spacer
+      %button#user-phone-authentication.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          電話で認証番号を聞く（通話無料）
+  .registration__main--content
+    .registration__main--content--inner
+      認証番号を再送することもできます。もう一度電話番号を入力してください
+      %p
+      = link_to "#", class: "registration__main--content--inner--enter-again" do
+        電話番号を再度入力する
+
+

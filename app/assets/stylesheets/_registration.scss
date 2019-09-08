@@ -1,5 +1,6 @@
 .registration{
   width: 100vw;
+  min-height: 100vh;
   background-color: $background-beige;
   padding: 0 0 220px;
   position: relative;
@@ -161,6 +162,10 @@
           color: $link-skyblue;
           float:right;
         }
+        &--enter-again{
+          text-decoration: none;
+          color: $link-skyblue;
+        }
         &--next-btn{
           background-color: $mercari-red;
           width: 100%;
@@ -183,6 +188,22 @@
     }
   }
 }
+
+#confirm-phone-number{
+  display: none;
+  p{
+    margin-top: 8px;
+  }
+}
+#phone-number-authentication{
+  display: none;
+  position: relative;
+  p{
+    margin-top: 8px;
+  }
+}
+
+
 
 .progress {
   padding: 40px 0 0 44px;
@@ -238,15 +259,5 @@
   color: #ea352d;
   .progress-status{
     background: #ea352d;
-  }
-}
-
-#through .progress-status_bar{
-  // background: #ea352d;
-}
-#active{
-  // color: #ea352d;
-  .progress-status{
-    // background: #ea352d;
   }
 }
