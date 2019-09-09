@@ -70,8 +70,8 @@
                 %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
             %li.mypage-content__main__tablist__lastlist
               =link_to "一覧を見る", '', class: "mypage-content__main__tablist__lastlist__button"
-        #mypage-todo-list.mypage-content__main__tablist__nodate 現在、やることリストはありません
-      .mypage-content__main__tablist
+        #mypage-todo-list.mypage-content__main__tablist-inactive.mypage-content__main__tablist__nodate 現在、やることリストはありません
+      .mypage-content__main__tablist.mypage-content__main__tablist-bottom
         %h2.mypage-content__main__tablist__title 購入した商品
         %ul.mypage-content__main__tablist__header
           %li#mypage-purchase-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-active
@@ -79,6 +79,6 @@
           %li#mypage-purchased-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-inactive
             %h3.mypage-content__main__tablist__header__tab__text 過去の取引
         #mypage-purchase-list.mypage-content__main__tablist__nodate 取引中の商品がありません
-        #mypage-purchased-list.mypage-content__main__tablist__nodate 過去に取引した商品がありません
+        #mypage-purchased-list.mypage-content__main__tablist-inactive.mypage-content__main__tablist__nodate 過去に取引した商品がありません
 = render 'shared/global_footer'
 = render 'shared/sell_button'
