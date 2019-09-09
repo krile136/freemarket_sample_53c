@@ -5,15 +5,15 @@
     background-color: $background-white;
     font-size: 14px;
     height: 48px;
-    border-top: 1px solid #EEEEEE;
+    border-top: 1px solid $border-gray;
     &:hover {
-      background-color: #FAFAFA;
+      background-color: $list-hover-gray;
     }
     &-first {
       border: none;
     }
     &-active {
-      background-color: #EEEEEE;
+      background-color: $background-gray;
     }
     &__link {
       color :$text-black;
