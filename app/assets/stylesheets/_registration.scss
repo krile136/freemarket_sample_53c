@@ -82,51 +82,46 @@
         width: 343px;
         margin: 0 auto;
         font-size: 14px;
-        &--redmsg{
+        &--msg{
           display: inline-block;
           width: 32px;
           height: 19px;
           font-size: 12px;
           line-height: 19px;
-          background-color: $mercari-red;
-          color: white;
           border-radius: 2px;
           text-align: center;
+          &-red{
+            color: white;
+            background-color: $mercari-red;
+          }
+          &-gray{
+            color: white;
+            background-color: $any-gray;
+          }
         }
-        &--input-full{
-          width: 100%;
+        &--input{
           height: 48px;
           border-radius: 5px;
           outline: 0;
           border: 1px solid #ccc;
           margin-top: 8px;
           padding: 10px 16px 8px;
-        }
-        &--input-left{
-          display: inline-block;
-          width: calc(50% - 8px);
-          height: 48px;
-          border-radius: 5px;
-          outline: 0;
-          border: 1px solid #ccc;
-          margin-top: 8px;
-          margin-right: 6px;
-          padding: 10px 16px 8px;
-        }
-        &--input-right{
-          display: inline-block;
-          width: calc(50% - 8px);
-          height: 48px;
-          border-radius: 5px;
-          outline: 0;
-          border: 1px solid #ccc;
-          margin-top: 8px;
-          padding: 10px 16px 8px;
+          &-full{
+            width: 100%;
+          }
+          &-left{
+            display: inline-block;
+            width: calc(50% - 8px);
+            margin-right: 6px;
+          }
+          &-right{
+            display: inline-block;
+            width: calc(50% - 8px);
+          }
         }
         &--pulldown{
           background-color: $background-white;
           height: 48px;
-          width: 76px;
           margin-top: 8px;
           padding-left: 10px;
           padding-right: 10px;
@@ -134,24 +129,29 @@
           -moz-appearance: none;
           appearance: none;
           -webkit-rtl-ordering: logical;
+          &-one-third{
+            width: 76px;
+          }
+          &-full{
+            width: 100%;
+          }
         }
-        &--arrow-left{
+        &--arrow{
           position: absolute;
           pointer-events: none;
           top: 20px;
-          left: 50px;
-        }
-        &--arrow-middle{
-          position: absolute;
-          pointer-events: none;
-          top: 20px;
-          left: 150px;
-        }
-        &--arrow-right{
-          position: absolute;
-          pointer-events: none;
-          top: 20px;
-          left: 250px;
+          &-left{
+            left: 50px;
+          }
+          &-middle{
+            left: 150px;
+          }
+          &-right{
+            left: 250px;
+          }
+          &-full{
+            left: 310px;
+          }
         }
         &--terms{
           text-decoration: none;
@@ -202,8 +202,21 @@
     margin-top: 8px;
   }
 }
+#input-address{
+  display: none;
+  position: relative;
+  p{
+    margin-top: 8px;
+  }
+}
 
-
+#input-payment{
+  display: none;
+  position: relative;
+  p{
+    margin-top: 8px;
+  }
+}
 
 .progress {
   padding: 40px 0 0 44px;

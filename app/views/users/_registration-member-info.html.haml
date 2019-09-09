@@ -2,24 +2,24 @@
   .registration__main--content
     .registration__main--content--inner
       ニックネーム
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
-      = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "registration__main--content--inner--input-full"
+      = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       .registration__main--content--spacer
       メールアドレス
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
-      = f.text_field :mail, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input-full"
+      = f.text_field :mail, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       .registration__main--content--spacer
       パスワード
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
-      = f.text_field :password, placeholder: "７文字以上", class: "registration__main--content--inner--input-full"
+      = f.text_field :password, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       .registration__main--content--spacer
       パスワード（確認）
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
-      = f.text_field :password_confirmation, placeholder: "７文字以上", class: "registration__main--content--inner--input-full"
+      = f.text_field :password_confirmation, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       .registration__main--content--spacer
       %h3
         本人確認
@@ -27,33 +27,33 @@
         安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客様に公開されることはありません。
       .registration__main--content--spacer
       お名前（全角）
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
       %p
-        = f.text_field :last_name, placeholder: "例）山田", class: "registration__main--content--inner--input-left"
-        = f.text_field :first_name, placeholder: "例）彩", class: "registration__main--content--inner--input-right"
+        = f.text_field :last_name, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-left"
+        = f.text_field :first_name, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-right"
       .registration__main--content--spacer
       お名前（全角カナ）
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
       %p
-        = f.text_field :last_name_kana, placeholder: "例）山田", class: "registration__main--content--inner--input-left"
-        = f.text_field :first_name_kana, placeholder: "例）彩", class: "registration__main--content--inner--input-right"
+        = f.text_field :last_name_kana, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-left"
+        = f.text_field :first_name_kana, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-right"
       .registration__main--content--spacer
       生年月日
-      .registration__main--content--inner--redmsg
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
       %p
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown"}
-        %label.registration__main--content--inner--arrow-left
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-left
           = fa_icon 'chevron-down'
         年
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown"}
-        %label.registration__main--content--inner--arrow-middle
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-middle
           = fa_icon 'chevron-down'
         月
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown"}
-        %label.registration__main--content--inner--arrow-right
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-right
           = fa_icon 'chevron-down'
         日
       %p.registration__main--content--notice-text

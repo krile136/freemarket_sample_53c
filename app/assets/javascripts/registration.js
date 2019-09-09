@@ -10,6 +10,7 @@ $(document).on('turbolinks:load', function () {
     // 電話番号確認画面の表示
     $('#registration-title').text("電話番号の確認");
     $('#confirm-phone-number').css('display', 'block');
+    $(window).scrollTop(0);
   });
 
   $('#user-phone-registration').on("click", function () {
@@ -18,5 +19,27 @@ $(document).on('turbolinks:load', function () {
     // 電話番号認証画面の表示
     $('#registration-title').text("電話番号認証");
     $('#phone-number-authentication').css('display', 'block');
+    $(window).scrollTop(0);
   });
+
+  $('#user-phone-authentication').on("click", function () {
+    $('#phone-number-authentication').css('display', 'none');
+    $('#registration-title').text("発送元・お届け先住所入力");
+    $('#active .progress-status_bar').css('background', '#ea352d');
+    $('#address').css('color', '#ea352d');
+    $('#address .progress-status').css('background', '#ea352d');
+    $('#input-address').css('display', 'block');
+    $(window).scrollTop(0);
+  })
+
+  $('#user-address-input').on("click", function () {
+    $('#input-address').css('display', 'none');
+    $('#registration-title').text("支払い方法");
+    $('#address .progress-status_bar').css('background', '#ea352d');
+    $('#payment').css('color', '#ea352d');
+    $('#payment .progress-status').css('background', '#ea352d');
+    $('#input-payment').css('display', 'block');
+    $(window).scrollTop(0);
+  })
+
 });
