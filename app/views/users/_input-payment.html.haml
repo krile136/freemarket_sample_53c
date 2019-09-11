@@ -1,7 +1,40 @@
 #input-payment
   .registration__main--content
     .registration__main--content--inner
-      ニックネーム
+      カード番号
       .registration__main--content--inner--msg.registration__main--content--inner--msg-red
         必須
-      = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      = f.text_field :nickname, placeholder: "半角数字のみ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      = image_tag "visa.png", size: "40x40"
+      = image_tag "master.png", size: "40x40"
+      = image_tag "saison.png", size: "40x40"
+      = image_tag "jcb.png", size: "40x40"
+      = image_tag "american.png", size: "40x30"
+      = image_tag "diners.png", size: "40x40"
+      = image_tag "discover.png", size: "40x30"
+      .registration__main--content--spacer
+      有効期限
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+        必須
+      %p
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-left
+          = fa_icon 'chevron-down'
+        月
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-right
+          = fa_icon 'chevron-down'
+        年
+      .registration__main--content--spacer
+      セキュリティコード
+      .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+        必須
+      = f.text_field :credit, placeholder: "カード背面4桁もしくは3桁の番号", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      = link_to "#", class: "registration__main--content--inner--about-registration" do
+        = fa_icon 'question-circle'
+        カード裏面の番号とは？
+      %p
+      .registration__main--content--spacer-double
+      %button#user-info-registration.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          次へ進む
