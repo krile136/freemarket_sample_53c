@@ -1,5 +1,20 @@
 $(function() {
 
+  // サードバーのリストのカーソルONで矢印を移動＆アクティブでないリストの矢印は色を変える
+  $('.mypage-side__list').hover(function() {
+    let targetArrow = $(this).find('.mypage-side__list__link__arrow');
+    targetArrow.animate({'right':'11px'}, 'fast');
+    if (!$(this).hasClass('mypage-side__list-active')) {
+        targetArrow.css('color', '#333333');
+    }
+  },function() {
+    let targetArrow = $(this).find('.mypage-side__list__link__arrow');
+    targetArrow.animate({'right':'16px'}, 'fast');
+    if (!$(this).hasClass('mypage-side__list-active')) {
+      targetArrow.css('color', '#cccccc');
+  }
+  })
+
   // タブクリック時の表示切り替え処理
   $('.mypage-content__main__tablist__header__tab').on('click', function () {
     let clickedTab = $(this);

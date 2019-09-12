@@ -17,17 +17,21 @@
     }
     &__link {
       color :$text-black;
-      display: flex;
+      display: block;
       padding: 16px;
-      line-height: 1;
-      justify-content: space-between;
+      position: relative;
       &-active {
         font-weight: bold;
+      }
+      &__text {
+        line-height: 16px;
       }
       &__arrow {
         font-size: 24px;
         line-height: 16px;
         color: $icon-gray;
+        position: absolute;
+        right: 16px;
         &-active {
           color: $text-black;
         }
