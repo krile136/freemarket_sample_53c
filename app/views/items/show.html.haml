@@ -113,72 +113,7 @@
           = fa_icon 'pinterest', class: "fa-pinterest"
   .other-item-box
     %h2
-      = link_to "出品ユーザーのページへ遷移"  #後にeach分に書き換える必要あり
+      = link_to "出品ユーザーのページへ遷移" 
     .other-item-contents
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
-      .other-item-contents__box
-        = link_to "" do
-          .photo
-            = image_tag "http://placehold.jp/220x220.png"
-          .text
-            %h3 出品ユーザーの商品
-            .price-box
-              .price¥1,000
-              = fa_icon "heart"
-              %span
-                1
+      = render 'other_item'
 = render 'shared/global_footer'
