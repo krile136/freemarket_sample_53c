@@ -19,7 +19,7 @@
     }
     &__main {
       margin: 16px 0 0;
-      &-photo {
+      &--photo {
         float: left;
         background-color: $background-beige;
         min-width: 300px;
@@ -41,7 +41,7 @@
           }
         }
       }
-      &-detail {
+      &--detail {
         float: right;
         max-width: 300px;
         height: 432px;
