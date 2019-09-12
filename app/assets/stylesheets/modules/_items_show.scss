@@ -1,10 +1,8 @@
-
 .main-item {
   height: 100%;
   width: 100%;
   background-color: $background-beige;
   padding-top: 40px;
-
   .item-box {
     background-color: $background-white;
     width: 700px;
@@ -83,8 +81,6 @@
         }
       }
     }
-  
-  
     &__price {
       margin: 24px 0 0;
       text-align: center;
@@ -121,7 +117,6 @@
       line-height: 1.5;
       font-size: 18px;
     }
-    
     &__button {
       margin: 16px 0 0;
       &-left {
@@ -143,20 +138,17 @@
         }
       }
     }
-
-  } //item-box
+  }
   .comment {
     background-color: $background-white;
     width: 700px;
     height: 280px;
     margin: 10px auto;
     padding-top:20px;
-
     &__box {
       width: 660px;
       height: 280px;
       margin: 0 auto;
-
       p {
         display: inline-block;
         padding: 8px;
@@ -181,10 +173,8 @@
           width: 652px;
           height: 50px;
         }
-      
       }
     }
-
     .page-icon{
       width: 700px;
       height: 30px;
@@ -199,7 +189,6 @@
         text-align: right;
       }
     }
-
     .social-media {
       margin: 24px auto;
       padding: 32px 0 24px;
@@ -237,66 +226,53 @@
           font-size: 18px;
         }
       }
-    } //.social-media
-
+    }
     .other-item-box{
       height: 800px;
       width: 700px;
       margin: 20px auto 0;
       padding: 24px 0 40px;
-  
       h2{
-  
         a{
           font-size: 20px;
           color: $link-skybule;
         }
       }
-  
       .other-item-contents{
         margin-top: 10px;
-  
         &__box {
           background-color: $text-white;
           width: 220px;
           height: 330px;
           float: left;
           margin:0 0 20px 10px;
-  
           a {
             color: $text-black;
-  
             .photo {
               background-color: $text-white;
               width: 220px;
               height: 220px;
-  
               img {
                 width: 220px;
                 height: 220px;
               }
             }
-  
             .text {
               width: 220px;
               height: 110px;
-  
               h3 {
                 font-size: 16px;
                 text-align: center;
                 padding-bottom: 20px;
                 margin-top: 5px;
               }
-  
               .price-box {
                 padding: 20px;
-  
                 .price {
                   font-size: 16px;
                   font-weight: bold;
                   float: left;
                 }
-  
                 i {
                   float: right;
                   margin-right: 5px;
@@ -308,10 +284,8 @@
                   left: 36px;
                   color: $text-black;
                 }
-  
                 p {
                   font-size: 8px;
-  
                 }
               }
             }
@@ -319,7 +293,4 @@
         }
       }
     }
- 
-    
-    
-} //main-item
+}

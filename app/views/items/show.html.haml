@@ -1,6 +1,5 @@
 = render 'shared/global_header'
 .main-item
-
   %section.item-box
     %h1.item-box__name 商品の名前
     .item-box__main
@@ -112,7 +111,6 @@
       %li
         =link_to '' do
           = fa_icon 'pinterest', class: "fa-pinterest"
-
   .other-item-box
     %h2
       = link_to "出品ユーザーのページへ遷移"  #後にeach分に書き換える必要あり
@@ -183,5 +181,4 @@
               = fa_icon "heart"
               %span
                 1
-  
 = render 'shared/global_footer'
