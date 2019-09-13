@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function () {
 
   // サードバーのリストのカーソルONで矢印を移動＆アクティブでないリストの矢印は色を変える
   $('.mypage-side__list').hover(function() {
