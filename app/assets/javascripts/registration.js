@@ -14,9 +14,7 @@ $(document).on('turbolinks:load', function () {
   });
 
   $('#user-phone-registration').on("click", function () {
-    // 電話番号確認ページの非表示
     $('#confirm-phone-number').css('display', 'none');
-    // 電話番号認証画面の表示
     $('#registration-title').text("電話番号認証");
     $('#phone-number-authentication').css('display', 'block');
     $(window).scrollTop(0);
@@ -42,4 +40,13 @@ $(document).on('turbolinks:load', function () {
     $(window).scrollTop(0);
   })
 
+  $('#user-input-payment').on("click", function () {
+    $('#input-payment').css('display', 'none');
+    $('#registration-title').text("会員登録完了");
+    $('#payment .progress-status_bar').css('background', '#ea352d');
+    $('#end').css('color', '#ea352d');
+    $('#end .progress-status').css('background', '#ea352d');
+    $('#complete-registration').css('display', 'block');
+    $(window).scrollTop(0);
+  })
 });

@@ -1,7 +1,8 @@
 #confirm-phone-number
   .registration__main--content
     .registration__main--content--inner
-      電話番号の確認
+      .registration--bold
+        電話番号の確認
       = f.text_field :phone, placeholder: "携帯電話の番号を入力", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       %p
         本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。

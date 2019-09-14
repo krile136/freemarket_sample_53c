@@ -4,6 +4,9 @@
   background-color: $background-beige;
   padding: 0 0 220px;
   position: relative;
+  &--bold{
+    font-weight: bold;
+  }
   &__header{
     display: table;
     height: 128px;
@@ -50,11 +53,48 @@
     background-color: $background-white;
     width: 700px;
     margin: auto;
+    &--background{
+      position: relative;
+      height: 260px;
+      &--img{
+        position: absolute;
+      }
+      &--box{
+        width: 400px;
+        height: 260px;
+        position: absolute;
+        color: white;
+        &--logo{
+          margin-left: 20px;
+        }
+        h1{
+          text-align: center;
+          font-size: 30px;
+          font-weight: bold;
+        }
+        h3{
+          text-align: center;
+          margin-top: 75px;
+        }
+        ul{
+          margin-top: 10px;
+          padding-left: 20px;
+          li{
+            float: left;
+          }
+        }
+      }
+      &--smartphone{
+        position: absolute;
+        left:400px;
+      }
+    }
     &--title{
       height: 97px;
       font-size: 22px;
       color: $text-black;
       line-height: 97px;
+      font-weight: bold;
       position: relative;
       text-align: center;
     }
@@ -84,6 +124,7 @@
         font-size: 14px;
         &--msg{
           display: inline-block;
+          font-weight: normal;
           width: 32px;
           height: 19px;
           font-size: 12px;
@@ -212,6 +253,13 @@
   }
 }
 #input-address{
+  display: none;
+  position: relative;
+  p{
+    margin-top: 8px;
+  }
+}
+#complete-registration{
   display: none;
   position: relative;
   p{

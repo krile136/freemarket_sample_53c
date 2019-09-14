@@ -1,6 +1,4 @@
 @import "reset";
-@import "_border-box";
-@import "./config/color-variable";
+@import "./config/*";
 @import "font-awesome";
-@import "_signup";
-@import "_registration";
+@import "./module/*";

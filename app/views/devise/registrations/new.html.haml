@@ -34,7 +34,10 @@
       = render partial: 'users/phone-number-authentication', locals: {f: f}
       = render partial: 'users/input-address', locals: {f: f}
       = render partial: 'users/input-payment', locals: {f: f}
+      = render partial: 'users/complete-registration', locals: {f: f}
   = render 'shared/logo-footer'
+
+-# ログイン機能を作る際に、Deviceインストール時の以下のコードを参考にするのでそのときに削除します
 
 -# %h2 Sign up
 -# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
