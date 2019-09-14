@@ -111,6 +111,9 @@
         width: 100%;
         height: 48px;
       }
+      &--clear{
+        clear: both;
+      }
       &--notice-text{
         margin-top: 8px;
         color: $notice-text;
@@ -138,6 +141,14 @@
           &-gray{
             color: white;
             background-color: $any-gray;
+          }
+        }
+        &--credit{
+          li{
+            float: left;
+          }
+          &-adjust{
+            margin-top: 8px;
           }
         }
         &--input{

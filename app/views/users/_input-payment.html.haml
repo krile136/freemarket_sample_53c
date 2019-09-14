@@ -6,14 +6,22 @@
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
       = f.text_field :nickname, placeholder: "半角数字のみ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
-      = image_tag "visa.png", size: "40x40"
-      = image_tag "master.png", size: "40x40"
-      = image_tag "saison.png", size: "40x40"
-      = image_tag "jcb.png", size: "40x40"
-      = image_tag "american.png", size: "40x30"
-      = image_tag "diners.png", size: "40x40"
-      = image_tag "discover.png", size: "40x30"
-      .registration__main--content--spacer
+      %ul.registration__main--content--inner--credit
+        %li
+          = image_tag "visa.png", size: "40x40"
+        %li
+          = image_tag "master.png", size: "40x40"
+        %li
+          = image_tag "saison.png", size: "40x40"
+        %li
+          = image_tag "jcb.png", size: "40x40"
+        %li
+          = image_tag "american.png", size: "40x25", class: "registration__main--content--inner--credit-adjust"
+        %li
+          = image_tag "diners.png", size: "40x40"
+        %li
+          = image_tag "discover.png", size: "40x25", class: "registration__main--content--inner--credit-adjust"
+      .registration__main--content--spacer.registration__main--content--clear
       .registration--bold
         有効期限
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
