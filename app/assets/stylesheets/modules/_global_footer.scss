@@ -1,4 +1,49 @@
 .main-footer {
+  &__ads {
+    height: 260px;
+    background-image: image-url('footer_background_image.jpg');
+    background-position: center;
+    &__wrapper {
+      width: 750px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      &__left {
+        height: 260px;
+        width: 420px;
+        color: $text-white;
+        &__text-top {
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 1;
+          margin-top: 48px;
+        }
+        &__text-bottom {
+          font-size: 35px;
+          margin-top: 15px;
+          line-height: 1;
+        }
+        &__icon {
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+          &__mercari__img {
+            width: 68px;
+          }
+          &__app__img {
+            margin-left: 24px;
+          }
+          &__google__img {
+            margin-left: 16px;
+          }
+        }
+      }
+      &__right__image {
+        height: 260px;
+        width: 300px;
+      }
+    }
+  }
   &__info {
     padding: 0 20px 10px;
     background-color: rgb(33, 33, 33);
@@ -64,4 +109,4 @@
       }
     }
   }
-} 
+}
