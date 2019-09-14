@@ -1,0 +1,296 @@
+.main-item {
+  height: 100%;
+  width: 100%;
+  background-color: $background-beige;
+  padding-top: 40px;
+  .item-box {
+    background-color: $background-white;
+    width: 700px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 24px 40px 40px;
+    &__name {
+      text-align: center;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: bold;
+    }
+    &__main {
+      margin: 16px 0 0;
+      &--photo {
+        float: left;
+        background-color: $background-beige;
+        min-width: 300px;
+        max-width: 300px;
+        min-height: 300px;
+        position: relative;
+        div {
+          img {
+            width: 300px;
+            height: 300px;
+          }
+        }
+        .photo {
+          margin: 0;
+          float: left;
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+      &--detail {
+        float: right;
+        max-width: 300px;
+        height: 432px;
+        margin: 0 auto;
+        width: 100%;
+        font-size: 14px;
+        th {
+          border: 1px solid $background-beige;
+          width: 39%;
+          text-align: left;
+          font-weight: 400;
+          background: $background-beige;
+          padding: 0 8px;
+        }
+        td {
+          width: 61%;
+          padding: 0 8px;
+          border: 1px solid $background-beige;
+          background: $background-white;
+          a {
+            color: $link-skybule;
+            display: block;
+          }
+          .face {
+            padding-top: 10px;
+            div {
+              display: inline-block;
+              .good-icon {
+                color: $icon-pink;
+              }
+              .normal-icon {
+                color: $icon-yellow;
+              }
+              .bad-icon {
+                color: $link-skybule;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__price {
+      margin: 24px 0 0;
+      text-align: center;
+      .price {
+        margin: 0 16px 0 0;
+        font-size: 46px;
+        font-weight: bold;
+      }
+      .tax {
+        font-size: 14px;
+      }
+      .shipping {
+        font-size: 18px;
+      }
+    }
+    &__buy {
+      width: 620px;
+      height: 60px;
+      line-height: 60px;
+      display: block;
+      background: $mercari-red;
+      color: $text-white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      margin: 0 auto;
+    }
+    &__buy:hover {
+      text-decoration: none;
+      opacity: 1;
+    }
+    &__description {
+      padding: 32px 0 0;
+      line-height: 1.5;
+      font-size: 18px;
+    }
+    &__button {
+      margin: 16px 0 0;
+      &-left {
+        float: left;
+        font-size: 14px;
+        a {
+          display: inline-block;
+          color: $text-black;
+          background: $background-white;
+          padding: 8px 16px;
+        }
+      }
+      &-right {
+        margin: 8px 0 0;
+        float: right;
+        font-size: 14px;
+        a {
+          color: $link-skybule;
+        }
+      }
+    }
+  }
+  .comment {
+    background-color: $background-white;
+    width: 700px;
+    height: 280px;
+    margin: 10px auto;
+    padding-top:20px;
+    &__box {
+      width: 660px;
+      height: 280px;
+      margin: 0 auto;
+      p {
+        display: inline-block;
+        padding: 8px;
+        background-color: $background-creem;
+        font-size: 14px;
+      }
+        .form {
+          background-color: $background-white;
+          border: solid 1px $icon-gray;
+          margin-top: 5px;
+          width: 660px;
+          height: 100px;
+        }
+        .send {
+          background-color: $comment-gray;
+          color: $text-white;
+          margin-top: 5px;
+          font-size: 14px;
+          margin:10px auto;
+          text-align: center;
+          line-height: 50px;
+          width: 652px;
+          height: 50px;
+        }
+      }
+    }
+    .page-icon{
+      width: 700px;
+      height: 30px;
+      margin: 24px auto 0;
+      display: flex;
+      &__left {
+        width: 50%;
+        text-align: left;
+      }
+      &__right {
+        width: 50%;
+        text-align: right;
+      }
+    }
+    .social-media {
+      margin: 24px auto;
+      padding: 32px 0 24px;
+      width: 700px;
+      background-color: $background-white;
+      &__box {
+        margin: 16px 0 0;
+        text-align: center;
+        li {
+          display: inline-block;
+          margin: 0 8px 0 8px;
+          a {
+            display: block;
+          }
+        }
+        i {
+          width: 44px;
+          height: 44px;
+          border-radius: 4px;
+          line-height: 44px;
+        }
+        .fa-facebook {
+          color: $text-white;
+          background: $facebook-blue;
+          font-size: 18px;
+        }
+        .fa-twitter{
+          color: $text-white;
+          background: $link-skybule;
+          font-size: 18px;
+        }
+        .fa-pinterest {
+          color: $text-white;
+          background: $pinterest-red;
+          font-size: 18px;
+        }
+      }
+    }
+    .other-item-box{
+      height: 800px;
+      width: 700px;
+      margin: 20px auto 0;
+      padding: 24px 0 40px;
+      h2{
+        a{
+          font-size: 20px;
+          color: $link-skybule;
+        }
+      }
+      .other-item-contents{
+        margin-top: 10px;
+        &__box {
+          background-color: $text-white;
+          width: 220px;
+          height: 330px;
+          float: left;
+          margin:0 0 20px 10px;
+          a {
+            color: $text-black;
+            .photo {
+              background-color: $text-white;
+              width: 220px;
+              height: 220px;
+              img {
+                width: 220px;
+                height: 220px;
+              }
+            }
+            .text {
+              width: 220px;
+              height: 110px;
+              h3 {
+                font-size: 16px;
+                text-align: center;
+                padding-bottom: 20px;
+                margin-top: 5px;
+              }
+              .price-box {
+                padding: 20px;
+                .price {
+                  font-size: 16px;
+                  font-weight: bold;
+                  float: left;
+                }
+                i {
+                  float: right;
+                  margin-right: 5px;
+                }
+                span {
+                  font-size: 16px;
+                  float: right;
+                  position:relative;
+                  left: 36px;
+                  color: $text-black;
+                }
+                p {
+                  font-size: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
