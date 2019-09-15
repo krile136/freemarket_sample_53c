@@ -18,9 +18,9 @@
         display: block;
         &:hover {
           opacity: 0.7;
-          .mypage-content__main__userinfo__link__username {
-            text-decoration-line: underline;
-          }
+        }
+        &:hover > &__username {
+          text-decoration-line: underline;
         }
         &__img {
           width: 60px;
