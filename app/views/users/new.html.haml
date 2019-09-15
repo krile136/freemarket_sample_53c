@@ -16,6 +16,7 @@
         .signup__main--registration-form--btn--center
           Facebookで登録する
       = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--google" do
+        = image_tag "Glogo.png", size: "25x25", class: "signup__main--registration-form--btn--logo"
         .signup__main--registration-form--btn--center
           Googleで登録する
   = render 'shared/logo-footer'
