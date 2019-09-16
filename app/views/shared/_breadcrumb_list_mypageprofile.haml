@@ -1,0 +1,12 @@
+-# FIXME: パンくずリスト実装時に_breadcrumb_list.html.hamlに共通化し、本ファイルは削除する
+%nav.breadcrumb
+  %ul.breadcrumb__list
+    %li.breadcrumb__list__piece
+      =link_to root_path, class: "breadcrumb__list__piece__link" do
+        %span メルカリ
+      %i.fa.fa-angle-right.breadcrumb__list__piece__arrow{"aria-hidden": "true"}
+    %li.breadcrumb__list__piece
+      =link_to root_path, class: "breadcrumb__list__piece__link" do
+        %span マイページ
+      %i.fa.fa-angle-right.breadcrumb__list__piece__arrow{"aria-hidden": "true"}
+    %li.breadcrumb__list__piece.breadcrumb__list__piece-bold プロフィール
