@@ -1,9 +1,15 @@
 %nav.mypage-side
   %ul
-    %li.mypage-side__list.mypage-side__list-first.mypage-side__list-active
-      =link_to '', class: "mypage-side__list__link mypage-side__list__link-active" do
-        %span.mypage-side__list__link__text マイページ
-        %i.fa.fa-angle-right.mypage-side__list__link__arrow.mypage-side__list__link__arrow-active{"aria-hidden": "true"}
+    - if @action_name == "show"
+      %li.mypage-side__list.mypage-side__list-first.mypage-side__list-active
+        =link_to user_path, class: "mypage-side__list__link mypage-side__list__link-active" do
+          %span.mypage-side__list__link__text マイページ
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow.mypage-side__list__link__arrow-active{"aria-hidden": "true"}
+    - else
+      %li.mypage-side__list.mypage-side__list-first
+        =link_to user_path, class: "mypage-side__list__link" do
+          %span.mypage-side__list__link__text マイページ
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
     %li.mypage-side__list
       =link_to '', class: "mypage-side__list__link" do
         %span.mypage-side__list__link__text お知らせ
@@ -68,10 +74,16 @@
         %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
   %h3.mypage-side__title  設定
   %ul
-    %li.mypage-side__list.mypage-side__list-first
-      =link_to '', class: "mypage-side__list__link" do
-        %span.mypage-side__list__link__text プロフィール
-        %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
+    - if @action_name == "edit"
+      %li.mypage-side__list.mypage-side__list-first.mypage-side__list-active
+        =link_to edit_user_path, class: "mypage-side__list__link mypage-side__list__link-active" do
+          %span.mypage-side__list__link__text プロフィール
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow.mypage-side__list__link__arrow-active{"aria-hidden": "true"}
+    -else
+      %li.mypage-side__list.mypage-side__list-first
+        =link_to edit_user_path, class: "mypage-side__list__link" do
+          %span.mypage-side__list__link__text プロフィール
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
     %li.mypage-side__list
       =link_to '', class: "mypage-side__list__link" do
         %span.mypage-side__list__link__text 発送元・お届け先住所変更
