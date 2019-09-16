@@ -1,17 +1,53 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.login
+  .login__header
+    .login__header--logo
+      = link_to "#" do
+        = image_tag "logo.svg", size: "185x49", alt: "mercari",class: "logo-opacity" 
+  .login__main
+    .login__main--new-registration
+      .login__main--new-registration--box
+        アカウントをお持ちでない方はこちら
+        = link_to new_user_path, class: "login__main--btn login__main--btn-blue" do
+          新規会員登録
+    .login__main--others
+      .login__main--others--box
+        = link_to "#", class: "login__main--others--btn login__main--others--btn-facebook" do
+          = fa_icon 'facebook-square',class: "fa-2x login__main--others--btn--logo"
+          .login__main--others--btn--center
+            Facebookでログイン
+        = link_to "#", class: "login__main--others--btn login__main--others--btn-google" do
+          = image_tag "Glogo.png", size: "25x25", class: "login__main--others--btn--logo"
+          .login__main--others--btn--center
+            Googleでログイン
+    .login__main--form
+      .login__main--form--box
+        = form_with model: @user, url: user_session_path do |f|
+          = f.text_field :email, placeholder: "メールアドレス", class: "login__main--form--box--field"
+          .login__main--form--spacer
+          = f.text_field :password, placeholder: "パスワード", class: "login__main--form--box--field"
+          .login__main--form--spacer
+          = f.submit "ログイン", class: "login__main--form--box--submit"
+          .login__main--form--spacer
+          = link_to "#", class: "login__main--form--box--msg" do
+            パスワードをお忘れの方
+  = render 'shared/logo-footer'
+
+
+-# これ以降はログイン機能を作成する際に参考にし、機能作成後に削除します（松岡）
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"

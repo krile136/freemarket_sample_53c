@@ -6,3 +6,39 @@
 a {
   text-decoration: none;
 }
+
+input[type="text"]:focus, textarea:focus{
+  outline: 0;
+  border-color: blue;
+}
+
+@mixin registration_wrapper(){
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $background-beige;
+  padding: 0 0 220px;
+  position: relative;
+}
+
+@mixin registration_border_top_set(){
+  border-top-color: $line-thinblack;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+@mixin all_center_with_absolute(){
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+@mixin registration_input_form(){
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #ccc;
+}

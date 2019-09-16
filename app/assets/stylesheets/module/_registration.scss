@@ -1,9 +1,5 @@
 .registration{
-  width: 100vw;
-  min-height: 100vh;
-  background-color: $background-beige;
-  padding: 0 0 220px;
-  position: relative;
+  @include registration_wrapper();
   &--bold{
     font-weight: bold;
   }
@@ -100,9 +96,7 @@
     }
     &--content{
       padding: 24px 16px 40px;
-      border-top-color: $line-thinblack;
-      border-top-style: solid;
-      border-top-width: 1px;
+      @include registration_border_top_set();
       &--spacer{
         width: 100%;
         height: 24px;
@@ -152,12 +146,8 @@
           }
         }
         &--input{
-          height: 48px;
-          border-radius: 5px;
-          outline: 0;
-          border: 1px solid #ccc;
+          @include registration_input_form();
           margin-top: 8px;
-          padding: 10px 16px 8px;
           &-full{
             width: 100%;
           }
@@ -286,38 +276,6 @@
   }
 }
 
-.progress {
-  padding: 40px 0 0 44px;
-  border: 0;
-  display: inline-block;
-  vertical-align: top;
-  font-size: 0;
-  text-align: center;
-  &-bar{
-    margin: 0;
-    li{
-      margin: 0 40px 0 0;
-      padding: 0;
-      position: relative;
-      z-index: 40;
-      display: inline-block;
-      min-width: 60px;
-      font-size: 12px;
-      color: gray;
-      .progress-status{
-        position: absolute;
-        left: 40%;
-        width: 12px;
-        height: 12px;
-        margin: 8px auto 0;
-        background: gray;
-        border-radius: 50%;
-        z-index: 30;
-      }
-    }
-  }
-}
-
 .progress-status_bar {
   position: absolute;
   left: 50%;
@@ -337,8 +295,8 @@
   width: 100px;
 }
 #through{
-  color: #ea352d;
+  color: $mercari-red;
   .progress-status{
-    background: #ea352d;
+    background: $mercari-red;
   }
 }
