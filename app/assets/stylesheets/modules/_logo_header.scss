@@ -1,0 +1,17 @@
+.input{
+  width: 100vw;
+  height: 128px;
+  background-color: $background-beige;
+  padding: 0, 0, 220px;
+  position: relative;
+  &__header{
+    display: table;
+    height: 128px;
+    text-align: center;
+    width: 100%;
+    &--logo{
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}

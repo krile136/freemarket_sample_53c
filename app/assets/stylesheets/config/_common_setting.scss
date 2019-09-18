@@ -7,3 +7,7 @@ a {
   text-decoration: none;
 }
 
+input[type="text"]:focus, textarea:focus, select:focus, input:focus{
+  outline: 0;
+  border-color: $border-skyblue!important;
+}
