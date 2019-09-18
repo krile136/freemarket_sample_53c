@@ -1,0 +1,84 @@
+= render 'shared/global_header'
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__main
+      .mypage-content__main__userinfo
+        =link_to '', class: "mypage-content__main__userinfo__link" do
+          =image_tag 'member_photo_noimage_thumb.png', class: "mypage-content__main__userinfo__link__img"
+          %p.mypage-content__main__userinfo__link__username テストユーザー
+          .mypage-content__main__userinfo__link__counter
+            .mypage-content__main__userinfo__link__counter__rating
+              評価
+              %span.mypage-content__main__userinfo__link__counter__rating__count 24
+            .mypage-content__main__userinfo__link__counter__sale
+              出品数
+              %span.mypage-content__main__userinfo__link__counter__sale__count 13
+      .mypage-content__main__tablist
+        %ul.mypage-content__main__tablist__header
+          %li#mypage-notification-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-active
+            %h3.mypage-content__main__tablist__header__tab__text お知らせ
+          %li#mypage-todo-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text やることリスト
+        #mypage-notification-list
+          %ul
+            %li.mypage-content__main__tablist__list
+              =link_to '', class: "mypage-content__main__tablist__list__link" do
+                =image_tag 'mercari_profile.png', class: "mypage-content__main__tablist__list__link__icon"
+                .mypage-content__main__tablist__list__link__text
+                  .mypage-content__main__tablist__list__link__text__detail お知らせお知らせお知らせお知らせお知らせお知らせ
+                  .mypage-content__main__tablist__list__link__text__time
+                    %i.fa.fa-clock-o.mypage-content__main__tablist__list__link__text__time__icon{"aria-hidden": "true"}
+                    %span.mypage-content__main__tablist__list__link__text__time__detail 1日前
+                %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
+            %li.mypage-content__main__tablist__list
+              =link_to '', class: "mypage-content__main__tablist__list__link" do
+                =image_tag 'mercari_profile.png', class: "mypage-content__main__tablist__list__link__icon"
+                .mypage-content__main__tablist__list__link__text
+                  .mypage-content__main__tablist__list__link__text__detail お知らせお知らせお知らせお知らせお知らせお知らせ
+                  .mypage-content__main__tablist__list__link__text__time
+                    %i.fa.fa-clock-o.mypage-content__main__tablist__list__link__text__time__icon{"aria-hidden": "true"}
+                    %span.mypage-content__main__tablist__list__link__text__time__detail 1日前
+                %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
+            %li.mypage-content__main__tablist__list
+              =link_to '', class: "mypage-content__main__tablist__list__link" do
+                =image_tag 'mercari_profile.png', class: "mypage-content__main__tablist__list__link__icon"
+                .mypage-content__main__tablist__list__link__text
+                  .mypage-content__main__tablist__list__link__text__detail お知らせお知らせお知らせお知らせお知らせお知らせ
+                  .mypage-content__main__tablist__list__link__text__time
+                    %i.fa.fa-clock-o.mypage-content__main__tablist__list__link__text__time__icon{"aria-hidden": "true"}
+                    %span.mypage-content__main__tablist__list__link__text__time__detail 1日前
+                %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
+            %li.mypage-content__main__tablist__list
+              =link_to '', class: "mypage-content__main__tablist__list__link" do
+                =image_tag 'mercari_profile.png', class: "mypage-content__main__tablist__list__link__icon"
+                .mypage-content__main__tablist__list__link__text
+                  .mypage-content__main__tablist__list__link__text__detail お知らせお知らせお知らせお知らせお知らせお知らせ
+                  .mypage-content__main__tablist__list__link__text__time
+                    %i.fa.fa-clock-o.mypage-content__main__tablist__list__link__text__time__icon{"aria-hidden": "true"}
+                    %span.mypage-content__main__tablist__list__link__text__time__detail 1日前
+                %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
+            %li.mypage-content__main__tablist__list
+              =link_to '', class: "mypage-content__main__tablist__list__link" do
+                =image_tag 'mercari_profile.png', class: "mypage-content__main__tablist__list__link__icon"
+                .mypage-content__main__tablist__list__link__text
+                  .mypage-content__main__tablist__list__link__text__detail お知らせお知らせお知らせお知らせお知らせお知らせ
+                  .mypage-content__main__tablist__list__link__text__time
+                    %i.fa.fa-clock-o.mypage-content__main__tablist__list__link__text__time__icon{"aria-hidden": "true"}
+                    %span.mypage-content__main__tablist__list__link__text__time__detail 1日前
+                %i.fa.fa-angle-right.mypage-content__main__tablist__list__link__arrow{"aria-hidden": "true"}
+            %li.mypage-content__main__tablist__lastlist
+              =link_to "一覧を見る", '', class: "mypage-content__main__tablist__lastlist__button"
+        #mypage-todo-list.mypage-content__main__tablist-inactive.mypage-content__main__tablist__nodate 現在、やることリストはありません
+      .mypage-content__main__tablist.mypage-content__main__tablist-bottom
+        %h2.mypage-content__main__tablist__title 購入した商品
+        %ul.mypage-content__main__tablist__header
+          %li#mypage-purchase-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-active
+            %h3.mypage-content__main__tablist__header__tab__text 取引中
+          %li#mypage-purchased-tab.mypage-content__main__tablist__header__tab.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text 過去の取引
+        #mypage-purchase-list.mypage-content__main__tablist__nodate 取引中の商品がありません
+        #mypage-purchased-list.mypage-content__main__tablist-inactive.mypage-content__main__tablist__nodate 過去に取引した商品がありません
+= render 'shared/global_footer'
+= render 'shared/sell_button'

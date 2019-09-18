@@ -1,0 +1,112 @@
+.main-footer {
+  &__ads {
+    height: 260px;
+    background-image: image-url('footer_background_image.jpg');
+    background-position: center;
+    &__wrapper {
+      width: 750px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      &__left {
+        height: 260px;
+        width: 420px;
+        color: $text-white;
+        &__text-top {
+          font-size: 24px;
+          font-weight: bold;
+          line-height: 1;
+          margin-top: 48px;
+        }
+        &__text-bottom {
+          font-size: 35px;
+          margin-top: 15px;
+          line-height: 1;
+        }
+        &__icon {
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+          &__mercari__img {
+            width: 68px;
+          }
+          &__app__img {
+            margin-left: 24px;
+          }
+          &__google__img {
+            margin-left: 16px;
+          }
+        }
+      }
+      &__right__image {
+        height: 260px;
+        width: 300px;
+      }
+    }
+  }
+  &__info {
+    padding: 0 20px 10px;
+    background-color: rgb(33, 33, 33);
+    color: $text-white;
+    &__nav {
+      width: 1020px;
+      margin: auto;
+      padding-top: 18px;
+      display: flex;
+      &__about {
+        padding-right: 20px;
+        width: 20%;
+      }
+      &__help {
+        padding-right: 40px;
+        width: 23%;
+      }
+      &__rule {
+        padding-right: 40px;
+        width: 42%;
+        &__left {
+          padding-right: 10px;
+          width: 50%;
+          float: left;
+        }
+        &__right {
+          padding-left: 10px;
+          width: 50%;
+          float: right;
+        }
+      }
+      &__title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      &__text {
+        margin-top: 14px;
+        font-size: 12px;
+        color: #BCBCBC;
+        &__top {
+          margin-top: 16px;
+        }
+      }
+      &__icon {
+        display: inline-block;
+        margin: 30px 20px 0 0;
+      }
+    }
+    &__bottom {
+      width: 1020px;
+      margin: 30px auto 20px;
+      line-height: 33px;
+      &__logo {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      &__copyright {
+        text-align: center;
+        width: 745px;
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}

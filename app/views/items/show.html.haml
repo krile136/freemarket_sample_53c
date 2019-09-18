@@ -1,0 +1,119 @@
+= render 'shared/global_header'
+.main-item
+  %section.item-box
+    %h1.item-box__name 商品の名前
+    .item-box__main
+      .item-box__main--photo
+        %div
+          = image_tag "http://placehold.jp/300x300.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+        .photo
+          = image_tag "http://placehold.jp/60x60.png"
+      %table.item-box__main--detail
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              =link_to "出品者の名前" ,''
+              .face
+                %div
+                  = fa_icon "smile-o", class: "good-icon"
+                  %span 24
+                %div
+                  = fa_icon 'meh-o', class: 'normal-icon'
+                  %span 0
+                %div
+                  = fa_icon 'frown-o', class: 'bad-icon'
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              =link_to "親カテゴリー" ''
+              =link_to ">子カテゴリー" ''
+              =link_to ">孫カテゴリー" ''
+          %tr
+            %th ブランド
+            %td
+              =link_to "ブランド名", ''
+          %tr
+            %th 商品の状態
+            %td やや傷や汚れあり
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td ゆうゆうメルカリ便
+          %tr
+            %th 配送元地域
+            %td
+              =link_to "愛知県" ''
+          %tr
+            %th 発送日の目安
+            %td 4~7日で発送
+    .item-box__price
+      %span.price ￥1,000
+      %span.tax (税込)
+      %span.shipping 送料込み
+    =link_to "購入画面に進む", '', class: "item-box__buy"
+    .item-box__description
+      %p
+        ご覧いただきありがとうございます！
+        %br/
+        出来るだけ丁寧に梱包して発送する予定です。
+        %br/
+        よろしくお願いいたします。
+        %br/
+    .item-box__button
+      .item-box__button-left
+        =link_to '' do
+          = fa_icon 'heart'
+          %span いいね!
+          %span 5
+        =link_to '' do
+          = fa_icon 'flag'
+          %span 不適切な商品の報告
+      .item-box__button-right
+        =link_to '' do
+          = fa_icon 'lock'
+          %span あんしん・あんぜんのへの取り組み
+  .comment
+    .comment__box
+      %p相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .form
+      .send コメントする
+  %ul.page-icon
+    %li.page-icon__left
+      = link_to root_path do
+        = fa_icon "chevron-left", class: "icon"
+        前の商品
+    %li.page-icon__right
+      = link_to root_path do
+        次の商品
+        = fa_icon "chevron-right", class: "icon"
+  .social-media
+    %ul.social-media__box
+      %li
+        =link_to '' do
+          = fa_icon 'facebook', class: "fa-facebook"
+      %li
+        =link_to '' do
+          = fa_icon 'twitter', class: "fa-twitter"
+      %li
+        =link_to '' do
+          = fa_icon 'pinterest', class: "fa-pinterest"
+  .other-item-box
+    %h2
+      = link_to "出品ユーザーのページへ遷移" 
+    .other-item-contents
+      = render 'other_item'
+= render 'shared/global_footer'
