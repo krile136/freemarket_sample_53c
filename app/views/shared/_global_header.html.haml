@@ -19,9 +19,9 @@
       %ul.main-header__inner__nav__menu
         -# ログインしていない時 --ここから--
         %li.main-header__inner__nav__menu__signup
-          =link_to "新規会員登録", '/', class: "main-header__inner__nav__menu__signup__button"
+          =link_to "新規会員登録", new_user_path, class: "main-header__inner__nav__menu__signup__button"
         %li.main-header__inner__nav__menu__signin
-          =link_to "ログイン", '/', class: "main-header__inner__nav__menu__signin__button"
+          =link_to "ログイン", new_user_session_path, class: "main-header__inner__nav__menu__signin__button"
         -# ログインしていない時 --ここまで--
         -# ログインしている時 --ここから--
         -# ※いいね！一覧はマイページ関連のみ表示される --ここから--
