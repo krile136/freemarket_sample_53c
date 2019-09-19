@@ -1,0 +1,24 @@
+#complete-registration
+  .registration__main--content
+    .registration__main--content--inner
+      .registration__main--content--agree-text
+        ありがとうございます。
+        %br
+        会員登録が完了しました。
+      .registration__main--content--spacer
+      %button#user-registration-complete.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          メルカリを始める
+  .registration__main--background
+    = image_tag "registration_background_image.png", class: "registration__main--background--img"
+    .registration__main--background--box
+      %h3 ＼ スマホでかんたんフリマアプリ ／
+      %h1 今すぐ無料ダウンロード！
+      %ul
+        %li
+          = image_tag "mercari_icon.png", size: "40x40"
+        %li
+          = image_tag "app-store.svg", class: "registration__main--background--box--logo"
+        %li
+          = image_tag "google-play.svg", class: "registration__main--background--box--logo"
+    = image_tag "download_content_pc.png",size: "300x260", class: "registration__main--background--smartphone"

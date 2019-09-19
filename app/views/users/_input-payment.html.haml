@@ -1,0 +1,51 @@
+#input-payment
+  .registration__main--content
+    .registration__main--content--inner
+      .registration--bold
+        カード番号
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      = f.text_field :nickname, placeholder: "半角数字のみ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      %ul.registration__main--content--inner--credit
+        %li
+          = image_tag "visa.png", size: "40x40"
+        %li
+          = image_tag "master.png", size: "40x40"
+        %li
+          = image_tag "saison.png", size: "40x40"
+        %li
+          = image_tag "jcb.png", size: "40x40"
+        %li
+          = image_tag "american.png", size: "40x25", class: "registration__main--content--inner--credit-adjust"
+        %li
+          = image_tag "diners.png", size: "40x40"
+        %li
+          = image_tag "discover.png", size: "40x25", class: "registration__main--content--inner--credit-adjust"
+      .registration__main--content--spacer.registration__main--content--clear
+      .registration--bold
+        有効期限
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      %p
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-left
+          = fa_icon 'chevron-down'
+        月
+        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+        %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-right
+          = fa_icon 'chevron-down'
+        年
+      .registration__main--content--spacer
+      .registration--bold
+        セキュリティコード
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      = f.text_field :credit, placeholder: "カード背面4桁もしくは3桁の番号", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      = link_to "#", class: "registration__main--content--inner--about-registration" do
+        = fa_icon 'question-circle'
+        カード裏面の番号とは？
+      %p
+      .registration__main--content--spacer-double
+      %button#user-input-payment.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          次へ進む

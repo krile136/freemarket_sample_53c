@@ -1,0 +1,22 @@
+.signup
+  .signup__header
+    .signup__header--logo
+      = link_to "#" do
+        = image_tag "logo.svg", size: "185x49", alt: "mercari",class: "logo-opacity" 
+  .signup__main
+    .signup__main--registration
+      新規会員登録
+    .signup__main--registration-form
+      = link_to new_user_registration_path(), class: "signup__main--registration-form--btn signup__main--registration-form--btn--mail" do
+        = fa_icon 'envelope', class: "fa-2x signup__main--registration-form--btn--logo"
+        .signup__main--registration-form--btn--center
+          メールアドレスで登録する
+      = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--facebook" do
+        = fa_icon 'facebook-square', class: "fa-2x signup__main--registration-form--btn--logo"
+        .signup__main--registration-form--btn--center
+          Facebookで登録する
+      = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--google" do
+        = image_tag "Glogo.png", size: "25x25", class: "signup__main--registration-form--btn--logo"
+        .signup__main--registration-form--btn--center
+          Googleで登録する
+  = render 'shared/logo-footer'

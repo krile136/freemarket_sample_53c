@@ -1,0 +1,62 @@
+.registration
+  .registration__header
+    .registration__header--logo
+      = link_to "#" do
+        = image_tag "logo.svg", size: "185x49", alt: "mercari", class: "logo-opacity"
+    %nav.registration__header--progress
+      %ul.registration__header--progress-bar
+        %li.through#through
+          会員情報
+          .progress-status
+          .progress-status_bar
+        %li.active#active
+          電話番号認証
+          .progress-status
+          .progress-status_bar
+        %li.address#address
+          お届け先住所入力
+          .progress-status
+          .progress-status_bar
+        %li.payment#payment
+          支払い方法
+          .progress-status
+          .progress-status_bar
+        %li.end#end
+          完了
+          .progress-status
+          .progress-status_bar
+  .registration__main
+    .registration__main--title#registration-title
+      会員情報入力
+    = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f|
+      = render partial: 'users/registration-member-info', locals: { f: f }
+      = render partial: 'users/confirm-phone-number', locals: {f: f}
+      = render partial: 'users/phone-number-authentication', locals: {f: f}
+      = render partial: 'users/input-address', locals: {f: f}
+      = render partial: 'users/input-payment', locals: {f: f}
+      = render partial: 'users/complete-registration', locals: {f: f}
+  = render 'shared/logo-footer'
+
+-# ログイン機能を作る際に、Deviceインストール時の以下のコードを参考にするのでそのときに削除します
+
+-# %h2 Sign up
+-# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+-#   = render "devise/shared/error_messages", resource: resource
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation, autocomplete: "new-password"
+-#   .actions
+-#     = f.submit "Sign up"
+-# = render "devise/shared/links"
