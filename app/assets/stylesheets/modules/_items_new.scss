@@ -42,7 +42,7 @@
     &__image {
       padding: 40px;
       border-top: solid 1px $background-beige;
-      & h3 {
+      & label {
         font-size: 16px;
         font-weight: bold;
       }
@@ -73,7 +73,7 @@
       height: 100%;
       border-top: solid 1px $background-beige;
       padding: 40px;
-      & h3 {
+      & label {
         font-size: 14px;
         font-weight: bold;
       }
