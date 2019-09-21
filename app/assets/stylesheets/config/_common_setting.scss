@@ -9,7 +9,7 @@ a {
 
 input[type="text"]:focus, textarea:focus{
   outline: 0;
-  border-color: blue;
+  border-color: $border-skyblue;
 }
 
 @mixin registration_wrapper(){

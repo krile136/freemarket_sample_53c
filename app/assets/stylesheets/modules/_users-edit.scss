@@ -1,0 +1,58 @@
+.mypage-content__profile {
+  width: 700px;
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 8px 24px;
+    text-align: center;
+    background-color: $background-white;
+  }
+  &__form {
+    &__userinfo {
+      padding: 72px 16px 24px;
+      background-image: image-url('user-bg.jpg');
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+      }
+      &__nickname {
+        margin-left: 8px;
+        height: 48px;
+        width: 220px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: $background-white;
+        line-height: 1.5;
+        font-size: 16px;
+      }
+    }
+    &__main {
+      background-color: $background-white;
+      padding: 40px 16px;
+      &__text {
+        width: 100%;
+        min-height: 216px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      &__button {
+        margin-top: 16px;
+        line-height: 48px;
+        width: 100%;
+        border: solid 1px $mercari-red;
+        background-color: $mercari-red;
+        color: $background-white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+  }
+}
