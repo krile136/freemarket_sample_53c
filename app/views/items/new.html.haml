@@ -99,9 +99,7 @@
               発送元の地域
               %span.required
             .sell__about__right__wrap--box
-              %select{name: "parent", class: "select"}
-                %option ---
-                %option activ-hashで取り込んだ後、都道府県一覧表示
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: 'select'
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             %h3
