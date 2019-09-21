@@ -1,0 +1,18 @@
+#confirm-phone-number
+  .registration__main--content
+    .registration__main--content--inner
+      .registration--bold
+        電話番号の確認
+      = f.text_field :phone, placeholder: "携帯電話の番号を入力", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      %p
+        本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+      .registration__main--content--spacer
+      %button#user-phone-registration.registration__main--content--inner--next-btn
+        .registration__main--content--inner--next-btn--text
+          SMSを送信する
+      %p
+        ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+      .registration__main--content--spacer
+      = link_to "#", class: "registration__main--content--inner--about-registration" do
+        電話番号の確認が必要な理由
+        = fa_icon 'chevron-right'
