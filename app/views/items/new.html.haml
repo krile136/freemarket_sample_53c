@@ -1,0 +1,174 @@
+= render 'shared/logo_header'
+.container
+  .sell
+    = form_with model: @item do |f|
+      .sell__title 商品の情報を入力
+      .sell__image
+        = f.label :image, "出品画像"
+        %span.required
+        %p.max 最大10枚までアップロードできます
+        .sell__image--select
+          %pre.text
+            ドラッグアンドドロップ
+            またはクリックしてファイルをアップロード
+      .sell__about
+        .sell__about__name
+          = f.label :name, "商品名"
+          %span.required
+          = f.text_field :name, class: "form", placeholder: "商品名（必須40文字まで）"
+        .sell__about__description
+          = f.label :description, "商品の説明"
+          %span.required
+          = f.text_area :description, class: "sell__about__description__form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      .sell__about.clearfix
+        .sell__about__left 商品の詳細
+        .sell__about__right
+          .sell__about__right__wrap
+            %h3
+              カテゴリー
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option レディース
+                %option メンズ
+                %option ベビー
+              %i.fas.fa-chevron-down
+            .sell__about__right__wrap--box
+              %select{name: "child", class: "select"}
+                %option ---
+                %option トップス
+                %option アウター
+                %option パンツ
+              %i.fas.fa-chevron-down
+            .sell__about__right__wrap--box
+              %select{name: "grand-child", class: "select"}
+                %option ---
+                %option Tシャツ
+                %option シャツ
+                %option ポロシャツ
+              %i.fas.fa-chevron-down
+          .sell__about__right__wrap
+            %h3
+              サイズ
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option S
+                %option M
+                %option L
+              %i.fas.fa-chevron-down
+          .sell__about__right__wrap
+            %h3
+              ブランド
+              %span.any
+            .sell__about__right__wrap-box
+              %input{placeholder: "例）シャネル", class: "form"}
+          .sell__about__right__wrap
+            %h3
+              商品の状態
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option 新品、未使用
+                %option 未使用に近い
+                %option 目立った傷や汚れなし
+                %option やや傷や汚れあり
+                %option 傷や汚れあり
+                %option 全体的に状態が悪い
+              %i.fas.fa-chevron-down
+      .sell__about.clearfix
+        .sell__about__left 配送について
+        = link_to "#", class: "question-circle" do
+          = fa_icon "question-circle"
+        .sell__about__right
+          .sell__about__right__wrap
+            %h3
+              配送料の負担
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option 送料込み（出品者負担）
+                %option 着払い（購入者負担）
+              %i.fas.fa-chevron-down
+          .sell__about__right__wrap
+            %h3
+              発送元の地域
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option activ-hashで取り込んだ後、都道府県一覧表示
+              %i.fas.fa-chevron-down
+          .sell__about__right__wrap
+            %h3
+              発送までの日数
+              %span.required
+            .sell__about__right__wrap--box
+              %select{name: "parent", class: "select"}
+                %option ---
+                %option 1~2日で発送
+                %option 2~3日で発送
+                %option 4~7日で発送
+              %i.fas.fa-chevron-down
+      .sell__about.clearfix
+        .sell__about__left 販売価格(300〜9,999,999)
+        = link_to "#", class: "question-circle" do
+          = fa_icon 'question-circle'
+        .sell__about__right
+          .sell__about__right__wrap
+            .sell__about__right__wrap__price
+              %h3.sell__about__right__wrap__price--label
+                価格
+                %span.required
+              .sell__about__right__wrap__price--input
+                ¥
+                .sell__about__right__wrap__price--input--form
+                  %input{placeholder: "例）300", class: "form"}
+          .sell__about__right__wrap__fee.clearfix
+            .sell__about__right__wrap__fee--left
+              販売手数料 (10%)
+            .sell__about__right__wrap__fee--right
+              ¥30
+          .sell__about__right__wrap__profit
+            .sell__about__right__wrap__profit--left
+              販売利益
+            .sell__about__right__wrap__profit--right
+              ¥270
+      .sell__about.clearfix
+        .sell__about__bottom
+          .sell__about__bottom--text
+            %p
+              =link_to "禁止されている出品", "#"
+              =link_to "行為", "#"
+              を必ずご確認ください。
+            %p
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              =link_to "偽ブランドの販売", "#"
+              は犯罪であり処罰される可能性があります。
+            %p
+              また、出品をもちまして
+              =link_to "加盟店規約"
+              に同意したことになります。
+          = link_to "出品する", '#', class: 'sell__about__bottom--btn submit'
+          = link_to "もどる", '#', class: 'sell__about__bottom--btn back'
+.footer-container
+  .footer
+    %ul
+      %li
+        = link_to "#", class: "link" do
+          プライバシーポリシー
+      %li
+        = link_to "#", class: "link" do
+          メルカリ利用規約
+      %li
+        = link_to "#", class: "link" do
+          特定商取引に関する表記
+    %a.footer__logo
+      = link_to "#" do
+        = image_tag "logo-gray.svg", size: "80x65"
+    %p
+      %small © 2019 Mercari
