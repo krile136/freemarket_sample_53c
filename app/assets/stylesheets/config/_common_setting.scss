@@ -10,6 +10,7 @@ a {
 input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   outline: 0;
   border-color: $border-skyblue!important;
+}
 
 @mixin registration_wrapper(){
   width: 100vw;
@@ -40,3 +41,4 @@ input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   border-radius: 5px;
   outline: 0;
   border: 1px solid #ccc;
+}
