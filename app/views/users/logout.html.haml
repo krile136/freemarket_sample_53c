@@ -3,5 +3,7 @@
 .mypage-wrapper
   .mypage-content
     = render 'shared/mypage_sidebar'
+    .mypage-content__logout
+      =link_to "ログアウト", destroy_user_session_path, class: 'mypage-content__logout__button', method: :delete
 = render 'shared/global_footer'
 = render 'shared/sell_button'
