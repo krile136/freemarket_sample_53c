@@ -7,9 +7,9 @@ a {
   text-decoration: none;
 }
 
-input[type="text"]:focus, textarea:focus{
+input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   outline: 0;
-  border-color: $border-skyblue;
+  border-color: $border-skyblue!important;
 }
 
 @mixin registration_wrapper(){

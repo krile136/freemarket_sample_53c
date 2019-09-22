@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :edit] do
     get :logout, on: :member
   end
-  resources :items, only: [:index, :show]
+  resources :items, only: [:new, :index, :show]
 end
