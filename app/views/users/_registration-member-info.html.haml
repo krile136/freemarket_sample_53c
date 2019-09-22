@@ -11,7 +11,7 @@
         メールアドレス
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
-      = f.text_field :mail, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+      = f.text_field :email, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
       .registration__main--content--spacer
       .registration--bold
         パスワード
@@ -51,15 +51,15 @@
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
       %p
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_year, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-left
           = fa_icon 'chevron-down'
         年
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_month, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-middle
           = fa_icon 'chevron-down'
         月
-        = f.select :quantity, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_day, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-right
           = fa_icon 'chevron-down'
         日
