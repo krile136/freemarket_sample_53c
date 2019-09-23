@@ -2,11 +2,14 @@ class User < ApplicationRecord
   has_many :creditcards
   has_one :delivery_address, dependent: :destroy
 
+  # accepts_nested_attributes_for :creditcards
+  accepts_nested_attributes_for :delivery_address
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :phone, presence: true
+  # validates :phone, presence: true
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true

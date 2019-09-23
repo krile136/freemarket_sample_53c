@@ -43,23 +43,23 @@
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
       %p
-        = f.text_field :last_name_kana, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-left"
-        = f.text_field :first_name_kana, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-right"
+        = f.text_field :last_name_kana, placeholder: "例）ヤマダ", class: "registration__main--content--inner--input registration__main--content--inner--input-left"
+        = f.text_field :first_name_kana, placeholder: "例）アヤ", class: "registration__main--content--inner--input registration__main--content--inner--input-right"
       .registration__main--content--spacer
       .registration--bold
         生年月日
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
       %p
-        = f.select :birth_year, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_year, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-left
           = fa_icon 'chevron-down'
         年
-        = f.select :birth_month, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_month, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-middle
           = fa_icon 'chevron-down'
         月
-        = f.select :birth_day, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_day, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-right
           = fa_icon 'chevron-down'
         日
@@ -72,7 +72,7 @@
           「利用規約」
         に同意したものとみなします
       .registration__main--content--spacer
-      %button#user-info-registration.registration__main--content--inner--next-btn
+      %button#user-info-registration.registration__main--content--inner--next-btn{type: "button"}
         .registration__main--content--inner--next-btn--text
           次へ進む
       .registration__main--content--spacer

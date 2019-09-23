@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_134530) do
+ActiveRecord::Schema.define(version: 2019_09_22_145311) do
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "credit_number", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_22_134530) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
-    t.string "phone", null: false
+    t.string "phone"
     t.string "profile"
     t.string "last_name", null: false
     t.string "first_name", null: false
