@@ -70,14 +70,7 @@
               商品の状態
               %span.required
             .sell__about__right__wrap--box
-              %select{name: "parent", class: "select"}
-                %option ---
-                %option 新品、未使用
-                %option 未使用に近い
-                %option 目立った傷や汚れなし
-                %option やや傷や汚れあり
-                %option 傷や汚れあり
-                %option 全体的に状態が悪い
+              = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "---"}, class:'select', required: true
               %i.fas.fa-chevron-down
       .sell__about.clearfix
         .sell__about__left 配送について
@@ -151,7 +144,7 @@
               また、出品をもちまして
               =link_to "加盟店規約"
               に同意したことになります。
-          = link_to "出品する", '#', class: 'sell__about__bottom--btn submit'
+          = f.submit '出品する', class: 'sell__about__bottom--btn submit'
           = link_to "もどる", '#', class: 'sell__about__bottom--btn back'
 .footer-container
   .footer
