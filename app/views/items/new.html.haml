@@ -112,23 +112,23 @@
         .sell__about__right
           .sell__about__right__wrap
             .sell__about__right__wrap__price
-              %h3.sell__about__right__wrap__price--label
-                価格
+              .sell__about__right__wrap__price--label
+                = f.label :price, "価格"
                 %span.required
               .sell__about__right__wrap__price--input
                 ¥
                 .sell__about__right__wrap__price--input--form
-                  %input{placeholder: "例）300", class: "form"}
+                  = f.number_field :price, placeholder: "例）300", class: "form"
           .sell__about__right__wrap__fee.clearfix
             .sell__about__right__wrap__fee--left
               販売手数料 (10%)
             .sell__about__right__wrap__fee--right
-              ¥30
+              ¥
           .sell__about__right__wrap__profit
             .sell__about__right__wrap__profit--left
               販売利益
             .sell__about__right__wrap__profit--right
-              ¥270
+              ¥
       .sell__about.clearfix
         .sell__about__bottom
           .sell__about__bottom--text
