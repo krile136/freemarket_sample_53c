@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :creditcards
-  has_one :delivery_address, dependent: :destroy
+  accepts_nested_attributes_for :creditcards
 
-  # accepts_nested_attributes_for :creditcards
+  has_one :delivery_address, dependent: :destroy
   accepts_nested_attributes_for :delivery_address
 
   devise :database_authenticatable, :registerable,

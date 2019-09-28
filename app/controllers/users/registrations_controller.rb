@@ -22,6 +22,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
+    @user = User.new(registration_params)
+    @user.build_delivery_address
+    @user.build_creditcards
+    @user.save
   end
 
   # DELETE /resource
@@ -42,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up,　keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -58,5 +62,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     super(resource)
+  end
+
+  private
+  def registration_params
+    params.permit(:sign_up,
+      keys: [:nickname, :phone, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day,
+        delivery_address_attributes: [:delivery_last_name, :delivery_first_name, :delivery_last_name_kana, :delivery_first_name_kana, :delivery_postal_code, :prefecture_id, :delivery_city, :delivery_address, :delivery_building, :delivery_phone],
+        creditcards_attributes: [:credit_number, :limit_month, :limit_year, :security_number]])
   end
 end
