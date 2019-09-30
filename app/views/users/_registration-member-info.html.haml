@@ -51,15 +51,15 @@
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
       %p
-        = f.select :birth_year, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_year,["--"], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third", id:"select_birth_year"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-left
           = fa_icon 'chevron-down'
         年
-        = f.select :birth_month, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_month, ["--"], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third", id:"select_birth_month"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-middle
           = fa_icon 'chevron-down'
         月
-        = f.select :birth_day, ["--",[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third"}
+        = f.select :birth_day, ["--"], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-one-third", id:"select_birth_day"}
         %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-right
           = fa_icon 'chevron-down'
         日
