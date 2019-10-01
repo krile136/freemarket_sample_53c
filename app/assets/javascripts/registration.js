@@ -28,19 +28,21 @@ $(document).on('turbolinks:load', function () {
     }).appendTo('#select_birth_month');
   }
 
+  // 年、もしくは月のセレクトボックスの中身に変更があったら日の内容を変更する
   $('#select_birth_year, #select_birth_month').change(function () {
     $('#select_birth_day').empty();
+    $("<option>", {
+      text: '--'
+    }).appendTo('#select_birth_day');
     months[1] = 28;
     var year = $('#select_birth_year').val();
     var month = $("#select_birth_month").val();
-    console.log(year, ",", month);
     if (year != '--' && month != '--') {
       if (month == 2) {
         if (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) {
           months[1] = 29;
         }
       }
-      console.log(month, "has", months[month - 1], "days");
       var birth_day = []
       for (var i = 1; i <= months[month - 1]; i++) {
         var day = { var: i, txt: String(i) };
@@ -54,6 +56,21 @@ $(document).on('turbolinks:load', function () {
       }
     }
   });
+
+  // クレジットカードの有効期限を自動生成する
+  var creditcard_limit_year = [];
+  var date = new Date();
+  var this_year = date.getFullYear();
+  for (var i = (this_year + 11); i >= (this_year - 1); i--) {
+    var year = { var: i, txt: String(i) };
+    creditcard_limit_year.push(year);
+  }
+  for (var i = 0; i < creditcard_limit_year.length; i++) {
+    $("<option>", {
+      value: creditcard_limit_year[i].var,
+      text: creditcard_limit_year[i].txt
+    }).appendTo('#select_year_limit');
+  }
 
   // 会員情報の「次へ進む」をクリックした時
   $('#user-info-registration').on("click", function () {

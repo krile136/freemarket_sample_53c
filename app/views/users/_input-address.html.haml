@@ -27,7 +27,7 @@
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
         %p
-          = i.select :prefecture_id, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-full"}
+          = i.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-full"}
           %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-full
             = fa_icon 'chevron-down'
         .registration__main--content--spacer

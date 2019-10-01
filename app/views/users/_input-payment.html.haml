@@ -28,11 +28,11 @@
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
         %p
-          = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+          = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
           %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-left
             = fa_icon 'chevron-down'
           月
-          = j.select :limit_year, ["--",1,2,3,4,5,6,7,8,9,10], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
+          = j.select :limit_year, ["--"], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long", id:"select_year_limit"}
           %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-right
             = fa_icon 'chevron-down'
           年
