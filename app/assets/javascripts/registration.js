@@ -61,7 +61,7 @@ $(document).on('turbolinks:load', function () {
   var creditcard_limit_year = [];
   var date = new Date();
   var this_year = date.getFullYear();
-  for (var i = (this_year + 11); i >= (this_year - 1); i--) {
+  for (var i = (this_year + 11); i >= this_year; i--) {
     var year = { var: i, txt: String(i) };
     creditcard_limit_year.push(year);
   }
@@ -110,16 +110,6 @@ $(document).on('turbolinks:load', function () {
     $('#payment').css('color', '#ea352d');
     $('#payment .progress-status').css('background', '#ea352d');
     $('#input-payment').css('display', 'block');
-    $(window).scrollTop(0);
-  })
-
-  $('#user-input-payment').on("click", function () {
-    $('#input-payment').css('display', 'none');
-    $('#registration-title').text("会員登録完了");
-    $('#payment .progress-status_bar').css('background', '#ea352d');
-    $('#end').css('color', '#ea352d');
-    $('#end .progress-status').css('background', '#ea352d');
-    $('#complete-registration').css('display', 'block');
     $(window).scrollTop(0);
   })
 });

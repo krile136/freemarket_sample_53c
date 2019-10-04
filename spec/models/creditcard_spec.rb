@@ -74,9 +74,22 @@ describe Creditcard do
       expect(@user).to be_valid
     end
 
-    # security_numberが半角数字3文字以上であれば登録できないこと
-    it "is invalid if security_number is over three numbers" do
+    # security_numberが半角数字4文字であれば登録できること
+    it "is valid if security_number is four numbers" do
       @user.creditcards = build_list(:creditcard, 1, security_number: "9999")
+      expect(@user).to be_valid
+    end
+
+    # security_numberが半角数字5文字以上であれば登録できないこと
+    it "is invalid if security_number is over five numbers" do
+      @user.creditcards = build_list(:creditcard, 1, security_number: "99999")
+      @user.valid?
+      expect(@user.errors[:"creditcards.security_number"]).to include("is invalid")
+    end
+
+    # security_numberが半角数字2文字以下であれば登録できないこと
+    it "is invalid if security_number is under two numbers" do
+      @user.creditcards = build_list(:creditcard, 1, security_number: "99")
       @user.valid?
       expect(@user.errors[:"creditcards.security_number"]).to include("is invalid")
     end

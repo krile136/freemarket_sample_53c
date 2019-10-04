@@ -47,6 +47,4 @@
           カード裏面の番号とは？
         %p
         .registration__main--content--spacer-double
-        %button#user-input-payment.registration__main--content--inner--next-btn
-          .registration__main--content--inner--next-btn--text
-            次へ進む
+        = f.submit "次へ進む", class: 'registration__main--content--inner--next-btn registration__main--content--inner--next-btn--text'

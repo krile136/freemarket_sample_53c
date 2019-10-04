@@ -6,11 +6,10 @@
         %br
         会員登録が完了しました。
       .registration__main--content--spacer
-      -# %button#user-registration-complete.registration__main--content--inner--next-btn
-      -#   .registration__main--content--inner--next-btn--text
-      -#     メルカリを始める
-      -# = f.submit "メルカリを始める", class: 'registration__main--content--inner--next-btn registration__main--content--inner--next-btn--text'
-      = f.submit "メルカリを始める"
+      = link_to root_path do
+        .registration__main--content--inner--next-btn
+          .registration__main--content--inner--next-btn--text
+            メルカリを始める
   .registration__main--background
     = image_tag "registration_background_image.png", class: "registration__main--background--img"
     .registration__main--background--box

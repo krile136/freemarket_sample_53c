@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
         delivery_address_attributes: [:delivery_last_name, :delivery_first_name, :delivery_last_name_kana, :delivery_first_name_kana, :delivery_postal_code, :prefecture_id, :delivery_city, :delivery_address, :delivery_building, :delivery_phone],
         creditcards_attributes: [:credit_number, :limit_month, :limit_year, :security_number]])
   end
+
+  def after_sign_in_path_for(resource)
+    complete_users_path
+  end
 end
