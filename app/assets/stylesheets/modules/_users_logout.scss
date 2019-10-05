@@ -1,0 +1,16 @@
+.mypage-content__logout {
+  height: 179px;
+  width: 700px;
+  background-color: $background-white;
+  padding: 64px;
+  &__button {
+    display: block;
+    width: 320px;
+    margin: auto;
+    color: $text-white;
+    font-size: 14px;
+    background-color: $mercari-red;
+    line-height: 50px;
+    text-align: center;
+  }
+}

@@ -104,7 +104,13 @@
       =link_to '', class: "mypage-side__list__link" do
         %span.mypage-side__list__link__text 電話番号の確認
         %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
-    %li.mypage-side__list
-      =link_to '', class: "mypage-side__list__link" do
-        %span.mypage-side__list__link__text ログアウト
-        %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
+    - if @action_name == "logout"
+      %li.mypage-side__list.mypage-side__list-active
+        =link_to logout_user_path, class: "mypage-side__list__link mypage-side__list__link-active" do
+          %span.mypage-side__list__link__text ログアウト
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow.mypage-side__list__link__arrow-active{"aria-hidden": "true"}
+    - else
+      %li.mypage-side__list
+        =link_to logout_user_path, class: "mypage-side__list__link" do
+          %span.mypage-side__list__link__text ログアウト
+          %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
