@@ -1,13 +1,19 @@
 .notification {
+  position: fixed;
+  top: 100px;
+  z-index: 3;
+  width: 100%;
   .notice {
     background-color: $flash-green;
-    color: $white;
+    color: $flash-success;
     text-align: center;
+    height: 69px;
+    line-height: 69px;
   }
 
   .alert {
     background-color: $mercari_red;
-    color: $white;
+    color: #FFFFFF;
     text-align: center;
   }
 }
