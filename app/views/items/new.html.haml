@@ -89,13 +89,13 @@
           .sell__about__right__wrap
             = f.label :postage_burden, "配送料の負担"
             .sell__about__right__wrap--box
-              = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, {prompt: "---"}, class:'select', required: true
+              = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name,{prompt: "---"}, {class:'select', id:'paying-side-selection', required: true}
               %i.fas.fa-chevron-down
-          .sell__about__right__wrap
+          .sell__about__right__wrap.hide#delivery-method-box
             = f.label :delivery_method_id, "配送の方法"
             %span.required
             .sell__about__right__wrap--box
-              = f.collection_select :delivery_method_id, {}, :id, :name, {prompt: "---"}, class:'select', required: true
+              = f.collection_select :delivery_method_id, {}, :id, :name, {prompt: "---"}, {class:'select', id:'delivery-method-selection', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             %h3
