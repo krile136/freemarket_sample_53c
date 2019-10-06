@@ -5,8 +5,12 @@ $(document).on('turbolinks:load', function () {
   var birth_month = [];
   var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+  var date = new Date();
+  var this_year = date.getFullYear();
+  var oldest_year = 1900;
+
   // 誕生年月の配列を自動生成
-  for (var i = 2019; i >= 1900; i--) {
+  for (var i = this_year; i >= oldest_year; i--) {
     var year = { var: i, txt: String(i) };
     birth_year.push(year);
   }
@@ -59,8 +63,6 @@ $(document).on('turbolinks:load', function () {
 
   // クレジットカードの有効期限を自動生成する
   var creditcard_limit_year = [];
-  var date = new Date();
-  var this_year = date.getFullYear();
   for (var i = (this_year + 11); i >= this_year; i--) {
     var year = { var: i, txt: String(i) };
     creditcard_limit_year.push(year);
@@ -101,7 +103,7 @@ $(document).on('turbolinks:load', function () {
     $('#address .progress-status').css('background', '#ea352d');
     $('#input-address').css('display', 'block');
     $(window).scrollTop(0);
-  })
+  });
 
   $('#user-address-input').on("click", function () {
     $('#input-address').css('display', 'none');
@@ -111,5 +113,5 @@ $(document).on('turbolinks:load', function () {
     $('#payment .progress-status').css('background', '#ea352d');
     $('#input-payment').css('display', 'block');
     $(window).scrollTop(0);
-  })
+  });
 });
