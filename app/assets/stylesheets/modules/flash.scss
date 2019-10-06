@@ -1,0 +1,13 @@
+.notification {
+  .notice {
+    background-color: $flash-green;
+    color: $white;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: $mercari_red;
+    color: $white;
+    text-align: center;
+  }
+}
