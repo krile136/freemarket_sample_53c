@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
-  resources :users, only: [:new, :show, :edit]
+  resources :users, only: [:new, :show, :edit] do
+    get :logout, on: :member
+  end
   resources :items, only: [:new, :index, :show]
 end
