@@ -50,7 +50,7 @@ describe User do
       expect(user.errors[:password][0]).to include("is too short")
     end
 
-    # passwordが6文字以下であれば登録できないこと
+    # password_confirmationがpassowordと一致しないときに登録できないこと
     it "is invalid with a password_confirmation does not match password " do
       user = build(:user, password: "1234567", password_confirmation: "12345678")
       user.valid?
