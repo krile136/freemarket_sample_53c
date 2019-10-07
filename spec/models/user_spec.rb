@@ -50,6 +50,14 @@ describe User do
       expect(user.errors[:password][0]).to include("is too short")
     end
 
+    # passwordが6文字以下であれば登録できないこと
+    it "is invalid with a password_confirmation does not match password " do
+      user = build(:user, password: "1234567", password_confirmation: "12345678")
+      user.valid?
+      expect(user.errors[:password_confirmation][0]).to include("doesn't match Password")
+    end
+    
+
     # メールアドレスが重複する場合保存できないこと
     it "is invalid with a duplicate email address" do
       user = create(:user)
