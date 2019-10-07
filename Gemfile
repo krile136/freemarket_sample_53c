@@ -88,6 +88,8 @@ gem 'sprockets', '3.7.2'
 gem "font-awesome-rails"
 gem 'active_hash'
 
+gem 'ancestry'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
