@@ -31,7 +31,7 @@
               %i.fa.fa-check.main-header__inner__nav__menu__todo__link__icon{"aria-hidden": "true"}
               %span やることリスト
           %li.main-header__inner__nav__menu__mypage
-            =link_to '/', class: "main-header__inner__nav__menu__mypage__link" do
+            =link_to "/users/#{current_user.id}", method: :get,class: "main-header__inner__nav__menu__mypage__link" do
               =image_tag 'member_photo_noimage_thumb.png', width: '32', class: "main-header__inner__nav__menu__mypage__link__img"
               %span マイページ
         - else
