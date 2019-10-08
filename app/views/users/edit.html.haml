@@ -5,7 +5,6 @@
     = render 'shared/mypage_sidebar'
     .mypage-content__profile
       %h2.mypage-content__profile__title プロフィール
-      -# FIXME: url指定でなく、Userモデルのインスタンスを指定する
       = form_with url: "/users/#{current_user.id}" , method: :patch, local: true , html: {class: "mypage-content__profile__form"} do |f|
         .mypage-content__profile__form__userinfo
           =image_tag 'member_photo_noimage_thumb.png', class: "mypage-content__profile__form__userinfo__img"
