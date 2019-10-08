@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def complete
+  end
+
   private
   def set_action_name
     @action_name = action_name
