@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def identification
+
+  end
+
   def complete
   end
 
