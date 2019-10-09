@@ -38,8 +38,10 @@
       width: 100%;
       @include registration_input_form(); 
     }
+    &--pulldown{
+      position: relative;
+    }
     &--short-input{
-      display: block;
       margin-top: 8px;
       width: 76px;
       background-color: $background-white;
@@ -48,6 +50,12 @@
       appearance: none;
       -webkit-rtl-ordering: logical;
       @include registration_input_form(); 
+    }
+    &--arrow{
+      position: absolute;
+      pointer-events: none;
+      top: 23px;
+      left: 55px;
     }
   }
 }

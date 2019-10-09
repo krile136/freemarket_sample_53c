@@ -34,6 +34,20 @@
               生年月日
               .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
                 必須
-            = f.select :birth_year,["--"],{},{class:'mypage-content__identification--form--short-input', id:"select_birth_year"}
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_year,["--"],{},{class:'mypage-content__identification--form--short-input', id:"select_birth_year"}
+              %label.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 年
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_month,["--"],{},{class:'mypage-content__identification--form--short-input', id:"select_birth_month"}
+              %label.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 月
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_day,["--"],{},{class:'mypage-content__identification--form--short-input', id:"select_birth_day"}
+              %label.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 日
 = render 'shared/global_footer'
 = render 'shared/sell_button'
