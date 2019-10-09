@@ -18,6 +18,14 @@ class ItemsController < ApplicationController
     @item = Item.create(item_params)
   end
   
+  def get_category_children
+    @category_children = Category.find(params[:parent_id]).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
   private
   def item_params
     params.require(:item).permit(
