@@ -1,0 +1,53 @@
+.mypage-content__identification{
+  &--box{
+    width: 700px;
+    padding: 64px 64px 64px 64px;
+    background-color: $background-white;
+    border-top: 1px solid $border-gray;
+    p{
+      color: $text-black;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  }
+  &--clear{
+    clear: both;
+    display: block;
+  }
+  &--link{
+    margin-top: 8px;
+    float: right;
+    text-decoration: none;
+    color: $link-skyblue;
+    font-size: 14px;
+  }
+  &--form{
+    margin-top: 40px;
+    width: 100%;
+    label{
+      font-weight: bold;
+      font-size: 14px;
+      color: $text-black;
+    }
+    &--msg{
+      @include require-or-non-require-msg();
+    }
+    &--input{
+      display: block;
+      margin-top: 8px;
+      width: 100%;
+      @include registration_input_form(); 
+    }
+    &--short-input{
+      display: block;
+      margin-top: 8px;
+      width: 76px;
+      background-color: $background-white;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-rtl-ordering: logical;
+      @include registration_input_form(); 
+    }
+  }
+}
