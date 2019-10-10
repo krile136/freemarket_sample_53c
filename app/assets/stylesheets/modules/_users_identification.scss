@@ -1,0 +1,85 @@
+.mypage-content__identification{
+  &--box{
+    width: 700px;
+    padding: 64px 64px 64px 64px;
+    background-color: $background-white;
+    border-top: 1px solid $border-gray;
+    &--msg{
+      color: $text-black;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  }
+  &--clear{
+    clear: both;
+    display: block;
+  }
+  &--link{
+    margin-top: 8px;
+    float: right;
+    text-decoration: none;
+    color: $link-skyblue;
+    font-size: 14px;
+  }
+  &--form{
+    margin-top: 40px;
+    width: 100%;
+    label{
+      font-weight: bold;
+      font-size: 14px;
+      color: $text-black;
+    }
+    &--msg{
+      @include require-or-non-require-msg();
+    }
+    &--input{
+      display: block;
+      margin-top: 8px;
+      width: 100%;
+      @include registration_input_form();
+    }
+    &--pulldown{
+      position: relative;
+    }
+    &--short-pulldown-input{
+      @include identification_pulldown_input();
+      width: 76px;
+    }
+    &--long-pulldown-input{
+      @include identification_pulldown_input();
+      width: 100%;
+    }
+    &--arrow{
+      position: absolute;
+      pointer-events: none;
+      color: $comment-gray;
+      top: 23px;
+      left: 55px;
+    }
+    &--far-arrow{
+      position: absolute;
+      pointer-events: none;
+      color: $comment-gray;
+      top: 23px;
+      left: calc(100% - 25px);
+    }
+    &--info-text{
+      margin-top: 8px;
+      font-size: 14px;
+      color: $notice-text;
+    }
+    &--next-btn{
+      background-color: $mercari-red;
+      margin-top: 40px;
+      width: 100%;
+      height: 50px;
+      border-style: none;
+      &--text{
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 14px;
+      }
+    }
+  }
+}

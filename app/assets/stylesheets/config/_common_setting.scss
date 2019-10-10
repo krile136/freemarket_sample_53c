@@ -12,6 +12,12 @@ input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   border-color: $border-skyblue!important;
 }
 
+.clearfix:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
 @mixin registration_wrapper(){
   width: 100vw;
   min-height: 100vh;
@@ -41,4 +47,38 @@ input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   border-radius: 5px;
   outline: 0;
   border: 1px solid #ccc;
+}
+
+@mixin require-or-non-require-msg(){
+  display: inline-block;
+  font-weight: normal;
+  width: 32px;
+  height: 19px;
+  font-size: 12px;
+  line-height: 19px;
+  border-radius: 2px;
+  text-align: center;
+  margin-left: 8px;
+  &-red{
+    color: white;
+    background-color: $mercari-red;
+  }
+  &-gray{
+    color: white;
+    background-color: $any-gray;
+  }
+}
+
+@mixin identification_pulldown_input{
+  margin-top: 8px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid #ccc;
+  background-color: $background-white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-rtl-ordering: logical;
 }

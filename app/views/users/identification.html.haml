@@ -1,0 +1,93 @@
+= render 'shared/global_header'
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__profile
+      %h2.mypage-content__profile__title 本人情報の登録
+      .mypage-content__identification--box
+        %div.clearfix
+          %p.mypage-content__identification--box--msg
+            お客さまの本人情報をご登録ください。
+            %br
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          = link_to "#" , class: "mypage-content__identification--link" do
+            本人確認書類のアップロードについて
+            = fa_icon 'chevron-right'
+        = form_with  url:"#", method: :patch, local: true do |f| 
+          .mypage-content__identification--form
+            %label
+              お名前
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                必須
+            = f.text_field :last_name, placeholder: '例）山田', class:'mypage-content__identification--form--input'
+            = f.text_field :first_name, placeholder: '例）彩', class:'mypage-content__identification--form--input'
+          .mypage-content__identification--form
+            %label
+              お名前カナ
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                必須
+            = f.text_field :last_name_kana, placeholder: '例）ヤマダ', class:'mypage-content__identification--form--input'
+            = f.text_field :first_name_kana, placeholder: '例）アヤ', class:'mypage-content__identification--form--input'
+          .mypage-content__identification--form
+            %label
+              生年月日
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                必須
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_year,["--"],{},{class:'mypage-content__identification--form--short-pulldown-input', id:"select_birth_year"}
+              %i.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 年
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_month,["--"],{},{class:'mypage-content__identification--form--short-pulldown-input', id:"select_birth_month"}
+              %i.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 月
+            .mypage-content__identification--form--pulldown
+              = f.select :birth_day,["--"],{},{class:'mypage-content__identification--form--short-pulldown-input', id:"select_birth_day"}
+              %i.mypage-content__identification--form--arrow
+                = fa_icon 'chevron-down'
+              %span 日
+            %p.mypage-content__identification--form--info-text
+              ※出品されたことがある、本人情報未登録のお客さまもご対象となります。
+          .mypage-content__identification--form
+            %label
+              郵便番号
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-gray
+                任意
+            = f.text_field :postal_code, placeholder: '例）123-4567', class:'mypage-content__identification--form--input'
+          .mypage-content__identification--form
+            %label
+              都道府県
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-gray
+                任意
+            .mypage-content__identification--form--pulldown
+              = f.collection_select :prefecture_id,Prefecture.all, :id, :name, {},{class:'mypage-content__identification--form--long-pulldown-input'}
+              %i.mypage-content__identification--form--far-arrow
+                = fa_icon 'chevron-down'
+          .mypage-content__identification--form
+            %label
+              市町村
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-gray
+                任意
+            = f.text_field :city, placeholder: '例）横浜市緑区', class:'mypage-content__identification--form--input'
+          .mypage-content__identification--form
+            %label
+              番地
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-gray
+                任意
+            = f.text_field :address, placeholder: '例）青山1-1-1', class:'mypage-content__identification--form--input'
+          .mypage-content__identification--form
+            %label
+              建物名
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-gray
+                任意
+            = f.text_field :building, placeholder: '例）柳ビル103', class:'mypage-content__identification--form--input'
+          = f.submit '登録する', class: 'mypage-content__identification--form--next-btn mypage-content__identification--form--next-btn--text'
+          .mypage-content__identification--form
+            = link_to "#" , class: "mypage-content__identification--link" do
+              本人情報の登録について
+              = fa_icon 'chevron-right'
+= render 'shared/global_footer'
+= render 'shared/sell_button'
