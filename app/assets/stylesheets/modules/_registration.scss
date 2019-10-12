@@ -123,8 +123,10 @@
           @include require-or-non-require-msg();
         }
         &--credit{
+          margin-top: 8px;
           li{
             float: left;
+            margin-right: 5px;
           }
           &-adjust{
             margin-top: 8px;
