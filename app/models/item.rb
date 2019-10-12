@@ -7,8 +7,7 @@ class Item < ApplicationRecord
     belongs_to_active_hash :postage_burden
     belongs_to_active_hash :delivery_day
     belongs_to_active_hash :delivery_method
+    belongs_to_active_hash :size, optional: true
     belongs_to :seller, class_name: 'User'
     belongs_to :buyer, class_name: 'User', optional: true
-
-    
 end

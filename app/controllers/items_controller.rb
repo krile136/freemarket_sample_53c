@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.create(item_params)
+    
   end
   
   def get_category_children
@@ -30,16 +31,19 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(
       :name, 
-      :price, 
       :description, 
+      :price, 
       :condition_id, 
-      :fee_type, 
       :postage_burden_id, 
-      :delivery_method, 
+      :delivery_method_id, 
       :category_id, 
       :size_id, 
       :prefecture_id, 
       :delivery_day_id, 
-      images_attributes: {image_url: []})
+      :brand_id,
+      :parent_id,
+      :child_id,
+      images_attributes: {image_url: []}
+      ).merge(seller_id: current_user.id)
   end
 end

@@ -45,26 +45,19 @@
               = f.collection_select :category_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category'}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
-            %h3
-              サイズ
-              %span.required
+            = f.label :size_id, "サイズ"
+            %span.required
             .sell__about__right__wrap--box
-              %select{name: "parent", class: "select"}
-                %option ---
-                %option S
-                %option M
-                %option L
+              = f.collection_select(:size_id, Size.all, :id, :name, prompt: "---")
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
-            %h3
-              ブランド
-              %span.any
-            .sell__about__right__wrap--box
-              %input{placeholder: "例）シャネル", class: "form"}
+            = f.label :brand_id, "ブランド"
+            %span.any
+          .sell__about__right__wrap-box
+            = f.text_field :brand_id, placeholder: "例）シャネル", class: "form"
           .sell__about__right__wrap
-            %h3
-              商品の状態
-              %span.required
+            = f.label :condition_id, "商品の状態"
+            %span.required
             .sell__about__right__wrap--box
               = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "---"}, class:'select', required: true
               %i.fas.fa-chevron-down
@@ -75,6 +68,7 @@
         .sell__about__right
           .sell__about__right__wrap
             = f.label :postage_burden, "配送料の負担"
+            %span.required
             .sell__about__right__wrap--box
               = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name,{prompt: "---"}, {class:'select', id:'paying-side-selection', required: true}
               %i.fas.fa-chevron-down
@@ -85,14 +79,13 @@
               = f.collection_select :delivery_method_id, {}, :id, :name, {prompt: "---"}, {class:'select', id:'delivery-method-selection', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
-            %h3
-              発送元の地域
-              %span.required
+            = f.label :area_id, "発送元の地域"
+            %span.required
             .sell__about__right__wrap--box
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, class: 'select'
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
-            = f.label :scheduled_sending_date, "発送までの日数"
+            = f.label :delivery_day_id, "発送までの日数"
             %span.required
             .sell__about__right__wrap--box
               = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, {prompt: "---"}, required: true
