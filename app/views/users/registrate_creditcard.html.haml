@@ -20,7 +20,6 @@
               .mypage-content__creditcard--list-box--num
                 = "#{"%02d" % @creditcards[0].limit_month} / #{@creditcards[0].limit_year}"
         - else
-          カードないよ
         .mypage-content__creditcard--about-payment
           = link_to '#',class: "mypage-content__creditcard--about-payment--msg" do
             支払い方法について
