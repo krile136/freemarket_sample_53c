@@ -8,7 +8,7 @@
       .mypage-content__creditcard--box
         .mypage-content__creditcard--sub-head
           %h3.mypage-content__creditcard--sub-head--msg クレジットカード一覧
-        - if @creditcards.length >= 1
+        - if @creditcards.length > 0
           %ul
             -# ここから、@creditcards.lengthの分だけeachして回すべき
             %li.mypage-content__creditcard--list-box
@@ -20,10 +20,14 @@
               .mypage-content__creditcard--list-box--num
                 = "#{"%02d" % @creditcards[0].limit_month} / #{@creditcards[0].limit_year}"
         - else
+          .mypage-content__creditcard--list-box
+            = link_to "#", class: "mypage-content__creditcard--add" do
+              = fa_icon 'credit-card'
+              クレジットカードを追加する
         .mypage-content__creditcard--about-payment
-          = link_to '#',class: "mypage-content__creditcard--about-payment--msg" do
-            支払い方法について
-            = fa_icon 'chevron-right'
+        = link_to '#',class: "mypage-content__creditcard--about-payment--msg" do
+          支払い方法について
+          = fa_icon 'chevron-right'
         %div.clearfix
 = render 'shared/global_footer'
 = render 'shared/sell_button'

@@ -50,4 +50,15 @@
       float: right;
     }
   }
+  &--add{
+    background-color: $mercari-red;
+    margin: auto;
+    display: block;
+    width: 320px;
+    height: 50px;
+    border-style: none;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+  }
 }
