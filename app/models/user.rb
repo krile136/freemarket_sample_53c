@@ -3,6 +3,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :creditcards
 
   has_one :delivery_address
+  has_many :items
   accepts_nested_attributes_for :delivery_address
 
   devise :database_authenticatable, :registerable,
