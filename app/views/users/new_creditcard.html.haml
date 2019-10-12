@@ -36,8 +36,12 @@
                   必須
               .mypage-content__creditcard__new--limit-form--pulldown
                 = f.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {}, {class:'mypage-content__creditcard__new--limit-form--pulldown-input'}
+                %label.mypage-content__creditcard__new--limit-form--arrow.mypage-content__creditcard__new--limit-form--arrow--left
+                  = fa_icon 'chevron-down'
                 月
                 = f.select :limit_year, ["--"], {} , {class:'mypage-content__creditcard__new--limit-form--pulldown-input', id:"select_year_limit"}
+                %label.mypage-content__creditcard__new--limit-form--arrow.mypage-content__creditcard__new--limit-form--arrow--right
+                  = fa_icon 'chevron-down'
                 年
             .mypage-content__creditcard__new--limit-form
               %label

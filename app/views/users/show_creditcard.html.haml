@@ -10,7 +10,6 @@
           %h3.mypage-content__creditcard--sub-head--msg クレジットカード一覧
         - if @creditcards.length > 0
           %ul
-            -# ここから、@creditcards.lengthの分だけeachして回すべき
             %li.mypage-content__creditcard--list-box
               .mypage-content__creditcard--list-box--figure
                 = image_tag 'jcb.svg', size: '26x20'

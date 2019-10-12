@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def new_creditcard
+    
   end
 
   def complete

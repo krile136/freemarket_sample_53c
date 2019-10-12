@@ -88,6 +88,7 @@
       margin-top: 32px;
       &--pulldown{
         display: block;
+        position: relative;
         &-input{
           background-color: $background-white;
           height: 48px;
@@ -99,6 +100,17 @@
           -moz-appearance: none;
           appearance: none;
           -webkit-rtl-ordering: logical;
+        }
+      }
+      &--arrow{
+        position: absolute;
+        pointer-events: none;
+        top: 22px;
+        &--left{
+          left: 110px;
+        }
+        &--right{
+          left: 275px;
         }
       }
     }
