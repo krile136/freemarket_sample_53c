@@ -120,22 +120,7 @@
         margin: 0 auto;
         font-size: 14px;
         &--msg{
-          display: inline-block;
-          font-weight: normal;
-          width: 32px;
-          height: 19px;
-          font-size: 12px;
-          line-height: 19px;
-          border-radius: 2px;
-          text-align: center;
-          &-red{
-            color: white;
-            background-color: $mercari-red;
-          }
-          &-gray{
-            color: white;
-            background-color: $any-gray;
-          }
+          @include require-or-non-require-msg();
         }
         &--credit{
           li{
@@ -261,7 +246,6 @@
   }
 }
 #complete-registration{
-  display: none;
   position: relative;
   p{
     margin-top: 8px;
@@ -288,6 +272,7 @@
   z-index: 10;
 }
 
+
 .end .progress-status_bar {
   width: 0px;
 }
@@ -297,6 +282,16 @@
 #through{
   color: $mercari-red;
   .progress-status{
+    background: $mercari-red;
+  }
+}
+
+#filled{
+  color: $mercari-red;
+  .progress-status{
+    background: $mercari-red;
+  }
+  .progress-status_bar{
     background: $mercari-red;
   }
 }

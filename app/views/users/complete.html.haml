@@ -1,0 +1,11 @@
+.registration
+  .registration__header
+    .registration__header--logo
+      = link_to root_path do
+        = image_tag "logo.svg", size: "185x49", alt: "mercari", class: "logo-opacity"
+    = render 'shared/progress_status_bar_filled'
+  .registration__main
+    .registration__main--title#registration-title
+      会員登録完了
+    = render 'users/complete-registration'
+  = render 'shared/logo-footer'
