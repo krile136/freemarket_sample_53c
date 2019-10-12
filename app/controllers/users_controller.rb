@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   end
 
-  def registrate_creditcard
+  def show_creditcard
     user = User.find(params[:id])
     @creditcards = user.creditcards
     if @creditcards.length > 0 
@@ -34,6 +34,9 @@ class UsersController < ApplicationController
       # クレジットカードの年の先頭から2桁を削除する（int型にしてしまったのでto_sで文字列に変換している）
       @creditcards[0].limit_year = @creditcards[0].limit_year.to_s.sub(/[0-9]{2}/,'')
     end
+  end
+
+  def new_creditcard
   end
 
   def complete
