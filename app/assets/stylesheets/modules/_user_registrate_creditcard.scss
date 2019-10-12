@@ -1,0 +1,53 @@
+.mypage-content__creditcard{
+  &--box{
+    width: 700px;
+    padding: 64px 64px 64px 64px;
+    background-color: $background-white;
+    border-top: 1px solid $border-gray;
+  }
+  &--sub-head{
+    width: 320px;
+    margin: auto;
+    &--msg{
+      color: $text-black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  &--list-box{
+    padding-top: 24px;
+    padding-bottom: 24px;
+    &--figure{
+      width: 320px;
+      margin: auto;
+    }
+    &--remove{
+      float: right;
+      width: 70px;
+      height: 24px;
+      border: 1px solid $mercari-red;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 14px;
+      color: $mercari-red;
+    }
+    &--num{
+      width: 320px;
+      margin: auto;
+      margin-top: 8px;
+      font-size: 16px;
+      color: $text-black;
+    }
+  }
+  &--about-payment{
+    width: 100%;
+    border-bottom: 1px solid $border-gray;
+    &--msg{
+      margin-top: 40px;
+      font-size: 14px;
+      text-decoration: none;
+      color: $link-skyblue;
+      float: right;
+    }
+  }
+}

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get :logout
       get :identification
+      get :registrate_creditcard
     end
 
     collection do
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren'
     end
   end
+  resources :creditcards, only: [:new, :destroy]
 end
