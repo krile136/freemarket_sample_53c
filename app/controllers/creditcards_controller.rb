@@ -7,7 +7,7 @@ class CreditcardsController < ApplicationController
                                     security_number: creditcard_params[:security_number],
                                     user_id: creditcard_params[:user_id])
     if @creditcard.save
-      redirect_to "/users/#{current_user.id}/show_creditcard"
+      redirect_to "/users/#{current_user.id}/show_creditcard", notice: 'クレジットカードを登録しました'
     else
       redirect_to "/users/#{current_user.id}/new_creditcard", alert: '入力情報に間違いがあります'
     end
