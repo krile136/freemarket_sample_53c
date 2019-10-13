@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
-      redirect_to new_item_path
+      redirect_to user_items_path
     end
   end
   
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
       :size_id, 
       :prefecture_id, 
       :delivery_day_id, 
-      :brand_id,
+      :brand,
       :parent_id,
       :child_id,
       images_attributes: {image_url: []}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_124459) do
+ActiveRecord::Schema.define(version: 2019_10_13_103430) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2019_10_09_124459) do
     t.integer "size_id"
     t.integer "condition_id", null: false
     t.integer "category_id", null: false
-    t.integer "brand_id"
     t.integer "delivery_day_id", null: false
     t.integer "delivery_method_id", null: false
     t.integer "prefecture_id", null: false
@@ -81,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_124459) do
     t.integer "postage_burden_id", null: false
     t.integer "parent_id", null: false
     t.integer "child_id", null: false
+    t.string "brand"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
