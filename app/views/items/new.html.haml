@@ -82,7 +82,7 @@
             = f.label :area_id, "発送元の地域"
             %span.required
             .sell__about__right__wrap--box
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, class: 'select'
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select'
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :delivery_day_id, "発送までの日数"
@@ -130,7 +130,7 @@
               =link_to "加盟店規約"
               に同意したことになります。
           = f.submit '出品する', class: 'sell__about__bottom--btn submit'
-          = link_to "もどる", '#', class: 'sell__about__bottom--btn back'
+          = link_to "もどる", :back, class: 'sell__about__bottom--btn back'
 .footer-container
   .footer
     %ul
