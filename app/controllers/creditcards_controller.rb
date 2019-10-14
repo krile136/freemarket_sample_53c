@@ -7,9 +7,9 @@ class CreditcardsController < ApplicationController
                                     security_number: creditcard_params[:security_number],
                                     user_id: creditcard_params[:user_id])
     if @creditcard.save
-      redirect_to "/users/#{current_user.id}/show_creditcard", notice: 'クレジットカードを登録しました'
+      redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカードを登録しました'
     else
-      redirect_to "/users/#{current_user.id}/new_creditcard", alert: '入力情報に間違いがあります'
+      redirect_to new_creditcard_user(current_user.id), alert: '入力情報に間違いがあります'
     end
   end
 
@@ -17,7 +17,7 @@ class CreditcardsController < ApplicationController
   def destroy
     @creditcard = Creditcard.find(params[:id])
     @creditcard.destroy
-    redirect_to "/users/#{current_user.id}/show_creditcard", notice: 'クレジットカード情報を削除しました'
+    redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカード情報を削除しました'
   end
 
   private
