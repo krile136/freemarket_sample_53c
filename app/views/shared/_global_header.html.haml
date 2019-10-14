@@ -43,3 +43,16 @@
         -#     =image_tag 'member_photo_noimage_thumb.png', width: '32', class: "main-header__inner__nav__menu__mypage__link__img"
         -#     %span マイページ
         -# ログインしている時 --ここまで--
+    .main-header__inner__category-list
+      %ul.main-header__inner__category-list__parent
+        - @category_parents.each do |parent|
+          %li.main-header__inner__category-list__parent__piece{data: {category_id: parent.id}}
+            =link_to "#{parent.name}", '', class: "main-header__inner__category-list__parent__piece__link"
+        %li.main-header__inner__category-list__parent__piece.main-header__inner__category-list__parent__piece--last
+          =link_to "カテゴリー一覧", '', class: "main-header__inner__category-list__parent__piece__link"
+      %ul.main-header__inner__category-list__child
+        %li.main-header__inner__category-list__child__piece
+          =link_to "トップス", '', class: "main-header__inner__category-list__child__piece__link"
+      %ul.main-header__inner__category-list__grandchild
+        %li.main-header__inner__category-list__grandchild__piece
+          =link_to "Tシャツ", '', class: "main-header__inner__category-list__grandchild__piece__link"
