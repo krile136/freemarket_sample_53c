@@ -13,7 +13,7 @@
             %li.mypage-content__creditcard--list-box
               .mypage-content__creditcard--list-box--figure
                 = image_tag 'jcb.svg', size: '26x20'
-                = link_to '削除する',"/creditcards/#{@creditcards[0].id}", method: :delete, class: "mypage-content__creditcard--list-box--remove"
+                = link_to '削除する',creditcard_path(@creditcards[0].id), method: :delete, class: "mypage-content__creditcard--list-box--remove"
               .mypage-content__creditcard--list-box--num
                 = @creditcards[0].credit_number
               .mypage-content__creditcard--list-box--num
