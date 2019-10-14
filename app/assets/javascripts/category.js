@@ -15,6 +15,26 @@ $(document).on('turbolinks:load', function () {
     return isExist;
   }
 
+  // 非同期で取得したカテゴリーリストを組み立て
+  function appendChildrenCategoryHTML(children, targetCategory) {
+    targetCategoryList = $('.main-header__inner__category-list__' + targetCategory);
+    targetCategoryList.empty();
+    let htmlArray = new Array();
+
+    // 表示は最大14件
+    for(i = 0; i < 14; i++) {
+      // カテゴリーが14件に満たない場合は全件処理したらbreak
+      if (i == children.length) break;
+
+      let html = `<li class="main-header__inner__category-list__${targetCategory}__piece" data-category-id="${children[i].id}">
+                    <a class="main-header__inner__category-list__${targetCategory}__piece__link" href="">${children[i].name}</a>
+                  </li>`;
+      htmlArray.push(html);
+    };
+    targetCategoryList.append(htmlArray.join('\n'));
+    targetCategoryList.show();
+  };
+
   // 「カテゴリーを探す」にホバーしたら親カテゴリーリストを表示
   $('.main-header__inner__nav__search__category').hover(function() {
     $('.main-header__inner__category-list__parent').show();
@@ -36,6 +56,14 @@ $(document).on('turbolinks:load', function () {
     // カーソルが当たっているカテゴリーのIDを取得
     let categoryId = $(this).data('category-id');
 
+    //イベント発火元が親か子か？→取得対象が子か孫か？
+    let targetCategory = "";
+    if ($(this).hasClass("main-header__inner__category-list__parent__piece")) {
+      targetCategory = "child";
+    } else {
+      targetCategory = "grandchild";
+    };
+
     $.ajax({
       type: "GET",
       url: "/children_category",
@@ -43,7 +71,7 @@ $(document).on('turbolinks:load', function () {
       dataType: 'json'
     })
     .done(function(children){
-      
+      appendChildrenCategoryHTML(children, targetCategory);
     })
     .fail(function(){
       alert('カテゴリー取得に失敗しました');
