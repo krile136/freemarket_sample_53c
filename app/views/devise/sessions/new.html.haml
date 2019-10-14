@@ -21,7 +21,7 @@
             Googleでログイン
     .login__main--form
       .login__main--form--box
-        = form_with model: @user, url: user_session_path do |f|
+        = form_with model: @user, url: user_session_path, method: :post do |f|
           = f.text_field :email, placeholder: "メールアドレス", class: "login__main--form--box--field"
           .login__main--form--spacer
           = f.text_field :password, placeholder: "パスワード", class: "login__main--form--box--field"
@@ -31,23 +31,3 @@
           = link_to "#", class: "login__main--form--box--msg" do
             パスワードをお忘れの方
   = render 'shared/logo-footer'
-
-
--# これ以降はログイン機能を作成する際に参考にし、機能作成後に削除します（松岡）
--# %h2 Log in
--# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     %br/
--#     = f.password_field :password, autocomplete: "current-password"
--#   - if devise_mapping.rememberable?
--#     .field
--#       = f.check_box :remember_me
--#       = f.label :remember_me
--#   .actions
--#     = f.submit "Log in"
--# = render "devise/shared/links"

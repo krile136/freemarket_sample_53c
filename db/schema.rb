@@ -20,6 +20,34 @@ ActiveRecord::Schema.define(version: 2019_09_30_133659) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "credit_number", null: false
+    t.integer "limit_month", null: false
+    t.integer "limit_year", null: false
+    t.integer "security_number", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
+  end
+
+  create_table "delivery_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "delivery_last_name", null: false
+    t.string "delivery_first_name", null: false
+    t.string "delivery_last_name_kana", null: false
+    t.string "delivery_first_name_kana", null: false
+    t.string "delivery_postal_code", null: false
+    t.string "delivery_city", null: false
+    t.string "delivery_address", null: false
+    t.string "delivery_building"
+    t.string "delivery_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "prefecture_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -28,8 +56,23 @@ ActiveRecord::Schema.define(version: 2019_09_30_133659) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname", null: false
+    t.string "phone"
+    t.string "profile"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
+    t.string "icon"
+    t.boolean "active"
+    t.integer "receivable"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "creditcards", "users"
+  add_foreign_key "delivery_addresses", "users"
 end

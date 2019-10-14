@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   root 'items#index'
-  resources :users, only: [:new, :show, :edit] do
-    get :logout, on: :member
+
+  resources :users, only: [:new, :show, :edit, :update] do
+    member do
+      get :logout
+      get :identification
+    end
+
+    collection do
+      get 'complete'
+    end
   end
-  resources :items, only: [:new, :index, :show]
+  resources :items, only: [:new, :index, :show] do 
+    collection do
+      get 'get_category_children' 
+      get 'get_category_grandchildren'
+    end
+  end
+
   get 'children_category' => 'categories#set_children'
 end

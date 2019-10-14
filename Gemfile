@@ -87,6 +87,7 @@ gem 'sprockets', '3.7.2'
 
 gem "font-awesome-rails"
 gem 'fog-aws'
+gem 'active_hash'
 
 gem 'ancestry'
 

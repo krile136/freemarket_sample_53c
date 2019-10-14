@@ -5,13 +5,12 @@
     = render 'shared/mypage_sidebar'
     .mypage-content__profile
       %h2.mypage-content__profile__title プロフィール
-      -# FIXME: url指定でなく、Userモデルのインスタンスを指定する
-      = form_with url:'', local: true , html: {class: "mypage-content__profile__form"} do |f|
+      = form_with url: "/users/#{current_user.id}" , method: :patch, local: true , html: {class: "mypage-content__profile__form"} do |f|
         .mypage-content__profile__form__userinfo
           =image_tag 'member_photo_noimage_thumb.png', class: "mypage-content__profile__form__userinfo__img"
-          = f.text_field :nickname, class: "mypage-content__profile__form__userinfo__nickname"
+          = f.text_field :nickname, class: "mypage-content__profile__form__userinfo__nickname", value: @nickname
         .mypage-content__profile__form__main
-          = f.text_area :profile , class: "mypage-content__profile__form__main__text", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+          = f.text_area :profile , class: "mypage-content__profile__form__main__text", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪", value: @profile
           = f.submit "変更する", class: "mypage-content__profile__form__main__button", "data-disable-with": "変更する", name: "commit"
 = render 'shared/global_footer'
 = render 'shared/sell_button'
