@@ -25,6 +25,31 @@ $(document).on('turbolinks:load', function () {
     }
   });
 
+  // 親or子カテゴリーにカーソルが当たったら子or孫カテゴリーを取得
+  $(document).on('mouseenter', '.main-header__inner__category-list__parent__piece, .main-header__inner__category-list__child__piece', function() {
+    // 親カテゴリーリスト最下の「カテゴリー一覧」の場合は子カテゴリーを空にして処理を抜ける
+    if (searchElement(getHoverElements(), "main-header__inner__category-list__parent__piece--last") == true) {
+      $('.main-header__inner__category-list__child').empty();
+      return;
+    };
+
+    // カーソルが当たっているカテゴリーのIDを取得
+    let categoryId = $(this).data('category-id');
+
+    $.ajax({
+      type: "GET",
+      url: "/children_category",
+      data: {parent_id: categoryId},
+      dataType: 'json'
+    })
+    .done(function(children){
+      
+    })
+    .fail(function(){
+      alert('カテゴリー取得に失敗しました');
+    });
+  });
+
   // 親カテゴリーリストのホバーが外れた時
   $('.main-header__inner__category-list__parent').mouseleave(function() {
     let hoverElements = getHoverElements();

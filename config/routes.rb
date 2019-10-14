@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     get :logout, on: :member
   end
   resources :items, only: [:new, :index, :show]
+  get 'children_category' => 'categories#set_children'
 end
