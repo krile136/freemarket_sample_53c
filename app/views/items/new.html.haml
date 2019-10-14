@@ -15,7 +15,7 @@
             - @item.images.each_with_index do |image, i|
               %label{class: "sell__image--select__ul--text ul--id--#{i}"}
                 = f.fields_for :images, image do |img|
-                  = img.file_field :image_url, multiple: true, "data-id": "#{i}"
+                  = img.file_field :image_url, multiple: true, "data-id": "#{i}", required: true
                   %li
                   .btn-box
                     %a 編集
@@ -24,11 +24,11 @@
         .sell__about__name
           = f.label :name, "商品名"
           %span.required
-          = f.text_field :name, class: "form", placeholder: "商品名（必須40文字まで）"
+          = f.text_field :name, class: "form", placeholder: "商品名（必須40文字まで）", required: true, maxlength: 40
         .sell__about__description
           = f.label :description, "商品の説明"
           %span.required
-          = f.text_area :description, class: "sell__about__description__form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :description, class: "sell__about__description__form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", required: true, maxlength: 1000
       .sell__about.clearfix
         .sell__about__left 商品の詳細
         .sell__about__right
@@ -36,19 +36,19 @@
             = f.label :category_id, "カテゴリー"
             %span.required
             .sell__about__right__wrap--box.parent
-              = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category'}
+              = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category', required: true}
               %i.fas.fa-chevron-down
             .sell__about__right__wrap--box.hide#category-child-1
               = f.collection_select :child_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'child_category', required: true}
               %i.fas.fa-chevron-down
             .sell__about__right__wrap--box.hide#category-child-2
-              = f.collection_select :category_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category'}
+              = f.collection_select :category_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :size_id, "サイズ"
             %span.required
             .sell__about__right__wrap--box
-              = f.collection_select(:size_id, Size.all, :id, :name, prompt: "---")
+              = f.collection_select(:size_id, Size.all, :id, :name, prompt: "---", required: true)
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :brand, "ブランド"
@@ -82,7 +82,7 @@
             = f.label :area_id, "発送元の地域"
             %span.required
             .sell__about__right__wrap--box
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select'
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select', required: true
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :delivery_day_id, "発送までの日数"
@@ -103,7 +103,7 @@
               .sell__about__right__wrap__price--input
                 ¥
                 .sell__about__right__wrap__price--input--form
-                  = f.number_field :price, placeholder: "例）300", class: "form"
+                  = f.number_field :price, placeholder: "例）300", class: "form", required: true, min:300, max:9999999
           .sell__about__right__wrap__fee.clearfix
             .sell__about__right__wrap__fee--left
               販売手数料 (10%)
