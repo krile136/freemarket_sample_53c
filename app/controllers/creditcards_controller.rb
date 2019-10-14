@@ -1,11 +1,7 @@
 class CreditcardsController < ApplicationController
 
   def create
-    @creditcard = Creditcard.new(credit_number: creditcard_params[:credit_number],
-                                    limit_month: creditcard_params[:limit_month], 
-                                    limit_year: creditcard_params[:limit_year],
-                                    security_number: creditcard_params[:security_number],
-                                    user_id: creditcard_params[:user_id])
+    @creditcard = Creditcard.new(creditcard_params)
     if @creditcard.save
       redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカードを登録しました'
     else
@@ -25,8 +21,7 @@ class CreditcardsController < ApplicationController
 
   private
   def creditcard_params
-    params.permit(:credit_number, :limit_month, :limit_year, :security_number, :user_id)
+    params.permit(:credit_number, :limit_month, :limit_year, :security_number).merge(user_id: current_user.id)
   end
-
 end
 
