@@ -7,7 +7,7 @@
       %h2.mypage-content__profile__title クレジットカード情報入力
       .mypage-content__creditcard__new--box
         .mypage-content__creditcard__new--content
-          = form_with url:"/users/#{current_user.id}/creditcards", method: :post, loacl: true do |f|
+          = form_with model: @creditcard, url: user_creditcards_path(current_user.id), method: :post, local: true do |f|
             %label.font-14
               カード番号
               .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
