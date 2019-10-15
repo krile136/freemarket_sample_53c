@@ -33,7 +33,7 @@
         .sell__about__left 商品の詳細
         .sell__about__right
           .sell__about__right__wrap
-            = f.label :category_id, "カテゴリー"
+            = f.label :parent_id, "カテゴリー"
             %span.required
             .sell__about__right__wrap--box.parent
               = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category', required: true}
@@ -67,7 +67,7 @@
           = fa_icon "question-circle"
         .sell__about__right
           .sell__about__right__wrap
-            = f.label :postage_burden, "配送料の負担"
+            = f.label :postage_burden_id, "配送料の負担"
             %span.required
             .sell__about__right__wrap--box
               = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name,{prompt: "---"}, {class:'select', id:'paying-side-selection', required: true}
@@ -79,7 +79,7 @@
               = f.collection_select :delivery_method_id, {}, :id, :name, {prompt: "---"}, {class:'select', id:'delivery-method-selection', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
-            = f.label :area_id, "発送元の地域"
+            = f.label :prefecture_id, "発送元の地域"
             %span.required
             .sell__about__right__wrap--box
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select', required: true

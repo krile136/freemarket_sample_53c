@@ -91,5 +91,13 @@ describe Item do
       item.valid?
       expect(item.errors[:child_id]).to include("can't be blank")
     end
+
+    #  price数字出ないと登録できないこと
+    it "is invalid with a price not number " do
+      item = build(:item, price: "aiueo")
+      item.valid?
+      expect(item.errors[:price][0]).to include("is not a number")
+    end
+
   end
 end
