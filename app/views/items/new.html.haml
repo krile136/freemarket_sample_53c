@@ -33,7 +33,7 @@
         .sell__about__left 商品の詳細
         .sell__about__right
           .sell__about__right__wrap
-            = f.label :parent_id, "カテゴリー"
+            = f.label :category_id, "カテゴリー"
             %span.required
             .sell__about__right__wrap--box.parent
               = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category', required: true}
