@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() { 
 
   $('.sell__image--select__ul--text').on('change', 'input[type="file"]', function(e) {
       var id = $(this).data('id'),
