@@ -12,10 +12,14 @@ class CreditcardsController < ApplicationController
 
   def destroy
     @creditcard = Creditcard.find(params[:id])
-    if @creditcard.destroy
-      redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカード情報を削除しました'
-    else
-      redirect_to show_creditcard_user_path(current_user.id), alert: 'クレジットカード情報の削除に失敗しました'
+    if current_user.id == @creditcard.user_id
+      if @creditcard.destroy
+        redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカード情報を削除しました'
+      else
+        redirect_to show_creditcard_user_path(current_user.id), alert: 'クレジットカード情報の削除に失敗しました'
+      end
+    else  
+      redirect_to show_creditcard_user_path(current_user.id), alert: '不正なユーザーidです'
     end
   end
 
