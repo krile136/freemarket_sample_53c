@@ -1,0 +1,58 @@
+= render 'shared/global_header'
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__profile
+      %h2.mypage-content__profile__title クレジットカード情報入力
+      .mypage-content__creditcard__new--box
+        .mypage-content__creditcard__new--content
+          = form_with model: @creditcard, url: user_creditcards_path(current_user.id), method: :post, local: true do |f|
+            %label.font-14
+              カード番号
+              .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                必須
+            = f.text_field :credit_number, placeholder: '半角数字のみ', class:'mypage-content__identification--form--input'
+            %ul.mypage-content__creditcard__new--card-list
+              %li
+                = image_tag "visa.svg", size: "49x20"
+              %li
+                = image_tag "master-card.svg", size: "34x20"
+              %li
+                = image_tag "saison-card.svg", size: "30x20"
+              %li
+                = image_tag "jcb.svg", size: "32x20"
+              %li
+                = image_tag "american_express.svg", size: "21x20"
+              %li
+                = image_tag "dinersclub.svg", size: "32x20"
+              %li
+                = image_tag "discover.svg", size: "32x20"
+            %div.clearfix
+            .mypage-content__creditcard__new--limit-form
+              %label
+                有効期限
+                .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                  必須
+              .mypage-content__creditcard__new--limit-form--pulldown
+                = f.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {}, {class:'mypage-content__creditcard__new--limit-form--pulldown-input'}
+                %label.mypage-content__creditcard__new--limit-form--arrow.mypage-content__creditcard__new--limit-form--arrow--left
+                  = fa_icon 'chevron-down'
+                月
+                = f.select :limit_year, ["--"], {} , {class:'mypage-content__creditcard__new--limit-form--pulldown-input', id:"select_year_limit"}
+                %label.mypage-content__creditcard__new--limit-form--arrow.mypage-content__creditcard__new--limit-form--arrow--right
+                  = fa_icon 'chevron-down'
+                年
+            .mypage-content__creditcard__new--limit-form
+              %label
+                セキュリティコード
+                .mypage-content__identification--form--msg.mypage-content__identification--form--msg-red
+                  必須
+              = f.text_field :security_number, placeholder: 'カード背面4桁または3桁の番号', class:'mypage-content__identification--form--input'
+            = link_to "#", class: "registration__main--content--inner--about-registration" do
+              = fa_icon 'question-circle'
+              カード裏面の番号とは？
+            %div.clearfix
+            = f.submit '追加する', class: "mypage-content__creditcard__new--next"
+= render 'shared/global_footer'
+= render 'shared/sell_button'

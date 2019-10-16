@@ -17,6 +17,9 @@ input[type="text"]:focus, textarea:focus, select:focus, input:focus{
     clear: both;
     display: block;
 }
+.clearfix {
+  display: block;
+}
 
 @mixin registration_wrapper(){
   width: 100vw;
