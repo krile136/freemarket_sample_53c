@@ -27,3 +27,13 @@ module FreemarketSample53c
     config.i18n.default_locale = :ja
   end
 end
+
+# コントローラーを作るときに余分なものを作らない
+module App
+  class Application < Rails::Application
+   config.generators do |g|
+     g.helper false
+     g.assets false
+   end
+  end
+end

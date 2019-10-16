@@ -1,0 +1,32 @@
+= render 'shared/global_header'
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__profile
+      %h2.mypage-content__profile__title 支払い方法
+      .mypage-content__creditcard--box
+        .mypage-content__creditcard--sub-head
+          %h3.mypage-content__creditcard--sub-head--msg クレジットカード一覧
+        - if @creditcards.length > 0
+          %ul
+            %li.mypage-content__creditcard--list-box
+              .mypage-content__creditcard--list-box--figure
+                = image_tag 'jcb.svg', size: '26x20'
+                = link_to '削除する',creditcard_path(@creditcards[0].id), method: :delete, class: "mypage-content__creditcard--list-box--remove"
+              .mypage-content__creditcard--list-box--num
+                = @creditcards[0].credit_number
+              .mypage-content__creditcard--list-box--num
+                = "#{"%02d" % @creditcards[0].limit_month} / #{@creditcards[0].limit_year}"
+        - else
+          .mypage-content__creditcard--list-box
+            = link_to new_creditcard_user_path, class: "mypage-content__creditcard--add" do
+              = fa_icon 'credit-card'
+              クレジットカードを追加する
+        .mypage-content__creditcard--about-payment
+        = link_to '#',class: "mypage-content__creditcard--about-payment--msg" do
+          支払い方法について
+          = fa_icon 'chevron-right'
+        %div.clearfix
+= render 'shared/global_footer'
+= render 'shared/sell_button'

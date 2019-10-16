@@ -38,6 +38,12 @@
       width: 100%;
       @include registration_input_form();
     }
+    &--input-short{
+      display: block;
+      margin-top: 8px;
+      width: 40%;
+      @include registration_input_form();
+    }
     &--pulldown{
       position: relative;
     }
