@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :get_category_parents
 
   def index
   end

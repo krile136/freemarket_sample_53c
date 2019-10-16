@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren'
     end
   end
-  
+
+  get 'children_category' => 'categories#set_children'
+
   resources :creditcards, only: [:destroy]
 end

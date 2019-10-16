@@ -39,3 +39,16 @@
             =link_to "新規会員登録", new_user_path, class: "main-header__inner__nav__menu__signup__button"
           %li.main-header__inner__nav__menu__signin
             =link_to "ログイン", new_user_session_path, class: "main-header__inner__nav__menu__signin__button"
+    .main-header__inner__category-list
+      %ul.main-header__inner__category-list__parent
+        - @category_parents.each do |parent|
+          %li.main-header__inner__category-list__parent__piece{data: {category_id: parent.id}}
+            =link_to "#{parent.name}", '', class: "main-header__inner__category-list__parent__piece__link"
+        %li.main-header__inner__category-list__parent__piece.main-header__inner__category-list__parent__piece--last
+          =link_to "カテゴリー一覧", '', class: "main-header__inner__category-list__parent__piece__link"
+      %ul.main-header__inner__category-list__child
+        %li.main-header__inner__category-list__child__piece
+          =link_to "トップス", '', class: "main-header__inner__category-list__child__piece__link"
+      %ul.main-header__inner__category-list__grandchild
+        %li.main-header__inner__category-list__grandchild__piece
+          =link_to "Tシャツ", '', class: "main-header__inner__category-list__grandchild__piece__link"
