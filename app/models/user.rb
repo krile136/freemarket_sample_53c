@@ -5,8 +5,12 @@ class User < ApplicationRecord
   has_one :delivery_address
   accepts_nested_attributes_for :delivery_address
 
+  has_many :sns_credentials, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
 
   validates :nickname, presence: true
   # # 名前には、全角ひらがな、漢字のバリデーションをかける
@@ -23,21 +27,33 @@ class User < ApplicationRecord
   # 電話番号には全て半角数値のバリデーションをかける
   validates :phone, presence: true, format: {with: /\A[0-9]+\z/}
 
-   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
-
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        email:    auth.info.email,
-        name:  auth.info.name,
-        password: Devise.friendly_token[0, 20],
-        image:  auth.info.image
-      )
+   def self.find_oauth(auth)
+    uid = auth.uid
+    provider = auth.provider
+    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    if snscredential.present?
+      user = User.where(id: snscredential.user_id).first
+    else
+      user = User.where(email: auth.info.email).first
+      if user.present?
+        SnsCredential.create(
+          uid: uid,
+          provider: provider,
+          user_id: user.id
+          )
+      else
+        user = User.create(
+          nickname: auth.info.name,
+          email:    auth.info.email,
+          password: Devise.friendly_token[0, 20]
+          )
+        SnsCredential.create(
+          uid: uid,
+          provider: provider,
+          user_id: user.id
+          )
+      end
     end
-    
-    user
+    return user
   end
-
 end

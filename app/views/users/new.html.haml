@@ -11,7 +11,7 @@
         = fa_icon 'envelope', class: "fa-2x signup__main--registration-form--btn--logo"
         .signup__main--registration-form--btn--center
           メールアドレスで登録する
-      = link_to "#", class: "signup__main--registration-form--btn signup__main--registration-form--btn--facebook" do
+      = link_to user_facebook_omniauth_authorize_path, class: "signup__main--registration-form--btn signup__main--registration-form--btn--facebook" do
         = fa_icon 'facebook-square', class: "fa-2x signup__main--registration-form--btn--logo"
         .signup__main--registration-form--btn--center
           Facebookで登録する
