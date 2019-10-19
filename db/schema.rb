@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_133659) do
+ActiveRecord::Schema.define(version: 2019_10_13_103430) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "prefecture_id"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -48,6 +55,36 @@ ActiveRecord::Schema.define(version: 2019_09_30_133659) do
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.text "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.integer "size_id"
+    t.integer "condition_id", null: false
+    t.integer "category_id", null: false
+    t.integer "delivery_day_id", null: false
+    t.integer "delivery_method_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "seller_id", null: false
+    t.integer "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "postage_burden_id", null: false
+    t.integer "parent_id", null: false
+    t.integer "child_id", null: false
+    t.string "brand"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,4 +112,5 @@ ActiveRecord::Schema.define(version: 2019_09_30_133659) do
 
   add_foreign_key "creditcards", "users"
   add_foreign_key "delivery_addresses", "users"
+  add_foreign_key "images", "items"
 end

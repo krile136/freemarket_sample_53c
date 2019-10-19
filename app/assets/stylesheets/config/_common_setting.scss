@@ -12,6 +12,11 @@ input[type="text"]:focus, textarea:focus, select:focus, input:focus{
   border-color: $border-skyblue!important;
 }
 
+
+.hide {
+  display: none;
+}
+
 .clearfix:after{
     content: "";
     clear: both;

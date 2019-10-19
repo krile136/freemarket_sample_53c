@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :users, only: [:new, :show, :edit, :update] do
+    resources :items, only: [:create]
     resources :creditcards, only: [:create]
 
     member do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
-  resources :items, only: [:new, :index, :show] do 
+  resources :items, only: [:new, :index, :show] do
     collection do
       get 'get_category_children' 
       get 'get_category_grandchildren'
