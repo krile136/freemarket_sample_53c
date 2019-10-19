@@ -23,24 +23,24 @@ $(document).on('turbolinks:load', function () {
     $("<option>", {
       value: birth_year[i].var,
       text: birth_year[i].txt
-    }).appendTo('#select_birth_year');
+    }).appendTo('#check_birth_year');
   }
   for (var i = 0; i < birth_month.length; i++) {
     $("<option>", {
       value: birth_month[i].var,
       text: birth_month[i].txt
-    }).appendTo('#select_birth_month');
+    }).appendTo('#check_birth_month');
   }
 
   // 年、もしくは月のセレクトボックスの中身に変更があったら日の内容を変更する
-  $('#select_birth_year, #select_birth_month').change(function () {
-    $('#select_birth_day').empty();
+  $('#check_birth_year, #check_birth_month').change(function () {
+    $('#check_birth_day').empty();
     $("<option>", {
       text: '--'
-    }).appendTo('#select_birth_day');
+    }).appendTo('#check_birth_day');
     months[1] = 28;
-    var year = $('#select_birth_year').val();
-    var month = $("#select_birth_month").val();
+    var year = $('#check_birth_year').val();
+    var month = $("#check_birth_month").val();
     if (year != '--' && month != '--') {
       if (month == 2) {
         if (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) {
@@ -56,7 +56,7 @@ $(document).on('turbolinks:load', function () {
         $("<option>", {
           value: birth_day[i].var,
           text: birth_day[i].txt
-        }).appendTo('#select_birth_day');
+        }).appendTo('#check_birth_day');
       }
     }
   });
@@ -71,20 +71,54 @@ $(document).on('turbolinks:load', function () {
     $("<option>", {
       value: creditcard_limit_year[i].var,
       text: creditcard_limit_year[i].txt
-    }).appendTo('#select_year_limit');
+    }).appendTo('#check_year_limit');
   }
 
   // 会員情報の「次へ進む」をクリックした時
   $('#user-info-registration').on("click", function () {
-    // 会員情報登録の内容を非表示
-    $('#member-information').css('display', 'none');
-    // プログレスバーの色を変更
-    $('#through .progress-status_bar').css('background', '#ea352d');
-    $('#active').css('color', '#ea352d');
-    $('#active .progress-status').css('background', '#ea352d');
-    // 電話番号確認画面の表示
-    $('#registration-title').text("電話番号の確認");
-    $('#confirm-phone-number').css('display', 'block');
+    var check = {
+      nickname: new RegExp(/./),
+      mail_address: new RegExp(/^\S+@\S+\.\S+$/),
+      password: new RegExp(/^[a-z\d]{7,100}$/i),
+      password_confirmation: new RegExp(/^[a-z\d]{7,100}$/i),
+      first_name: new RegExp(/^[一-龥ぁ-ん]/),
+      last_name: new RegExp(/^[一-龥ぁ-ん]/),
+      first_name_kana: new RegExp(/[\u30a0-\u30ff]/),
+      last_name_kana: new RegExp(/[\u30a0-\u30ff]/),
+      birth_year: new RegExp(/[0-9]{4,}/),
+      birth_month: new RegExp(/[1-9]|[1-9][0-9]/),
+      birth_day: new RegExp(/[1-9]|[1-9][0-9]/)
+    }
+    var false_numbers = 0;
+    console
+
+    for (var key in check) {
+      var checked_id = '#check_' + key;
+      var alert_id = '#alert_' + key;
+      $(alert_id).css('display', 'none');
+      if (check[key].test($(checked_id).val()) == false) {
+        false_numbers += 1;
+        $(alert_id).css('display', 'block');
+      }
+    }
+
+    $('#alert_password_confirmation_same').css('display', 'none');
+    if ($('#check_password_confirmation').val() != $('#check_password').val()) {
+      $('#alert_password_confirmation_same').css('display', 'block');
+      false_numbers += 1;
+    }
+
+    if (false_numbers == 0) {
+      // 会員情報登録の内容を非表示
+      $('#member-information').css('display', 'none');
+      // プログレスバーの色を変更
+      $('#through .progress-status_bar').css('background', '#ea352d');
+      $('#active').css('color', '#ea352d');
+      $('#active .progress-status').css('background', '#ea352d');
+      // 電話番号確認画面の表示
+      $('#registration-title').text("電話番号の確認");
+      $('#confirm-phone-number').css('display', 'block');
+    }
     $(window).scrollTop(0);
   });
 

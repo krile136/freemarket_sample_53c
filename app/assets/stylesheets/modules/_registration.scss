@@ -3,6 +3,10 @@
   &--bold{
     font-weight: bold;
   }
+  &--alert{
+    margin-top: 8px;
+    color: $mercari-red;
+  }
   &__header{
     display: table;
     height: 128px;
@@ -314,24 +318,41 @@
   }
 }
 
-.pulldown_list{
-  background-color: $background-white;
-  float: left;
-  position: relative;
-  margin-right: 10px;
-}
-.pulldown_box{
-  height: 48px;
-  width: 76px;
-  margin-top: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 3px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-rtl-ordering: logical;
-}
-.pulldown_arrow{
-
+#alert{
+  &_nickname{
+    display: none;
+  }
+  &_mail_address{
+    display: none;
+  }
+  &_password{
+    display: none;
+  }
+  &_password_confirmation{
+    display: none;
+    &_same{
+      display: none;
+    }
+  }
+  &_last_name{
+    display: none;
+  }
+  &_first_name{
+    display: none;
+  }
+  &_last_name_kana{
+    display: none;
+  }
+  &_first_name_kana{
+    display: none;
+  }
+  &_birth_year{
+    display: none;
+  }
+  &_birth_month{
+    display: none;
+  }
+  &_birth_day{
+    display: none;
+  }
 }
