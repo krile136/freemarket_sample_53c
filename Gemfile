@@ -89,6 +89,9 @@ gem "font-awesome-rails"
 gem 'fog-aws'
 gem 'active_hash'
 
+gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
