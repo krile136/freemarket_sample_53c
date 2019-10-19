@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_28_045846) do
+ActiveRecord::Schema.define(version: 2019_10_19_040947) do
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "credit_number", null: false
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 2019_09_28_045846) do
     t.string "icon"
     t.boolean "active"
     t.integer "receivable"
+    t.string "uid"
+    t.string "provider"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
