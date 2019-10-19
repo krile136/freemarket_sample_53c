@@ -30,11 +30,11 @@ describe Item do
       expect(item.errors[:name][0]).to include("is too long")
     end
 
-    # name40文字以下であれば登録できること
-    it "is valid with a name that has less than 40 characters " do
-      item = build(:item, name: "1234567890123456789012345678901234567890")
-      expect(item).to be_valid
-    end
+    # # name40文字以下であれば登録できること
+    # it "is valid with a name that has less than 40 characters " do
+    #   item = build(:item, name: "1234567890123456789012345678901234567890")
+    #   expect(item).to be_valid
+    # end
     
     #  condition_idが空の時登録できないこと
     it "is invalid without a condition_id" do

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
-  resources :items, only: [:new, :index, :show, :create] do 
+  resources :items, only: [:new, :index, :show] do
     collection do
       get 'get_category_children' 
       get 'get_category_grandchildren'

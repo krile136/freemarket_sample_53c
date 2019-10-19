@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       flash[:notice] = "出品が完了しました"
       redirect_to root_path
     else
-      flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
+      flash[:alert] = "出品に失敗しました。必須項目を確認してください。"
       redirect_to user_items_path
     end
   end
