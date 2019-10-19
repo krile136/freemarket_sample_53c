@@ -6,7 +6,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :delivery_address
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
 
   validates :nickname, presence: true
   # # 名前には、全角ひらがな、漢字のバリデーションをかける
