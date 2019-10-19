@@ -5,12 +5,6 @@ $(document).on('turbolinks:load', function() {
       {id: 7, name: 'ゆうパック'}, {id: 8, name: 'クリックポスト'}, {id: 9, name: 'ゆうパケット'}
     ]
 
-    // 配送方法ボックスのオプションを作成
-    function appendOption(method){
-      var html = `<option value="${method.id}">${method.name}</option>`;
-      return html;
-    }
-
   // 配送料の負担を選択で配送方法を表示させる
     $('#paying-side-selection').change(function () {
       $('#delivery-method-box').removeClass('hide');
@@ -19,7 +13,6 @@ $(document).on('turbolinks:load', function() {
         text: '---'
       }).appendTo('#delivery-method-selection');
       var methods_id = $('#paying-side-selection').val();
-      console.log(methods_id)
       if(methods_id == 0){
           $('#delivery-method-box').addClass('hide');
       }else if(methods_id == 1){
