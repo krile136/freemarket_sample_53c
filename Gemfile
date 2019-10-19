@@ -91,6 +91,8 @@ gem 'active_hash'
 
 gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
+gem 'dotenv-rails'
+
 
 group :production do
   gem 'unicorn', '5.4.1'

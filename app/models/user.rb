@@ -22,4 +22,22 @@ class User < ApplicationRecord
   validates :birth_day, presence: true, format: {with: /\A[1-9]|[1-9][0-9]\z/}
   # 電話番号には全て半角数値のバリデーションをかける
   validates :phone, presence: true, format: {with: /\A[0-9]+\z/}
+
+   def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        name:  auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        image:  auth.info.image
+      )
+    end
+    
+    user
+  end
+
 end
