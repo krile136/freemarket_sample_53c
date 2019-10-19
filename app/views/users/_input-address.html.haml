@@ -27,9 +27,10 @@
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
         %p
-          = i.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-full"}
-          %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-full
+          = i.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'registration__main--content--inner--pulldown_list registration__main--content--inner--pulldown_list--box-full'}
+          %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--full
             = fa_icon 'chevron-down'
+        %div.clearfix
         .registration__main--content--spacer
         .registration--bold
           市区町村

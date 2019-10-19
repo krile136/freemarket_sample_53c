@@ -27,15 +27,20 @@
           有効期限
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        %p
-          = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long"}
-          %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-left
-            = fa_icon 'chevron-down'
-          月
-          = j.select :limit_year, ["--"], {},{class: "registration__main--content--inner--pulldown registration__main--content--inner--pulldown-long", id:"select_year_limit"}
-          %label.registration__main--content--inner--arrow.registration__main--content--inner--arrow-long-right
-            = fa_icon 'chevron-down'
-          年
+        %ul
+          %li.registration__main--content--inner--pulldown_list
+            = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {},{class: "registration__main--content--inner--pulldown_list--box-one-third"}
+            %label.registration__main--content--inner--pulldown_list--text
+              月
+            %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
+              = fa_icon 'chevron-down'
+          %li.registration__main--content--inner--pulldown_list
+            = j.select :limit_year, ["--"], {},{class: "registration__main--content--inner--pulldown_list--box-one-third", id:"select_year_limit"}
+            %label.registration__main--content--inner--pulldown_list--text
+              年
+            %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
+              = fa_icon 'chevron-down'
+        %div.clearfix
         .registration__main--content--spacer
         .registration--bold
           セキュリティコード

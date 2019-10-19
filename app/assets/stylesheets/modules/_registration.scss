@@ -135,29 +135,44 @@
         &--input{
           @include registration_input_form();
           margin-top: 8px;
+          margin-right: 10px;
           &-full{
             width: 100%;
           }
-          &-left{
-            display: inline-block;
-            width: calc(50% - 8px);
-            margin-right: 6px;
-          }
-          &-right{
-            display: inline-block;
-            width: calc(50% - 8px);
+          &-half{
+            width: calc(50% - 10px);
+            float: left;
           }
         }
-        &--pulldown{
-          background-color: $background-white;
-          height: 48px;
-          margin-top: 8px;
-          padding-left: 10px;
-          padding-right: 10px;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          -webkit-rtl-ordering: logical;
+        &--pulldown_list{
+            background-color: $background-white;
+            float: left;
+            position: relative;
+            margin-right: 30px;
+          &--box-one-third{
+            @include identification_pulldown_input();
+            width: 76px;
+          }
+          &--box-full{
+            @include identification_pulldown_input();
+            width: 100%;
+          }
+          &--arrow{
+            pointer-events: none;
+            top: 23px;
+            position: absolute;
+            &--one-third{
+              left: 55px;
+            }
+            &--full{
+              left: 320px;
+            }
+          }
+          &--text{
+            top: 23px;
+            left: 80px;
+            position: absolute;
+          }
           &-one-third{
             width: 76px;
           }
@@ -297,4 +312,26 @@
   .progress-status_bar{
     background: $mercari-red;
   }
+}
+
+.pulldown_list{
+  background-color: $background-white;
+  float: left;
+  position: relative;
+  margin-right: 10px;
+}
+.pulldown_box{
+  height: 48px;
+  width: 76px;
+  margin-top: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-rtl-ordering: logical;
+}
+.pulldown_arrow{
+
 }
