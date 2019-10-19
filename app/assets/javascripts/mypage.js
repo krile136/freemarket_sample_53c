@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function () {
       }
       // クリックしたタブをアクティブにする
       clickedTab.removeClass('mypage-content__main__tablist__header__tab-inactive');
-      clickedTab.addClass('mypage-content__main__tablist__header__tab-active');;
+      clickedTab.addClass('mypage-content__main__tablist__header__tab-active');
       // クリックしたタブの隣のタブを非アクティブにする
       pairTab.removeClass('mypage-content__main__tablist__header__tab-active');
       pairTab.addClass('mypage-content__main__tablist__header__tab-inactive');

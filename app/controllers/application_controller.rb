@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     root_path
   end
+
+  def get_category_parents
+    @category_parents = Category.get_parents
+  end
 end
