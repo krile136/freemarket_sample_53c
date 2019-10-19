@@ -13,6 +13,10 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer   :prefecture_id, null: false, foreign_key: true
       t.integer   :seller_id, null: false, index: true, foreign_key: true
       t.integer   :buyer_id, index: true, foreign_key: true
+      t.integer   :postage_burden_id, null: false, foreign_key: true
+      t.integer   :parent_id, null: false, index: true
+      t.integer   :child_id, null: false, index: true
+      t.string    :brand
       t.timestamps
     end
   end
