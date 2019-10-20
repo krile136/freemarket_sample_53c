@@ -71,11 +71,13 @@ $(document).on('turbolinks:load', function () {
     $("<option>", {
       value: creditcard_limit_year[i].var,
       text: creditcard_limit_year[i].txt
-    }).appendTo('#check_year_limit');
+    }).appendTo('#check_limit_year');
   }
 
   // 会員情報の「次へ進む」をクリックした時
   $('#user-info-registration').on("click", function () {
+    // 各入力フィールドの名前のバリデーションチェック
+    var false_numbers = 0;
     var check = {
       nickname: new RegExp(/./),
       mail_address: new RegExp(/^\S+@\S+\.\S+$/),
@@ -89,9 +91,6 @@ $(document).on('turbolinks:load', function () {
       birth_month: new RegExp(/[1-9]|[1-9][0-9]/),
       birth_day: new RegExp(/[1-9]|[1-9][0-9]/)
     }
-    var false_numbers = 0;
-    console
-
     for (var key in check) {
       var checked_id = '#check_' + key;
       var alert_id = '#alert_' + key;
@@ -102,12 +101,15 @@ $(document).on('turbolinks:load', function () {
       }
     }
 
+    // パスワードの一致のバリデーションチェック
     $('#alert_password_confirmation_same').css('display', 'none');
     if ($('#check_password_confirmation').val() != $('#check_password').val()) {
       $('#alert_password_confirmation_same').css('display', 'block');
       false_numbers += 1;
     }
 
+    // 一つもバリデーションエラーがない場合、次へ進む
+    false_numbers = 0;
     if (false_numbers == 0) {
       // 会員情報登録の内容を非表示
       $('#member-information').css('display', 'none');
@@ -122,10 +124,27 @@ $(document).on('turbolinks:load', function () {
     $(window).scrollTop(0);
   });
 
+  // 携帯電話番号の確認で、SMSを送信するを押した時に実行
   $('#user-phone-registration').on("click", function () {
-    $('#confirm-phone-number').css('display', 'none');
-    $('#registration-title').text("電話番号認証");
-    $('#phone-number-authentication').css('display', 'block');
+    var false_numbers = 0;
+    var check = {
+      phone: new RegExp(/[0-9]/),
+    }
+    for (var key in check) {
+      var checked_id = '#check_' + key;
+      var alert_id = '#alert_' + key;
+      $(alert_id).css('display', 'none');
+      if (check[key].test($(checked_id).val()) == false) {
+        false_numbers += 1;
+        $(alert_id).css('display', 'block');
+      }
+    }
+    false_numbers = 0;
+    if (false_numbers == 0) {
+      $('#confirm-phone-number').css('display', 'none');
+      $('#registration-title').text("電話番号認証");
+      $('#phone-number-authentication').css('display', 'block');
+    }
     $(window).scrollTop(0);
   });
 
@@ -140,12 +159,69 @@ $(document).on('turbolinks:load', function () {
   });
 
   $('#user-address-input').on("click", function () {
-    $('#input-address').css('display', 'none');
-    $('#registration-title').text("支払い方法");
-    $('#address .progress-status_bar').css('background', '#ea352d');
-    $('#payment').css('color', '#ea352d');
-    $('#payment .progress-status').css('background', '#ea352d');
-    $('#input-payment').css('display', 'block');
+    var false_numbers = 0;
+    var check = {
+      delivery_last_name: new RegExp(/^[一-龥ぁ-ん]/),
+      delivery_first_name: new RegExp(/^[一-龥ぁ-ん]/),
+      delivery_last_name_kana: new RegExp(/[\u30a0-\u30ff]/),
+      delivery_first_name_kana: new RegExp(/[\u30a0-\u30ff]/),
+      delivery_postal_code: new RegExp(/\d{3}[-]\d{4}/),
+      prefecture: new RegExp(/[1-9]|[1-9][0-9]/),
+      delivery_city: new RegExp(/./),
+      delivery_address: new RegExp(/./),
+    }
+    console.log($('#check_prefecture').val());
+    console.log(check.prefecture.test($('#check_prefecture').val()));
+    for (var key in check) {
+      var checked_id = '#check_' + key;
+      var alert_id = '#alert_' + key;
+      $(alert_id).css('display', 'none');
+      if (check[key].test($(checked_id).val()) == false) {
+        false_numbers += 1;
+        $(alert_id).css('display', 'block');
+      }
+    }
+
+    false_numbers = 0;
+    if (false_numbers == 0) {
+      $('#input-address').css('display', 'none');
+      $('#registration-title').text("支払い方法");
+      $('#address .progress-status_bar').css('background', '#ea352d');
+      $('#payment').css('color', '#ea352d');
+      $('#payment .progress-status').css('background', '#ea352d');
+      $('#input-payment').css('display', 'block');
+    }
     $(window).scrollTop(0);
+  });
+
+  var prevent_submit = true;
+  // submitのボタン押された時、実行
+  $('input[type="submit"]').click('submit', function (e) {
+    if (prevent_submit) {
+      // submitの動作を止める
+      e.preventDefault();
+      // 各フォームをチェックする
+      var false_numbers = 0;
+      var check = {
+        credit_number: new RegExp(/(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6011[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|3[47][0-9]{13})/),
+        limit_month: new RegExp(/[1-9]|[1-9][0-9]/),
+        limit_year: new RegExp(/[1-9]|[1-9][0-9]/),
+        security_number: new RegExp(/[0-9]{3,4}/)
+      }
+      for (var key in check) {
+        var checked_id = '#check_' + key;
+        var alert_id = '#alert_' + key;
+        $(alert_id).css('display', 'none');
+        if (check[key].test($(checked_id).val()) == false) {
+          false_numbers += 1;
+          $(alert_id).css('display', 'block');
+        }
+      }
+      // 一つもバリデーションエラーがない場合、prevnet_submitをfalse（上の処理が実行されなくなる）、submitを押したことにする
+      if (false_numbers == 0) {
+        prevent_submit = false;
+        $(this).trigger('click');
+      };
+    };
   });
 });

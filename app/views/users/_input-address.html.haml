@@ -6,49 +6,65 @@
           お名前
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = i.text_field :delivery_last_name, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
-        = i.text_field :delivery_first_name, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_last_name, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_last_name'
+        = i.text_field :delivery_first_name, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_first_name'
+        .registration--alert#alert_delivery_last_name
+          姓を入力してください
+        .registration--alert#alert_delivery_first_name
+          名を入力してください
         .registration__main--content--spacer
         .registration--bold
           お名前カナ
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = i.text_field :delivery_last_name_kana, placeholder: "例）ヤマダ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
-        = i.text_field :delivery_first_name_kana, placeholder: "例）アヤ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_last_name_kana, placeholder: "例）ヤマダ", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_last_name_kana'
+        = i.text_field :delivery_first_name_kana, placeholder: "例）アヤ", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_first_name_kana'
+        .registration--alert#alert_delivery_last_name_kana
+          姓（カナ）を入力してください
+        .registration--alert#alert_delivery_first_name_kana
+          名（カナ）を入力してください
         .registration__main--content--spacer
         .registration--bold
           郵便番号
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = i.text_field :delivery_postal_code, placeholder: "例）123-4567", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_postal_code, placeholder: "例）123-4567", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_postal_code'
+        .registration--alert#alert_delivery_postal_code
+          郵便番号を正しく入力してください
         .registration__main--content--spacer
         .registration--bold
           都道府県
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
         %p
-          = i.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'registration__main--content--inner--pulldown_list registration__main--content--inner--pulldown_list--box-full'}
+          = i.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'registration__main--content--inner--pulldown_list registration__main--content--inner--pulldown_list--box-full', id: 'check_prefecture'}
           %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--full
             = fa_icon 'chevron-down'
         %div.clearfix
+        .registration--alert#alert_prefecture
+          都道府県を選択してください
         .registration__main--content--spacer
         .registration--bold
           市区町村
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = i.text_field :delivery_city, placeholder: "例）横浜市緑区", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_city, placeholder: "例）横浜市緑区", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_city'
+        .registration--alert#alert_delivery_city
+          市区町村を入力してください
         .registration__main--content--spacer
         .registration--bold
           番地
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = i.text_field :delivery_address, placeholder: "例）青山1-1-1", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_address, placeholder: "例）青山1-1-1", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_delivery_address'
+        .registration--alert#alert_delivery_address
+          番地を入力してください
         .registration__main--content--spacer
         .registration--bold
           建物名
           .registration__main--content--inner--msg.registration__main--content--inner--msg-gray
             任意
-        = i.text_field :delivery_building, placeholder: "例）123-4567", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = i.text_field :delivery_building, placeholder: "例）柳ビル103", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
         .registration__main--content--spacer
         .registration--bold
           電話番号

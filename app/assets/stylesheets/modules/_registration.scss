@@ -355,4 +355,45 @@
   &_birth_day{
     display: none;
   }
+  &_phone{
+    display: none;
+  }
+  &_delivery{
+    &_last_name{
+      display: none;
+    }
+    &_first_name{
+      display: none;
+    }
+    &_last_name_kana{
+      display: none;
+    }
+    &_first_name_kana{
+      display: none;
+    }
+    &_postal_code{
+      display: none;
+    }
+    &_city{
+      display: none;
+    }
+    &_address{
+      display: none;
+    }
+  }
+  &_prefecture{
+    display: none;
+  }
+  &_credit_number{
+    display: none;
+  }
+  &_limit_month{
+    display: none;
+  }
+  &_limit_year{
+    display: none;
+  }
+  &_security_number{
+    display: none;
+  }
 }

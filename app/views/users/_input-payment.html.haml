@@ -6,7 +6,7 @@
           カード番号
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = j.text_field :credit_number, placeholder: "半角数字のみ", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = j.text_field :credit_number, placeholder: "半角数字のみ", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: "check_credit_number"
         %ul.registration__main--content--inner--credit
           %li
             = image_tag "visa.svg", size: "49x20"
@@ -22,6 +22,9 @@
             = image_tag "dinersclub.svg", size: "32x20"
           %li
             = image_tag "discover.svg", size: "32x20"
+        %div.clearfix
+        .registration--alert#alert_credit_number
+          カード番号を正しく入力してください
         .registration__main--content--spacer.registration__main--content--clear
         .registration--bold
           有効期限
@@ -29,27 +32,33 @@
             必須
         %ul
           %li.registration__main--content--inner--pulldown_list
-            = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {},{class: "registration__main--content--inner--pulldown_list--box-one-third"}
+            = j.select :limit_month, ["--",1,2,3,4,5,6,7,8,9,10,11,12], {},{class: "registration__main--content--inner--pulldown_list--box-one-third", id:'check_limit_month'}
             %label.registration__main--content--inner--pulldown_list--text
               月
             %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
               = fa_icon 'chevron-down'
           %li.registration__main--content--inner--pulldown_list
-            = j.select :limit_year, ["--"], {},{class: "registration__main--content--inner--pulldown_list--box-one-third", id:"select_year_limit"}
+            = j.select :limit_year, ["--"], {},{class: "registration__main--content--inner--pulldown_list--box-one-third", id:"check_year_limit", id: 'check_limit_year'}
             %label.registration__main--content--inner--pulldown_list--text
               年
             %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
               = fa_icon 'chevron-down'
         %div.clearfix
+        .registration--alert#alert_limit_month
+          有効期限（月）を正しく入力してください
+        .registration--alert#alert_limit_year
+          有効期限（年）を正しく入力してください
         .registration__main--content--spacer
         .registration--bold
           セキュリティコード
           .registration__main--content--inner--msg.registration__main--content--inner--msg-red
             必須
-        = j.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番号", class: "registration__main--content--inner--input registration__main--content--inner--input-full"
+        = j.text_field :security_number, placeholder: "カード背面4桁もしくは3桁の番号", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_security_number'
         = link_to "#", class: "registration__main--content--inner--about-registration" do
           = fa_icon 'question-circle'
           カード裏面の番号とは？
-        %p
+        %div.clearfix
+        .registration--alert#alert_security_number
+          セキュリティコードを正しく入力してください
         .registration__main--content--spacer-double
-        = f.submit "次へ進む", class: 'registration__main--content--inner--next-btn registration__main--content--inner--next-btn--text'
+        = f.submit "次へ進む", class: 'registration__main--content--inner--next-btn registration__main--content--inner--next-btn--text', id: "new_user"
