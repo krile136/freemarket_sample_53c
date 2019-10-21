@@ -194,7 +194,7 @@ $(document).on('turbolinks:load', function () {
 
   var prevent_submit = true;
   // submitのボタン押された時、実行
-  $('#').click('submit', function (e) {
+  $('#credit_card_registration').click('submit', function (e) {
     if (prevent_submit) {
       // submitの動作を止める
       e.preventDefault();

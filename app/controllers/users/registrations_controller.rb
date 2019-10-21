@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(registration_params)
     @user.build_delivery_address
     @user.creditcards.build
-    @user.@user.sns_credentials.build
+    @user.sns_credentials.build
     @user.save
   end
 

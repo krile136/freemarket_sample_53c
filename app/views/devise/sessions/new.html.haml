@@ -24,7 +24,7 @@
         = form_with model: @user, url: user_session_path, method: :post do |f|
           = f.text_field :email, placeholder: "メールアドレス", class: "login__main--form--box--field"
           .login__main--form--spacer
-          = f.text_field :password, placeholder: "パスワード", class: "login__main--form--box--field"
+          = f.password_field :password, placeholder: "パスワード", class: "login__main--form--box--field"
           .login__main--form--spacer
           = f.submit "ログイン", class: "login__main--form--box--submit"
           .login__main--form--spacer
