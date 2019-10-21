@@ -1,9 +1,5 @@
 .registration
-  .registration__header
-    .registration__header--logo
-      = link_to "#" do
-        = image_tag "logo.svg", size: "185x49", alt: "mercari", class: "logo-opacity"
-    = render 'shared/progress_status_bar'
+  = render 'shared/signup_header'
   .registration__main
     .registration__main--title#registration-title
       会員情報入力
