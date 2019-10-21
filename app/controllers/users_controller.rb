@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_action_name
+  before_action :get_category_parents
 
   def new
 

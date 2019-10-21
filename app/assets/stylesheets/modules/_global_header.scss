@@ -13,6 +13,7 @@
     width: 1020px;
     padding-top: 8px;
     margin: auto;
+    position: relative;
     &__top {
       display: flex;
       align-items: center;
@@ -62,6 +63,9 @@
             line-height: 36px;
             font-weight: 600;
             display: block;
+            &:hover {
+              color: $link-skyblue;
+            }
             &__icon {
               height: 16px;
               width: 20px;
@@ -77,6 +81,9 @@
             line-height: 36px;
             font-weight: 600;
             display: block;
+            &:hover {
+              color: $link-skyblue;
+            }
             &__icon {
               height: 16px;
               width: 20px;
@@ -173,5 +180,75 @@
         }
       }
     }
+    &__category-list {
+      position: absolute;
+      z-index: 1;
+      font-size: 14px;
+      line-height: 1;
+      &__parent {
+        float: left;
+        background-color: $background-white;
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 2px;
+        display: none;
+        &__piece {
+          &__link {
+            display: block;
+            color: $text-black;
+            line-height: 44px;
+            padding-left: 16px;
+            width: 224px;
+            &:hover {
+              color: $text-white;
+              background-color: $mercari-red;
+            }
+          }
+        }
+      }
+      &__child {
+        float: left;
+        background-color: $background-white;
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 2px;
+        height: 616px;
+        display: none;
+        &__piece {
+          &__link {
+            display: block;
+            color: $text-black;
+            padding: 8px 0 8px 16px;
+            width: 224px;
+            &:hover {
+              background-color: $background-gray;
+            }
+          }
+        }
+      }
+      &__grandchild {
+        float: left;
+        background-color: $background-white;
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 2px;
+        height: 616px;
+        display: none;
+        &__piece {
+          &__link {
+            display: block;
+            color: $text-black;
+            padding: 8px 0 8px 16px;
+            width: 320px;
+            &:hover {
+              background-color: $background-gray;
+            }
+          }
+        }
+      }
+    }
   }
+}
+
+.selected-parent {
+  color: $text-white;
+  background-color: $mercari-red;
+}
+
+.selected-child {
+  background-color: $background-gray;
 }

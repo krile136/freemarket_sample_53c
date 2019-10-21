@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+
+  def get_category_parents
+    @category_parents = Category.get_parents
+  end
+
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -12,5 +17,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     root_path
+  end
+
+  def get_category_parents
+    @category_parents = Category.get_parents
   end
 end
