@@ -2,19 +2,19 @@
   .registration__main--content
     .registration__main--content--inner
       = f.fields_for :sns_credentials, SnsCredential.new do |k|
-        = k.text_field :uid, value: @auth.uid
-        = k.text_field :provider, value: @auth.provider
+        = k.hidden_field :uid, value: @auth.uid
+        = k.hidden_field :provider, value: @auth.provider
       .registration--bold
         ニックネーム
         .registration__main--content--inner--msg.registration__main--content--inner--msg-red
           必須
-      = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: "check_nickname"
+      = f.text_field :nickname, class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: "check_nickname"
       .registration--alert#alert_nickname
         ニックネームを入力してください
       .registration__main--content--spacer
-      = f.hidden_field :email, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_mail_address'
-      = f.hidden_field :password, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_password'
-      = f.hidden_field :password_confirmation, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_password_confirmation', value: @user.password
+      = f.hidden_field :email, id: 'check_mail_address'
+      = f.hidden_field :password
+      = f.hidden_field :password_confirmation, value: @user.password
       .registration__main--content--spacer
       %h3.registration--bold
         本人確認

@@ -98,6 +98,7 @@ $(document).on('turbolinks:load', function () {
       if (check[key].test($(checked_id).val()) == false) {
         false_numbers += 1;
         $(alert_id).css('display', 'block');
+        console.log(checked_id);
       }
     }
 
