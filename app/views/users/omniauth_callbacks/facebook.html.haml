@@ -1,0 +1,16 @@
+.registration
+  .registration__header
+    .registration__header--logo
+      = link_to "#" do
+        = image_tag "logo.svg", size: "185x49", alt: "mercari", class: "logo-opacity"
+    = render 'shared/progress_status_bar'
+  .registration__main
+    .registration__main--title#registration-title
+      会員情報入力
+    = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user',local: true do |f|
+      = render partial: 'users/facebook_registration-member-info', locals: { f: f }
+      = render partial: 'users/confirm-phone-number', locals: {f: f}
+      = render partial: 'users/phone-number-authentication', locals: {f: f}
+      = render partial: 'users/input-address', locals: {f: f}
+      = render partial: 'users/input-payment', locals: {f: f}
+  = render 'shared/logo-footer'

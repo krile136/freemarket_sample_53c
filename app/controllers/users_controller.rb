@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_action_name
 
   def new
+
   end
 
   def show

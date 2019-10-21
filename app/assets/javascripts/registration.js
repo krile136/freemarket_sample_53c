@@ -109,7 +109,6 @@ $(document).on('turbolinks:load', function () {
     }
 
     // 一つもバリデーションエラーがない場合、次へ進む
-    false_numbers = 0;
     if (false_numbers == 0) {
       // 会員情報登録の内容を非表示
       $('#member-information').css('display', 'none');
@@ -139,7 +138,7 @@ $(document).on('turbolinks:load', function () {
         $(alert_id).css('display', 'block');
       }
     }
-    false_numbers = 0;
+
     if (false_numbers == 0) {
       $('#confirm-phone-number').css('display', 'none');
       $('#registration-title').text("電話番号認証");
@@ -170,8 +169,7 @@ $(document).on('turbolinks:load', function () {
       delivery_city: new RegExp(/./),
       delivery_address: new RegExp(/./),
     }
-    console.log($('#check_prefecture').val());
-    console.log(check.prefecture.test($('#check_prefecture').val()));
+
     for (var key in check) {
       var checked_id = '#check_' + key;
       var alert_id = '#alert_' + key;
@@ -182,7 +180,6 @@ $(document).on('turbolinks:load', function () {
       }
     }
 
-    false_numbers = 0;
     if (false_numbers == 0) {
       $('#input-address').css('display', 'none');
       $('#registration-title').text("支払い方法");
@@ -196,7 +193,7 @@ $(document).on('turbolinks:load', function () {
 
   var prevent_submit = true;
   // submitのボタン押された時、実行
-  $('#credit_card_registration').click('submit', function (e) {
+  $('#').click('submit', function (e) {
     if (prevent_submit) {
       // submitの動作を止める
       e.preventDefault();

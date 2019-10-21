@@ -15,10 +15,7 @@ def facebook
       sign_in_and_redirect @user, event: :authentication #after_sign_in_path_forと同じパス
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
-      # session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
       @auth = request.env["omniauth.auth"]
-      binding.pry
-      # ここで登録用ビューへ遷移させて、そこで入力→別の登録コントローラーで登録させる
     end
   end
 

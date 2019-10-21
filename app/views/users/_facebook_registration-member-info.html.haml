@@ -1,0 +1,96 @@
+#member-information
+  .registration__main--content
+    .registration__main--content--inner
+      = f.fields_for :sns_credentials, SnsCredential.new do |k|
+        = k.text_field :uid, value: @auth.uid
+        = k.text_field :provider, value: @auth.provider
+      .registration--bold
+        ニックネーム
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      = f.text_field :nickname, placeholder: "例）メルカリ太郎", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: "check_nickname"
+      .registration--alert#alert_nickname
+        ニックネームを入力してください
+      .registration__main--content--spacer
+      = f.hidden_field :email, placeholder: "PC・携帯どちらでも可", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_mail_address'
+      = f.hidden_field :password, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_password'
+      = f.hidden_field :password_confirmation, placeholder: "７文字以上", class: "registration__main--content--inner--input registration__main--content--inner--input-full", id: 'check_password_confirmation', value: @user.password
+      .registration__main--content--spacer
+      %h3.registration--bold
+        本人確認
+      %p
+        安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客様に公開されることはありません。
+      .registration__main--content--spacer
+      .registration--bold
+        お名前（全角）
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      %p
+        = f.text_field :last_name, placeholder: "例）山田", class: "registration__main--content--inner--input registration__main--content--inner--input-half", id: 'check_last_name'
+        = f.text_field :first_name, placeholder: "例）彩", class: "registration__main--content--inner--input registration__main--content--inner--input-half", id: 'check_first_name'
+      %div.clearfix
+      .registration--alert#alert_last_name
+        姓を入力してください
+      .registration--alert#alert_first_name
+        名を入力してください
+      .registration__main--content--spacer
+      .registration--bold
+        お名前（全角カナ）
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      %p
+        = f.text_field :last_name_kana, placeholder: "例）ヤマダ", class: "registration__main--content--inner--input registration__main--content--inner--input-half", id: 'check_first_name_kana'
+        = f.text_field :first_name_kana, placeholder: "例）アヤ", class: "registration__main--content--inner--input registration__main--content--inner--input-half", id: 'check_last_name_kana'
+      %div.clearfix
+      .registration--alert#alert_last_name_kana
+        姓（カタカナ）を入力してください
+      .registration--alert#alert_first_name_kana
+        名（カタカナ）を入力してください
+      .registration__main--content--spacer
+      .registration--bold
+        生年月日
+        .registration__main--content--inner--msg.registration__main--content--inner--msg-red
+          必須
+      %ul
+        %li.registration__main--content--inner--pulldown_list
+          = f.select :birth_year,["--"], {},{class: 'registration__main--content--inner--pulldown_list--box-one-third', id:"check_birth_year"}
+          %label.registration__main--content--inner--pulldown_list--text
+            年
+          %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
+            = fa_icon 'chevron-down'
+        %li.registration__main--content--inner--pulldown_list
+          = f.select :birth_month, ["--"], {},{class: 'registration__main--content--inner--pulldown_list--box-one-third', id:"check_birth_month"}
+          %label.registration__main--content--inner--pulldown_list--text
+            月
+          %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
+            = fa_icon 'chevron-down'
+        %li.registration__main--content--inner--pulldown_list
+          = f.select :birth_day, ["--"], {},{class: 'registration__main--content--inner--pulldown_list--box-one-third', id:"check_birth_day"}
+          %label.registration__main--content--inner--pulldown_list--text
+            日
+          %label.registration__main--content--inner--pulldown_list--arrow.registration__main--content--inner--pulldown_list--arrow--one-third
+            = fa_icon 'chevron-down'
+      %div.clearfix
+      .registration--alert#alert_birth_year
+        誕生年を入力してください
+      .registration--alert#alert_birth_month
+        誕生月を入力してください
+      .registration--alert#alert_birth_day
+        誕生日を入力してください
+      %p.registration__main--content--notice-text
+        ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
+      .registration__main--content--spacer-double
+      %p.registration__main--content--agree-text
+        「次へ進む」ボタンを押すことにより
+        = link_to "#", class: "registration__main--content--inner--terms" do
+          「利用規約」
+        に同意したものとみなします
+      .registration__main--content--spacer
+      %button#user-info-registration.registration__main--content--inner--next-btn{type: "button"}
+        .registration__main--content--inner--next-btn--text
+          次へ進む
+      .registration__main--content--spacer
+      = link_to "#", class: "registration__main--content--inner--about-registration" do
+        本人情報の登録について
+        = fa_icon 'chevron-right'
+      .registration__main--content--spacer

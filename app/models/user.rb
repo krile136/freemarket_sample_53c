@@ -6,6 +6,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :delivery_address
 
   has_many :sns_credentials, dependent: :destroy
+  accepts_nested_attributes_for :sns_credentials
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

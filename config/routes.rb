@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     }
   root 'items#index'
 
+  resources :omniauth_callbacks do
+    member do
+
+    end
+  end
+
   resources :users, only: [:new, :show, :edit, :update] do
     resources :creditcards, only: [:create]
 

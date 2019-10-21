@@ -25,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(registration_params)
     @user.build_delivery_address
     @user.creditcards.build
+    @user.@user.sns_credentials.build
     @user.save
   end
 
@@ -69,6 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(:sign_up,
       keys: [:nickname, :phone, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_year, :birth_month, :birth_day,
         delivery_address_attributes: [:delivery_last_name, :delivery_first_name, :delivery_last_name_kana, :delivery_first_name_kana, :delivery_postal_code, :prefecture_id, :delivery_city, :delivery_address, :delivery_building, :delivery_phone],
-        creditcards_attributes: [:credit_number, :limit_month, :limit_year, :security_number]])
+        creditcards_attributes: [:credit_number, :limit_month, :limit_year, :security_number],
+        sns_credentials_attributes: [:uid, :provider]])
   end
 end
