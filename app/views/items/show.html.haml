@@ -1,13 +1,15 @@
 = render 'shared/global_header'
 .main-item
   %section.item-box
-    %h1.item-box__name 商品の名前
+    .item-box__name
+      %h1=@item.name
     .item-box__main
       .item-box__main--photo
         %div
-          = image_tag "http://placehold.jp/300x300.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
+          %img{class: "item-box__main--photo--img", src: "#{@images.first.image_url}"}
+        -# .photo
+        -#   - @images.each do |image|
+        -#     = image_tag @image.image_url
         .photo
           = image_tag "http://placehold.jp/60x60.png"
         .photo
@@ -23,7 +25,8 @@
           %tr
             %th 出品者
             %td
-              =link_to "出品者の名前" ,''
+              = link_to "#" do
+                = @item.seller.nickname 
               .face
                 %div
                   = fa_icon "smile-o", class: "good-icon"
@@ -37,42 +40,50 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "親カテゴリー" ''
-              =link_to ">子カテゴリー" ''
-              =link_to ">孫カテゴリー" ''
+              = link_to "#" do
+                = @category_parent
+              = link_to "#" do
+                = fa_icon "chevron-right"
+                = @category_child
+              =link_to "#" do
+                = fa_icon "chevron-right"
+                = @item.category.name
           %tr
             %th ブランド
             %td
-              =link_to "ブランド名", ''
+              = @item.brand
+          %tr
+            %th 商品サイズ
+            %td= @item.size.name
           %tr
             %th 商品の状態
-            %td やや傷や汚れあり
+            %td= @item.condition.name
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td= @item.postage_burden.name
           %tr
             %th 配送の方法
-            %td ゆうゆうメルカリ便
+            %td= @item.delivery_method.name
           %tr
             %th 配送元地域
             %td
-              =link_to "愛知県" ''
+              = link_to "#",class:"#" do
+                = @item.prefecture.name
           %tr
             %th 発送日の目安
-            %td 4~7日で発送
+            %td= @item.delivery_day.name
     .item-box__price
-      %span.price ￥1,000
+      %span.price 
+        = "¥#{@item.price.to_s}"
       %span.tax (税込)
-      %span.shipping 送料込み
-    =link_to "購入画面に進む", '', class: "item-box__buy"
+      %span.shipping
+        - if @item.postage_burden_id == 1
+          送料込み
+        - else
+          着払い
+    =link_to "購入画面に進む", '#', class: "item-box__buy"
     .item-box__description
-      %p
-        ご覧いただきありがとうございます！
-        %br/
-        出来るだけ丁寧に梱包して発送する予定です。
-        %br/
-        よろしくお願いいたします。
-        %br/
+      = simple_format(@item.description)
     .item-box__button
       .item-box__button-left
         =link_to '' do
@@ -113,7 +124,8 @@
           = fa_icon 'pinterest', class: "fa-pinterest"
   .other-item-box
     %h2
-      = link_to "出品ユーザーのページへ遷移" 
+      = link_to "#{@item.seller.nickname}さんのその他出品"
+  
     .other-item-contents
       = render 'other_item'
 = render 'shared/global_footer'

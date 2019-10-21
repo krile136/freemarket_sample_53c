@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(22)
+    # 商品一覧を実装したら変更する
+    # @item = Item.find(params[:id])
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @images = Image.where(item_id: '22')
+    
+    # @user_items = Item.where(seller_id: @item.seller_id).sample(6)
   end
 
   def new
