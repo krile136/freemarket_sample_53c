@@ -117,9 +117,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_073437) do
     t.string "icon"
     t.boolean "active"
     t.integer "receivable"
-    t.string "uid"
-    t.string "provider"
-    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
