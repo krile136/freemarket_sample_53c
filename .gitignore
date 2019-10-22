@@ -27,4 +27,8 @@
 /config/master.key
 public/uploads/*
 
+# Ignore .env file which include Facebook accont infomation
+/.env
+
+# Ignore .DS_store
 .DS_store

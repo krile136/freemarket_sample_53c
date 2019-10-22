@@ -90,7 +90,10 @@ gem 'ancestry'
 gem 'fog-aws'
 gem 'active_hash'
 
-gem 'ancestry'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+
 
 group :production do
   gem 'unicorn', '5.4.1'

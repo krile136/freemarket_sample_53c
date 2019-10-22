@@ -8,7 +8,7 @@ class DeliveryAddress < ApplicationRecord
   validates :delivery_last_name_kana, presence: true, format: {with: /\A[\u30a0-\u30ff]+\z/}
   validates :delivery_first_name_kana, presence: true, format: {with: /\A[\u30a0-\u30ff]+\z/}
   validates :delivery_postal_code, presence: true, format: {with: /\A\d{3}[-]\d{4}\z/}
-  validates :prefecture_id, presence: true
+  validates :prefecture_id, presence: true, format: {with: /\A[1-9]|[1-9][0-9]\z/}
   validates :delivery_city, presence: true
   validates :delivery_address, presence: true
 end

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :get_category_parents
 
   def new
+
   end
 
   def show

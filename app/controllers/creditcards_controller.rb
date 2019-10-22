@@ -5,7 +5,7 @@ class CreditcardsController < ApplicationController
     if @creditcard.save
       redirect_to show_creditcard_user_path(current_user.id), notice: 'クレジットカードを登録しました'
     else
-      redirect_to new_creditcard_user(current_user.id), alert: '入力情報に間違いがあります'
+      redirect_to new_creditcard_user_path(current_user.id), alert: '入力情報に間違いがあります'
     end
   end
 
