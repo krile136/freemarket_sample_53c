@@ -33,7 +33,7 @@ class User < ApplicationRecord
    def self.find_oauth(auth)
     uid = auth.uid
     provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    snscredential = SnsCredential.find_by(uid: uid, provider: provider)
     if snscredential.present?
       user = User.where(id: snscredential.user_id).first
     else
