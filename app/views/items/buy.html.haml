@@ -1,0 +1,51 @@
+.item-buy-container
+  = render 'shared/logo_header'
+  .confirm-buy
+    %h2.confirm-buy__header 購入内容の確認
+    =form_with url:'/', local: true ,class: "confirm-buy__item" do |f|
+      .confirm-buy__item__content
+        %h3.confirm-buy__item__content__head
+          =image_tag 'http://placehold.jp/e8aee3/ffffff/64x95.png', class: "confirm-buy__item__content__head__img"
+          %p.confirm-buy__item__content__head__name メルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリ
+        %p.confirm-buy__item__content__price
+          =number_to_currency(2350, :unit => '¥', :precision =>0)
+          %span.confirm-buy__item__content__price__fee 送料込み
+          -# FIXME: 配送料の負担が購入者か出品者かで表示を変える
+          -# %span.confirm-buy__item__content__price__fee 着払い
+        .confirm-buy__item__content__point ポイントはありません
+        .confirm-buy__item__content__payment
+          %span.confirm-buy__item__content__payment__title 支払い金額
+          %span.confirm-buy__item__content__payment__amount=number_to_currency(2350, :unit => '¥', :precision =>0)
+      = f.submit "購入する", class: "confirm-buy__item__buy", "data-disable-with": "処理中", name: "commit"
+    .confirm-buy__delivery
+      .confirm-buy__delivery__content
+        %h3.confirm-buy__delivery__content__title 配送先
+        .confirm-buy__delivery__content__info
+          -# FIXME: delivery_adoressテーブルの値を取得する
+          %p.confirm-buy__delivery__content__info__postalcode 〒123-4567
+          %p.confirm-buy__delivery__content__info__address 愛知県名古屋市中区栄3-13-20 栄センタービル3Fあああああああああああああああああああああ
+          %p.confirm-buy__delivery__content__info__name テスト 太郎
+        .confirm-buy__delivery__content__edit
+          =link_to '', class: "confirm-buy__delivery__content__edit__link" do
+            %span.confirm-buy__delivery__content__edit__link__text 変更する
+            %i.fa.fa-angle-right.confirm-buy__delivery__content__edit__link__arrow{"aria-hidden": "true"}
+    .confirm-buy__payment
+      .confirm-buy__payment__content
+        %h3.confirm-buy__payment__content__title 支払い方法
+        .confirm-buy__payment__content__creditcard
+          -# FIXME: creditcardテーブルの値を取得する
+          %p.confirm-buy__payment__content__creditcard__number ************2050
+          %p.confirm-buy__payment__content__creditcard__limit 02/21
+          -# FIXME: 登録されているクレジットカードのブランドによってロゴを変える
+          = image_tag "visa.svg", size: "49x20"
+          -# = image_tag "master-card.svg", size: "34x20"
+          -# = image_tag "saison-card.svg", size: "30x20"
+          -# = image_tag "jcb.svg", size: "32x20"
+          -# = image_tag "american_express.svg", size: "21x20"
+          -# = image_tag "dinersclub.svg", size: "32x20"
+          -# = image_tag "discover.svg", size: "32x20"
+        .confirm-buy__payment__content__edit
+          =link_to '', class: "confirm-buy__payment__content__edit__link" do
+            %span.confirm-buy__payment__content__edit__link__text 変更する
+            %i.fa.fa-angle-right.confirm-buy__payment__content__edit__link__arrow{"aria-hidden": "true"}
+  = render 'shared/logo-footer'

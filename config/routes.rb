@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'get_category_children' 
       get 'get_category_grandchildren'
     end
+    get :buy, on: :member
   end
 
   get 'children_category' => 'categories#set_children'
