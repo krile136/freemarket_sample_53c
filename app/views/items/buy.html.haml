@@ -35,9 +35,8 @@
       .confirm-buy__payment__content
         %h3.confirm-buy__payment__content__title 支払い方法
         .confirm-buy__payment__content__creditcard
-          -# FIXME: creditcardテーブルの値を取得する
-          %p.confirm-buy__payment__content__creditcard__number ************2050
-          %p.confirm-buy__payment__content__creditcard__limit 02/21
+          %p.confirm-buy__payment__content__creditcard__number=@creditcard.masking_number
+          %p.confirm-buy__payment__content__creditcard__limit=@creditcard.limit_year_and_month
           -# FIXME: 登録されているクレジットカードのブランドによってロゴを変える
           = image_tag "visa.svg", size: "49x20"
           -# = image_tag "master-card.svg", size: "34x20"
