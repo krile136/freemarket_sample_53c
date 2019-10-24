@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @image = @item.images.build
     5.times { @item.images.build }
-
+    
   end
   
   def create
