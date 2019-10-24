@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   def buy
     @item = Item.find(params[:id])
+    @delivery_address = current_user.delivery_address.decorate
   end
 
   private

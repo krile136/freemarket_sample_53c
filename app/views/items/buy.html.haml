@@ -24,10 +24,9 @@
       .confirm-buy__delivery__content
         %h3.confirm-buy__delivery__content__title 配送先
         .confirm-buy__delivery__content__info
-          -# FIXME: delivery_adoressテーブルの値を取得する
-          %p.confirm-buy__delivery__content__info__postalcode 〒123-4567
-          %p.confirm-buy__delivery__content__info__address 愛知県名古屋市中区栄3-13-20 栄センタービル3Fあああああああああああああああああああああ
-          %p.confirm-buy__delivery__content__info__name テスト 太郎
+          %p.confirm-buy__delivery__content__info__postalcode=@delivery_address.postalcode_with_mark
+          %p.confirm-buy__delivery__content__info__address=@delivery_address.full_address
+          %p.confirm-buy__delivery__content__info__name=@delivery_address.full_name
         .confirm-buy__delivery__content__edit
           =link_to '', class: "confirm-buy__delivery__content__edit__link" do
             %span.confirm-buy__delivery__content__edit__link__text 変更する
