@@ -6,16 +6,19 @@
       .confirm-buy__item__content
         %h3.confirm-buy__item__content__head
           =image_tag 'http://placehold.jp/e8aee3/ffffff/64x95.png', class: "confirm-buy__item__content__head__img"
-          %p.confirm-buy__item__content__head__name メルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリメルカリ
+          %p.confirm-buy__item__content__head__name=@item.name
         %p.confirm-buy__item__content__price
-          =number_to_currency(2350, :unit => '¥', :precision =>0)
-          %span.confirm-buy__item__content__price__fee 送料込み
-          -# FIXME: 配送料の負担が購入者か出品者かで表示を変える
-          -# %span.confirm-buy__item__content__price__fee 着払い
+          =number_to_currency(@item.price, :unit => '¥', :precision =>0)
+          -if @item.postage_burden_id == 1
+            -# 1：送料込み
+            %span.confirm-buy__item__content__price__fee 送料込み
+          - else
+            -# 2：着払い
+            %span.confirm-buy__item__content__price__fee 着払い
         .confirm-buy__item__content__point ポイントはありません
         .confirm-buy__item__content__payment
           %span.confirm-buy__item__content__payment__title 支払い金額
-          %span.confirm-buy__item__content__payment__amount=number_to_currency(2350, :unit => '¥', :precision =>0)
+          %span.confirm-buy__item__content__payment__amount=number_to_currency(@item.price, :unit => '¥', :precision =>0)
       = f.submit "購入する", class: "confirm-buy__item__buy", "data-disable-with": "処理中", name: "commit"
     .confirm-buy__delivery
       .confirm-buy__delivery__content

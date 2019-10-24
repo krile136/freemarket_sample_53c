@@ -32,6 +32,10 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
+  def buy
+    @item = Item.find(params[:id])
+  end
+
   private
   def item_params
     params.require(:item).permit(
