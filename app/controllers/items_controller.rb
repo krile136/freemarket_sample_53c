@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :get_category_parents
+  before_action :authenticate_user!, only: [:new, :buy]
 
   def index
   end
