@@ -4,20 +4,11 @@
     %h1.item-box__name 商品の名前
     .item-box__main
       .item-box__main--photo
-        %div
+        #item-show-top
           = image_tag @image_path[0]
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
+        - for img_num in 0..(@image_path.length - 1) do
+          .photo#image_list
+            = image_tag @image_path[img_num]
       %table.item-box__main--detail
         %tbody
           %tr

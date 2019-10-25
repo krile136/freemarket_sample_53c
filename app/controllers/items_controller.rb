@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
         @image_path.push(path)
       end
     end
-
   end
 
   def new
