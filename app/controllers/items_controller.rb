@@ -5,22 +5,26 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # binding.pry
-    @item = Item.find_by(seller_id: params[:user_id])
-    @image_path
-    # binding.pry
+    @item = Item.find_by(id: params[:id])
+    # パスを保存する配列を宣言
+    @image_path = []
     case Rails.env
     when "development"
       # 文字列操作をいっぺんにやるとエラーが出るので分割
       # 開発環境ではローカルのパスを生成する
-      @image_path = @item.images[0].image_url[0].file.file
-      @image_path.slice!(/.+(?=uploads)/)
-      @image_path.delete!('["')
-      @image_path.delete!(']"')
-      @image_path = "/" + @image_path
+      # オリジナルパス： @item.images[0].image_url[0].file.file
+      @item.images.each do |img|
+        path = img.image_url[0].file.file
+        path.slice!(/.+(?=uploads)/)
+        path.delete!('["')
+        path.delete!(']"')
+        path = "/" + path
+        @image_path.push(path)
+      end
     when "production"
 
     end
+
   end
 
   def new
@@ -29,7 +33,6 @@ class ItemsController < ApplicationController
   end
   
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path, notice: '出品が完了しました'

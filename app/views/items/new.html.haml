@@ -11,37 +11,15 @@
           ドラッグアンドドロップ
           %br
           またはクリックしてファイルをアップロード
-          -#  %ul.sell__image--select__ul
-            -# - @item.images.each_with_index do |image, i|
-            -#   %label{class: "sell__image--select__ul--text ul--id--#{i}"}
-            -#     = f.fields_for :images, image do |img|
-            -#       = img.file_field :image_url, multiple: true, "data-id": "#{i}"
-            -#       %li
-            -#       .btn-box
-            -#         %a 編集
-            -#         %a.delete-btn 削除
           %ul.sell__image--select__ul
-            = f.fields_for :images do |img, i|
-              %label{class: "sell__image--select__ul--text"}
-                = img.file_field :image_url, multiple: true, "data-id": "#{i}"
-                %li
-                .btn-box
-                  %a 編集
-                  %a.delete-btn 削除
-            -# %label{class: "sell__image--select__ul--text ul--id--1"}
-            -#   = f.fields_for :images, Image.new do |img|
-            -#     = img.file_field :image_url, "data-id": "1"
-            -#     %li
-            -#     .btn-box
-            -#       %a 編集
-            -#       %a.delete-btn 削除
-            -# %label{class: "sell__image--select__ul--text ul--id--2"}
-            -#   = f.fields_for :images, Image.new do |img|
-            -#     = img.file_field :image_url, "data-id": "2"
-            -#     %li
-            -#     .btn-box
-            -#       %a 編集
-            -#       %a.delete-btn 削除
+            - @item.images.each_with_index do |image, i|
+              %label{class: "sell__image--select__ul--text ul--id--#{i}"}
+                = f.fields_for :images, image do |img|
+                  = img.file_field :image_url, multiple: true, "data-id": "#{i}",id: "file-input-id-#{i}"
+                  %li
+                  .btn-box
+                    %a 編集
+                    %a.delete-btn 削除
       .sell__about
         .sell__about__name
           = f.label :name, "商品名"
