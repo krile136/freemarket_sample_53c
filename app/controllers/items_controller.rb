@@ -22,7 +22,14 @@ class ItemsController < ApplicationController
         @image_path.push(path)
       end
     when "production"
-
+      # 本番環境ではAWS S3のパスを生成する
+      # オリジナルパス： @item.images[0].image_url[0].url
+      @item.images.each do |img|
+        path = img.image_url[0].url
+        path.delete!('%5B%22')
+        path.delete!('%22%5D"')
+        @image_path.push(path)
+      end
     end
 
   end
