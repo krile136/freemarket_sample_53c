@@ -5,13 +5,31 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find_by(id: params[:id])
+    # パスを保存する配列を宣言
+    @image_path = []
+    case Rails.env
+    when "development"
+      # 文字列操作をいっぺんにやるとエラーが出るので分割
+      # 開発環境ではローカルのパスを生成する
+      # オリジナルパス： @item.images[0].image_url[0].file.file
+      @item.images.each do |img|
+        path = img.image_url[0].file.file
+        path.slice!(/.+(?=uploads)/)
+        path.delete!('["')
+        path.delete!(']"')
+        path = "/" + path
+        @image_path.push(path)
+      end
+    when "production"
+
+    end
+
   end
 
   def new
     @item = Item.new
-    @image = @item.images.build
     5.times { @item.images.build }
-
   end
   
   def create
@@ -34,20 +52,20 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(
-      :name, 
-      :description, 
-      :price, 
-      :condition_id, 
-      :postage_burden_id, 
-      :delivery_method_id, 
-      :category_id, 
-      :size_id, 
-      :prefecture_id, 
-      :delivery_day_id, 
-      :brand,
-      :parent_id,
-      :child_id,
-      images_attributes: {image_url: []}
+        :name, 
+        :description, 
+        :price, 
+        :condition_id, 
+        :postage_burden_id, 
+        :delivery_method_id, 
+        :category_id, 
+        :size_id, 
+        :prefecture_id, 
+        :delivery_day_id, 
+        :brand,
+        :parent_id,
+        :child_id,
+        images_attributes: {image_url: []}
       ).merge(seller_id: current_user.id)
   end
 end

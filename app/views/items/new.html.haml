@@ -15,7 +15,7 @@
             - @item.images.each_with_index do |image, i|
               %label{class: "sell__image--select__ul--text ul--id--#{i}"}
                 = f.fields_for :images, image do |img|
-                  = img.file_field :image_url, multiple: true, "data-id": "#{i}"
+                  = img.file_field :image_url, multiple: true, "data-id": "#{i}",id: "file-input-id-#{i}"
                   %li
                   .btn-box
                     %a 編集
