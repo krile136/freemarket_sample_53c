@@ -6,30 +6,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    # パスを保存する配列を宣言
     @image_path = []
-    case Rails.env
-    when "development"
-      # 文字列操作をいっぺんにやるとエラーが出るので分割
-      # 開発環境ではローカルのパスを生成する
-      # オリジナルパス： @item.images[0].image_url[0].file.file
-      @item.images.each do |img|
-        path = img.image_url[0].file.file
-        path.slice!(/.+(?=uploads)/)
-        path.delete!('["')
-        path.delete!(']"')
-        path = "/" + path
-        @image_path.push(path)
-      end
-    when "production"
-      # 本番環境ではAWS S3のパスを生成する
-      # オリジナルパス： @item.images[0].image_url[0].url
-      @item.images.each do |img|
-        path = img.image_url[0].url
-        path.delete!('%5B%22')
-        path.delete!('%22%5D"')
-        @image_path.push(path)
-      end
+    @item.images.each do |img|
+      @image_path.push(img.image_path)
     end
   end
 
