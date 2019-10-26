@@ -94,6 +94,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'draper'
+gem 'payjp'
 
 group :production do
   gem 'unicorn', '5.4.1'
