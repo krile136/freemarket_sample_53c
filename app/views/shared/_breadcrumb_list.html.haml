@@ -1,17 +1,3 @@
 %nav.breadcrumb
   %ul.breadcrumb__list
-    %li.breadcrumb__list__piece
-      =link_to root_path, class: "breadcrumb__list__piece__link" do
-        %span メルカリ
-      %i.fa.fa-angle-right.breadcrumb__list__piece__arrow{"aria-hidden": "true"}
-    - if @action_name == "show"
-      %li.breadcrumb__list__piece.breadcrumb__list__piece-bold マイページ
-    - else
-      %li.breadcrumb__list__piece
-        =link_to user_path, class: "breadcrumb__list__piece__link" do
-          %span マイページ
-        %i.fa.fa-angle-right.breadcrumb__list__piece__arrow{"aria-hidden": "true"}
-    - if @action_name == "edit"
-      %li.breadcrumb__list__piece.breadcrumb__list__piece-bold プロフィール
-    - elsif  @action_name == "logout"
-      %li.breadcrumb__list__piece.breadcrumb__list__piece-bold ログアウト
+    = breadcrumbs pretext: "",separator: " &rsaquo; "
