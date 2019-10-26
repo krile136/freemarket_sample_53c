@@ -1,6 +1,34 @@
 crumb :root do
-  link "Home", root_path
+  link "メルカリ", root_path
 end
+
+crumb :mypage do
+  link "マイページ", user_path(current_user.id)
+  parent :root
+end
+
+crumb :logout do
+  link "ログアウト", logout_user_path
+  parent :mypage
+end
+
+crumb :profile do
+  link "プロフィール", edit_user_path
+  parent :mypage
+end
+
+crumb :identification do
+  link "本人情報の登録", identification_user_path
+  parent :mypage
+end
+
+crumb :creditcard do
+  link "支払い方法", show_creditcard_user_path
+  parent :mypage
+end
+
+
+
 
 # crumb :projects do
 #   link "Projects", projects_path
