@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
 
   def buy
     @item = Item.find(params[:id])
+    @image_path = @item.images.first.image_path
     @delivery_address = current_user.delivery_address.decorate
     @creditcard = current_user.creditcards.first.decorate
   end

@@ -5,7 +5,7 @@
     =form_with url:'/', local: true ,class: "confirm-buy__item" do |f|
       .confirm-buy__item__content
         %h3.confirm-buy__item__content__head
-          =image_tag 'http://placehold.jp/e8aee3/ffffff/64x95.png', class: "confirm-buy__item__content__head__img"
+          =image_tag @image_path, class: "confirm-buy__item__content__head__img"
           %p.confirm-buy__item__content__head__name=@item.name
         %p.confirm-buy__item__content__price
           =number_to_currency(@item.price, :unit => '¥', :precision =>0)
