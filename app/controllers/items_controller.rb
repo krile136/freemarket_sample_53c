@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :get_category_parents
   before_action :authenticate_user!, only: [:new, :buy]
+  before_action :set_item, only: [:buy, :pay]
 
   def index
   end
@@ -33,7 +34,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @item = Item.find(params[:id])
     @image_path = @item.images.first.image_path
     @delivery_address = current_user.delivery_address.decorate
     @creditcard = current_user.creditcards.first.decorate
@@ -61,5 +61,9 @@ class ItemsController < ApplicationController
       :child_id,
       images_attributes: {image_url: []}
       ).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
