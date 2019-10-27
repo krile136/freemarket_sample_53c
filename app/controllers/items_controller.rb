@@ -10,6 +10,15 @@ class ItemsController < ApplicationController
     @item.images.each do |img|
       @image_path.push(img.image_path)
     end
+    @user = User.find(@item.seller_id)
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @category_grandchild = Category.find(@item.category_id).name
+    @condition = Condition.find(@item.condition_id).name
+    @postage_burden = PostageBurden.find(@item.postage_burden.id).name
+    @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
+    @prefecture = Prefecture.find(@item.prefecture_id).name
+    @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
   end
 
   def new

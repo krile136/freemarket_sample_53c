@@ -6,15 +6,18 @@
       .item-box__main--photo
         #item-show-top
           = image_tag @image_path[0]
-        - for img_num in 0..(@image_path.length - 1) do
+        - for img_num in 0..9 do
           .photo#image_list
-            = image_tag @image_path[img_num]
+            - if @image_path[img_num]
+              = image_tag @image_path[img_num]
+            - else
+              = image_tag "http://placehold.jp/60x84.png"
       %table.item-box__main--detail
         %tbody
           %tr
             %th 出品者
             %td
-              =link_to "出品者の名前" ,''
+              =link_to @user.nickname ,''
               .face
                 %div
                   = fa_icon "smile-o", class: "good-icon"
@@ -28,31 +31,44 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "親カテゴリー" ''
-              =link_to ">子カテゴリー" ''
-              =link_to ">孫カテゴリー" ''
+              =link_to @category_parent, '#'
+              =link_to '#' do
+                >
+                = raw @category_child
+              =link_to '#' do
+                >
+                = raw @category_grandchild
           %tr
             %th ブランド
             %td
-              =link_to "ブランド名", ''
+              - if @item.brand == ""
+                なし
+              - else
+                =link_to @item.brand, '#'
           %tr
             %th 商品の状態
-            %td やや傷や汚れあり
+            %td
+              = raw @condition
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td
+              = raw @postage_burden
           %tr
             %th 配送の方法
-            %td ゆうゆうメルカリ便
+            %td
+              = raw @delivery_method
           %tr
             %th 配送元地域
             %td
-              =link_to "愛知県" ''
+              =link_to @prefecture,'#'
           %tr
             %th 発送日の目安
-            %td 4~7日で発送
+            %td
+              = raw @delivery_day
     .item-box__price
-      %span.price ￥1,000
+      %span.price
+        ￥
+        = raw @item.price
       %span.tax (税込)
       %span.shipping 送料込み
     =link_to "購入画面に進む", '', class: "item-box__buy"
