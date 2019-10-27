@@ -39,6 +39,10 @@ class ItemsController < ApplicationController
     @creditcard = current_user.creditcards.first.decorate
   end
 
+  def pay
+    redirect_to item_path
+  end
+
   private
   def item_params
     params.require(:item).permit(

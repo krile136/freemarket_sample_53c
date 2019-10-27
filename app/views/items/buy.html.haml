@@ -2,7 +2,7 @@
   = render 'shared/logo_header'
   .confirm-buy
     %h2.confirm-buy__header 購入内容の確認
-    =form_with url:'/', local: true ,class: "confirm-buy__item" do |f|
+    =form_with url: pay_item_path, local: true ,class: "confirm-buy__item" do |f|
       .confirm-buy__item__content
         %h3.confirm-buy__item__content__head
           =image_tag @image_path, class: "confirm-buy__item__content__head__img"
