@@ -6,10 +6,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    @image_path = []
-    @item.images.each do |img|
-      @image_path.push(img.image_path)
-    end
+    @image_path = @item.images.map{|img| img.image_path}
     @user = User.find(@item.seller_id)
     @category_parent = Category.find(@item.parent_id).name
     @category_child = Category.find(@item.child_id).name
@@ -23,12 +20,8 @@ class ItemsController < ApplicationController
 
     # ユーザーの他の商品
     @items = Item.where.not(id: @item.id).limit(6).order("id ASC")
-    @prices = []
-    @images = []
-    @items.each do |item|
-      @prices.push(item.price_separate)
-      @images.push(item.images[0].image_path)
-    end
+    @prices = @items.map{|item| item.price_separate}
+    @images = @items.map{|item| item.images[0].image_path}
   end
 
   def new
