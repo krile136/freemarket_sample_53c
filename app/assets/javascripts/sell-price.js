@@ -1,5 +1,5 @@
-$(function(){
-  $("#item_price").on("keyup", function() {
+$(document).on('turbolinks:load', function () {
+  $("#item_price").on("keyup", function () {
     var price = $(this).val();
     var fee = Math.floor(price * 0.1);
     $(".sell__about__right__wrap__fee--right").text("¥ " + fee);
