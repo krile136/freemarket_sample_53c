@@ -19,6 +19,16 @@ class ItemsController < ApplicationController
     @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
     @prefecture = Prefecture.find(@item.prefecture_id).name
     @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
+    @price = @item.price_separate
+
+    # ユーザーの他の商品
+    @items = Item.where.not(id: @item.id).limit(6).order("id ASC")
+    @prices = []
+    @images = []
+    @items.each do |item|
+      @prices.push(item.price_separate)
+      @images.push(item.images[0].image_path)
+    end
   end
 
   def new

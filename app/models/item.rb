@@ -23,4 +23,8 @@ class Item < ApplicationRecord
     validates :delivery_day_id, presence: true
     validates :parent_id, presence: true
     validates :child_id, presence: true
+
+  def price_separate
+    self.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')
+  end
 end
