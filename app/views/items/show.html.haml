@@ -25,19 +25,19 @@
                 %div
                   = fa_icon "smile-o", class: "good-icon"
                   - if @user.good 
-                    = raw @user.good
+                    = @user.good
                   - else
                     %span 0
                 %div
                   = fa_icon 'meh-o', class: 'normal-icon'
                   - if @user.fair
-                    = raw @user.fair
+                    = @user.fair
                   - else
                     %span 0
                 %div
                   = fa_icon 'frown-o', class: 'bad-icon'
                   - if @user.bad
-                    = raw @user.bad
+                    = @user.bad
                   - else
                     %span 0
           %tr
@@ -46,10 +46,10 @@
               =link_to @category_parent, '#'
               =link_to '#' do
                 >
-                = raw @category_child
+                = @category_child
               =link_to '#' do
                 >
-                = raw @category_grandchild
+                = @category_grandchild
           %tr
             %th ブランド
             %td
@@ -60,15 +60,15 @@
           %tr
             %th 商品の状態
             %td
-              = raw @condition
+              = @condition
           %tr
             %th 配送料の負担
             %td
-              = raw @postage_burden
+              = @postage_burden
           %tr
             %th 配送の方法
             %td
-              = raw @delivery_method
+              = @delivery_method
           %tr
             %th 配送元地域
             %td
@@ -76,11 +76,11 @@
           %tr
             %th 発送日の目安
             %td
-              = raw @delivery_day
+              = @delivery_day
     .item-box__price
       %span.price
         ￥
-        = raw @price
+        = @price
       %span.tax (税込)
       %span.shipping 送料込み
     - if @item.buyer_id
