@@ -1,70 +1,92 @@
 = render 'shared/global_header'
 .main-item
   %section.item-box
-    %h1.item-box__name 商品の名前
+    %h1.item-box__name
+      = @item.name
     .item-box__main
       .item-box__main--photo
-        %div
-          = image_tag @image_path[0]
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
-        .photo
-          = image_tag "http://placehold.jp/60x60.png"
+        .item-box__main--photo--top#item-show-top
+          = image_tag @image_path[0], class: 'item-box__main--photo--top-image'
+          - if @item.buyer_id
+            .item-box__main--photo--soldout
+              .item-box__main--photo--soldout--text
+                SOLD
+        - for img_num in 0..9 do
+          .photo#image_list
+            - if @image_path[img_num]
+              = image_tag @image_path[img_num], class: 'item-box__main--photo--top-image'
       %table.item-box__main--detail
         %tbody
           %tr
             %th 出品者
             %td
-              =link_to "出品者の名前" ,''
+              =link_to @user.nickname ,''
               .face
                 %div
                   = fa_icon "smile-o", class: "good-icon"
-                  %span 24
+                  - if @user.good 
+                    = @user.good
+                  - else
+                    %span 0
                 %div
                   = fa_icon 'meh-o', class: 'normal-icon'
-                  %span 0
+                  - if @user.fair
+                    = @user.fair
+                  - else
+                    %span 0
                 %div
                   = fa_icon 'frown-o', class: 'bad-icon'
-                  %span 0
+                  - if @user.bad
+                    = @user.bad
+                  - else
+                    %span 0
           %tr
             %th カテゴリー
             %td
-              =link_to "親カテゴリー" ''
-              =link_to ">子カテゴリー" ''
-              =link_to ">孫カテゴリー" ''
+              =link_to @category_parent, '#'
+              =link_to '#' do
+                >
+                = @category_child
+              =link_to '#' do
+                >
+                = @category_grandchild
           %tr
             %th ブランド
             %td
-              =link_to "ブランド名", ''
+              - if @item.brand == ""
+                なし
+              - else
+                =link_to @item.brand, '#'
           %tr
             %th 商品の状態
-            %td やや傷や汚れあり
+            %td
+              = @condition
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td
+              = @postage_burden
           %tr
             %th 配送の方法
-            %td ゆうゆうメルカリ便
+            %td
+              = @delivery_method
           %tr
             %th 配送元地域
             %td
-              =link_to "愛知県" ''
+              =link_to @prefecture,'#'
           %tr
             %th 発送日の目安
-            %td 4~7日で発送
+            %td
+              = @delivery_day
     .item-box__price
-      %span.price ￥1,000
+      %span.price
+        ￥
+        = @price
       %span.tax (税込)
       %span.shipping 送料込み
-    =link_to "購入画面に進む", '', class: "item-box__buy"
+    - if @item.buyer_id
+      .item-box__sold 売り切れました
+    - else
+      =link_to "購入画面に進む", '', class: "item-box__buy"
     .item-box__description
       %p
         ご覧いただきありがとうございます！
@@ -78,7 +100,8 @@
         =link_to '' do
           = fa_icon 'heart'
           %span いいね!
-          %span 5
+          %span
+            = @item.good
         =link_to '' do
           = fa_icon 'flag'
           %span 不適切な商品の報告
@@ -113,7 +136,27 @@
           = fa_icon 'pinterest', class: "fa-pinterest"
   .other-item-box
     %h2
-      = link_to "出品ユーザーのページへ遷移" 
+      = link_to "#{@user.nickname}さんのその他の出品" 
     .other-item-contents
-      = render 'other_item'
+      - @items.each_with_index do |item, i|
+        .other-item-contents__box
+          = link_to "" do
+            .photo-outframe
+              = image_tag @images[i], class: 'photo-inside'
+              - if item.buyer_id
+                .item-box__main--photo--soldout
+                  .item-box__main--photo--soldout--text
+                    SOLD
+            .text
+              .text-box 
+                = item.name
+              .price-box
+                .price
+                  ¥
+                  = @prices[i]
+                - if item.good
+                  .heart-box
+                    = fa_icon "heart"
+                    %span
+                      = item.good
 = render 'shared/global_footer'

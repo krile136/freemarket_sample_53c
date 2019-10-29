@@ -6,25 +6,22 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    # パスを保存する配列を宣言
-    @image_path = []
-    case Rails.env
-    when "development"
-      # 文字列操作をいっぺんにやるとエラーが出るので分割
-      # 開発環境ではローカルのパスを生成する
-      # オリジナルパス： @item.images[0].image_url[0].file.file
-      @item.images.each do |img|
-        path = img.image_url[0].file.file
-        path.slice!(/.+(?=uploads)/)
-        path.delete!('["')
-        path.delete!(']"')
-        path = "/" + path
-        @image_path.push(path)
-      end
-    when "production"
+    @image_path = @item.images.map{|img| img.image_path}
+    @user = User.find(@item.seller_id)
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @category_grandchild = Category.find(@item.category_id).name
+    @condition = Condition.find(@item.condition_id).name
+    @postage_burden = PostageBurden.find(@item.postage_burden.id).name
+    @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
+    @prefecture = Prefecture.find(@item.prefecture_id).name
+    @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
+    @price = @item.price_separate
 
-    end
-
+    # ユーザーの他の商品
+    @items = Item.where.not(id: @item.id).limit(6).order("id ASC")
+    @prices = @items.map{|item| item.price_separate}
+    @images = @items.map{|item| item.images[0].image_path}
   end
 
   def new
