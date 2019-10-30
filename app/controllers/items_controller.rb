@@ -2,6 +2,11 @@ class ItemsController < ApplicationController
   before_action :get_category_parents
 
   def index
+    @items = Item.order('id DESC').limit(10)
+    @prices = @items.map{|item| item.price_separate}
+    @images = @items.map{|item| item.images[0].image_path}
+    binding.pry
+    
   end
 
   def show

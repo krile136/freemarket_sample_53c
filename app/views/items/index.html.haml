@@ -23,11 +23,14 @@
             =link_to "なにぬねの・はひふ", '', class: "top-content__items__class__detail__list__link"
       .top-content__items__list
         .top-content__items__list__header
-          %h3.top-content__items__list__header__title ★★新着アイテム
+          %h3.top-content__items__list__header__title レディース新着アイテム
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
-          -# FIXME: eachで回すのではなく、collectionを使いたい
-          - [1000, 2000, 30000, 4567890, 300, 500, 1500, 6666, 100000, 5000].each do |item|
-            = render partial: 'item_card', locals: {item: item}
+          - @items.each_with_index do |item, i|
+            -# = render partial: 'item_card', locals: {item: item}
+            %figure.top-content__items__list__cards__card__f
+              = image_tag @images[i], class: 'top-content__items__list__cards__card__f__img'
+              %figcaption.top-content__items__list__cards__card__f__caption=@items.name
+              %span.top-content__items__list__cards__card__f__price= number_to_currency(@prices[i], :unit => '¥', :precision =>0)
   = render 'shared/global_footer'
   = render 'shared/sell_button'
