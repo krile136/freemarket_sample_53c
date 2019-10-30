@@ -6,24 +6,20 @@ class ItemsController < ApplicationController
     @prices = @items.map{|item| item.price_separate}
     @images = @items.map{|item| item.images[0].image_path}
 
-    parent = Item.group(:parent_id).order('count_parent_id DESC').limit(10).count(:parent_id).keys
+    parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
     
-    @category1 = Category.find_by(id: parent[0])
     @radies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
     @prices1 = @radies.map{|item| item.price_separate}
     @images1 = @radies.map{|item| item.images[0].image_path}
 
-    @category2 = Category.find_by(id: parent[1])
     @mens = Item.where(parent_id: parent[1]).order('id DESC').limit(10)
     @prices2 = @mens.map{|item| item.price_separate}
     @images2 = @mens.map{|item| item.images[0].image_path}
 
-    @category3 = Category.find_by(id: parent[2])
     @interiors = Item.where(parent_id: parent[2]).order('id DESC').limit(10)
     @prices3 = @interiors.map{|item| item.price_separate}
     @images3 = @interiors.map{|item| item.images[0].image_path}
 
-    @category4 = Category.find_by(id: parent[3])
     @babies = Item.where(parent_id: parent[3]).order('id DESC').limit(10)
     @prices4 = @babies.map{|item| item.price_separate}
     @images4 = @babies.map{|item| item.images[0].image_path}

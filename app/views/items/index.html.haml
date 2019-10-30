@@ -14,13 +14,13 @@
         %h2.top-content__items__class__title 人気のカテゴリー
         %ul.top-content__items__class__detail
           %li.top-content__items__class__detail__list
-            =link_to "あいうえお", '', class: "top-content__items__class__detail__list__link"
+            =link_to "レディース", '', class: "top-content__items__class__detail__list__link"
           %li.top-content__items__class__detail__list
-            =link_to "かきく", '', class: "top-content__items__class__detail__list__link"
+            =link_to "メンズ", '', class: "top-content__items__class__detail__list__link"
           %li.top-content__items__class__detail__list
-            =link_to "さしすせそ・たちつてと", '', class: "top-content__items__class__detail__list__link"
+            =link_to "インテリア・住まい・小物", '', class: "top-content__items__class__detail__list__link"
           %li.top-content__items__class__detail__list
-            =link_to "なにぬねの・はひふ", '', class: "top-content__items__class__detail__list__link"
+            =link_to "ベビー・キッズ", '', class: "top-content__items__class__detail__list__link"
       .top-content__items__list
         .top-content__items__list__header
           %h3.top-content__items__list__header__title 新着アイテム
@@ -28,7 +28,6 @@
         .top-content__items__list__cards
           - @items.each_with_index do |item, i|
             = link_to '' do
-              -# = render partial: 'item_card', locals: {item: item}
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -41,7 +40,6 @@
         .top-content__items__list__cards
           - @radies.each_with_index do |item, i|
             = link_to '' do
-              -# = render partial: 'item_card', locals: {item: item}
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images1[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -54,7 +52,6 @@
         .top-content__items__list__cards
           - @mens.each_with_index do |item, i|
             = link_to '' do
-              -# = render partial: 'item_card', locals: {item: item}
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images2[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -67,7 +64,6 @@
         .top-content__items__list__cards
           - @interiors.each_with_index do |item, i|
             = link_to '' do
-              -# = render partial: 'item_card', locals: {item: item}
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images3[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -80,7 +76,6 @@
         .top-content__items__list__cards
           - @babies.each_with_index do |item, i|
             = link_to '' do
-              -# = render partial: 'item_card', locals: {item: item}
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images4[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
