@@ -27,7 +27,7 @@
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
           - @items.each_with_index do |item, i|
-            = link_to '' do
+            = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -39,7 +39,7 @@
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
           - @radies.each_with_index do |item, i|
-            = link_to '' do
+            = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images1[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -51,7 +51,7 @@
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
           - @mens.each_with_index do |item, i|
-            = link_to '' do
+            = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images2[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -63,7 +63,7 @@
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
           - @interiors.each_with_index do |item, i|
-            = link_to '' do
+            = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images3[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
@@ -75,7 +75,7 @@
           =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
         .top-content__items__list__cards
           - @babies.each_with_index do |item, i|
-            = link_to '' do
+            = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
                 = image_tag @images4[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
