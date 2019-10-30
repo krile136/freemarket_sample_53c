@@ -45,7 +45,8 @@ class UsersController < ApplicationController
   end
 
   def list
-    
+    @items = Item.where(seller_id: params[:id]).order("id DESC")
+    @images =  @items.map{|item| item.images[0].image_path}
   end
 
   private

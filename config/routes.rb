@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :show, :edit, :update] do
-    resources :items, only: [:create, :show]
+    resources :items, only: [:create, :show] do
+      member do
+        get :myitem
+      end
+    end
     resources :creditcards, only: [:create]
 
     member do
