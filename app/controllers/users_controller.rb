@@ -44,6 +44,10 @@ class UsersController < ApplicationController
   def complete
   end
 
+  def list
+    
+  end
+
   private
 
   def user_edit_params

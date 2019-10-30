@@ -1,0 +1,33 @@
+= render 'shared/global_header'
+-# - breadcrumb :profile
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__main
+      .mypage-content__list__title
+        出品した商品
+      .mypage-content__main__tablist
+        %ul.mypage-content__main__tablist__header
+          %li.mypage-content__list__tablist__header__tab.mypage-content__main__tablist__header__tab-active
+            %h3.mypage-content__main__tablist__header__tab__text 出品中
+          %li.mypage-content__list__tablist__header__tab.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text 取引中
+          %li.mypage-content__list__tablist__header__tab-last.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text 売却済み
+      .mypage-content__list__item-link
+        .mypage-content__list__item-link--figure-outframe
+          =image_tag 'http://placehold.jp/60b5d1/ffffff/40x50.png', class: 'mypage-content__list__item-link--figure-inside'
+        .mypage-content__list__item-link__text-box
+          商品名
+          .mypage-content__list__item-link__text-box-below
+            .mypage-content__list__item-link__text-box-text
+              = fa_icon "heart"
+              0
+            .mypage-content__list__item-link__text-box-text
+              = fa_icon "comment"
+              0 
+            .mypage-content__list__item-link__text-box-sell
+              出品中
+= render 'shared/global_footer'
+= render 'shared/sell_button'

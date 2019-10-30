@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :identification
       get :show_creditcard
       get :new_creditcard
+      get :list
     end
 
     collection do

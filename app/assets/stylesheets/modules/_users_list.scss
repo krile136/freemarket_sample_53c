@@ -1,0 +1,86 @@
+.mypage-content{
+  &__list{
+    &__title{
+      width: 700px;
+      height: 72px;
+      padding-left: 16px;
+      line-height: 72px;
+      font-weight: bold;
+      background-color: $list-hover-gray;
+    }
+    &__tablist__header__tab{
+      height: 72px;
+      width: 33%;
+      text-align: center;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    &__tablist__header__tab-last{
+      height: 72px;
+      width: 34%;
+      text-align: center;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    &__item-link{
+      background-color: $background-white;
+      width: 700px;
+      height: 73px;
+      padding: 16px; 
+      &:hover {
+        background-color: $list-hover-gray;
+        cursor: pointer;
+      }
+      &--figure{
+        &-outframe{
+        background-color: $background-white;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        float: left;
+        }
+        &-inside{
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: auto;
+          width: auto;
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
+        }
+      }
+      &__text-box{
+        width: 500px;
+        height: 51px;
+        margin: 0 40px 0 68px;
+        font-size: 14px;
+        position: relative;
+        &-below{
+          position: absolute;
+          bottom: 0;
+          color: $text-gray;
+          display: flex;
+        }
+        &-text{
+          margin-right: 5px;
+        }
+        &-sell{
+          font-weight: normal;
+          width: 40px;
+          height: 19px;
+          font-size: 12px;
+          border-radius: 2px;
+          text-align: center;
+          margin-left: 8px;
+          color: white;
+          background-color: $link-skyblue;
+        }
+      }
+    }
+  }
+}
