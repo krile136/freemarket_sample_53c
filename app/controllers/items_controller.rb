@@ -40,7 +40,12 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    redirect_to item_path
+    card = current_user.creditcards.first
+    token = card.create_token(card.credit_number, card.security_number, card.limit_month, card.limit_year)
+    card.create_charge_by_token(token, @item.price)
+    
+    @item.update(buyer_id: current_user.id)
+    redirect_to root_path, notice: '購入が完了しました'
   end
 
   private
