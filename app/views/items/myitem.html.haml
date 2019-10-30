@@ -1,0 +1,102 @@
+= render 'shared/global_header'
+.main-item
+  %section.item-box
+    %h1.item-box__name
+      = @item.name
+    .item-box__main
+      .item-box__main--photo
+        .item-box__main--photo--top#item-show-top
+          = image_tag @image_path[0], class: 'item-box__main--photo--top-image'
+          - if @item.buyer_id
+            .item-box__main--photo--soldout
+              .item-box__main--photo--soldout--text
+                SOLD
+        - for img_num in 0..9 do
+          .photo#image_list
+            - if @image_path[img_num]
+              = image_tag @image_path[img_num], class: 'item-box__main--photo--top-image'
+      %table.item-box__main--detail
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              =link_to @user.nickname ,''
+              .face
+                %div
+                  = fa_icon "smile-o", class: "good-icon"
+                  - if @user.good 
+                    = @user.good
+                  - else
+                    %span 0
+                %div
+                  = fa_icon 'meh-o', class: 'normal-icon'
+                  - if @user.fair
+                    = @user.fair
+                  - else
+                    %span 0
+                %div
+                  = fa_icon 'frown-o', class: 'bad-icon'
+                  - if @user.bad
+                    = @user.bad
+                  - else
+                    %span 0
+          %tr
+            %th カテゴリー
+            %td
+              =link_to @category_parent, '#'
+              =link_to '#' do
+                >
+                = @category_child
+              =link_to '#' do
+                >
+                = @category_grandchild
+          %tr
+            %th ブランド
+            %td
+              - if @item.brand == ""
+                なし
+              - else
+                =link_to @item.brand, '#'
+          %tr
+            %th 商品の状態
+            %td
+              = @condition
+          %tr
+            %th 配送料の負担
+            %td
+              = @postage_burden
+          %tr
+            %th 配送の方法
+            %td
+              = @delivery_method
+          %tr
+            %th 配送元地域
+            %td
+              =link_to @prefecture,'#'
+          %tr
+            %th 発送日の目安
+            %td
+              = @delivery_day
+    .item-box__price
+      %span.price
+        ￥
+        = @price
+      %span.tax (税込)
+      %span.shipping 送料込み
+    .item-box__description
+      %p
+        = @item.description
+  .main-item__select
+    .main-item__select__red
+      .main-item__select__in-text 商品の編集
+    .main-item__select__text or
+    .main-item__select__gray
+      .main-item__select__in-text 出品を一旦停止する
+    .main-item__select__gray
+      .main-item__select__in-text この商品を削除する
+  .comment
+    .comment__box
+      %p相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .form
+      .send コメントする
+= render 'shared/global_footer'
