@@ -9,20 +9,20 @@ class ItemsController < ApplicationController
     parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
     
     @radies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
-    @prices1 = @radies.map{|item| item.price_separate}
-    @images1 = @radies.map{|item| item.images[0].image_path}
+    @radies_prices = @radies.map{|item| item.price_separate}
+    @radies_images = @radies.map{|item| item.images[0].image_path}
 
     @mens = Item.where(parent_id: parent[1]).order('id DESC').limit(10)
-    @prices2 = @mens.map{|item| item.price_separate}
-    @images2 = @mens.map{|item| item.images[0].image_path}
+    @mens_prices = @mens.map{|item| item.price_separate}
+    @mens_images = @mens.map{|item| item.images[0].image_path}
 
     @interiors = Item.where(parent_id: parent[2]).order('id DESC').limit(10)
-    @prices3 = @interiors.map{|item| item.price_separate}
-    @images3 = @interiors.map{|item| item.images[0].image_path}
+    @interiors_prices = @interiors.map{|item| item.price_separate}
+    @interiors_images = @interiors.map{|item| item.images[0].image_path}
 
     @babies = Item.where(parent_id: parent[3]).order('id DESC').limit(10)
-    @prices4 = @babies.map{|item| item.price_separate}
-    @images4 = @babies.map{|item| item.images[0].image_path}
+    @babies_prices = @babies.map{|item| item.price_separate}
+    @babies_images = @babies.map{|item| item.images[0].image_path}
   end
 
   def show

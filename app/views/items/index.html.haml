@@ -41,9 +41,9 @@
           - @radies.each_with_index do |item, i|
             = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
-                = image_tag @images1[i], class: 'top-content__items__list__cards__card__f__img'
+                = image_tag @radies_images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
-                %span.top-content__items__list__cards__card__f__price= number_to_currency(@prices1[i], :unit => '¥', :precision =>0)
+                %span.top-content__items__list__cards__card__f__price= number_to_currency(@radies_prices[i], :unit => '¥', :precision =>0)
           
         .top-content__items__list
         .top-content__items__list__header
@@ -53,9 +53,9 @@
           - @mens.each_with_index do |item, i|
             = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
-                = image_tag @images2[i], class: 'top-content__items__list__cards__card__f__img'
+                = image_tag @mens_images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
-                %span.top-content__items__list__cards__card__f__price= number_to_currency(@prices2[i], :unit => '¥', :precision =>0)
+                %span.top-content__items__list__cards__card__f__price= number_to_currency(@mens_prices[i], :unit => '¥', :precision =>0)
 
         .top-content__items__list
         .top-content__items__list__header
@@ -65,9 +65,9 @@
           - @interiors.each_with_index do |item, i|
             = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
-                = image_tag @images3[i], class: 'top-content__items__list__cards__card__f__img'
+                = image_tag @interiors_images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
-                %span.top-content__items__list__cards__card__f__price= number_to_currency(@prices3[i], :unit => '¥', :precision =>0)
+                %span.top-content__items__list__cards__card__f__price= number_to_currency(@interiors_prices[i], :unit => '¥', :precision =>0)
 
         .top-content__items__list
         .top-content__items__list__header
@@ -77,8 +77,8 @@
           - @babies.each_with_index do |item, i|
             = link_to item_path(item.id) do
               %figure.top-content__items__list__cards__card__f
-                = image_tag @images4[i], class: 'top-content__items__list__cards__card__f__img'
+                = image_tag @babies_images[i], class: 'top-content__items__list__cards__card__f__img'
                 %figcaption.top-content__items__list__cards__card__f__caption=item.name
-                %span.top-content__items__list__cards__card__f__price= number_to_currency(@prices4[i], :unit => '¥', :precision =>0)
+                %span.top-content__items__list__cards__card__f__price= number_to_currency(@babies_prices[i], :unit => '¥', :precision =>0)
     = render 'shared/global_footer'
     = render 'shared/sell_button'
