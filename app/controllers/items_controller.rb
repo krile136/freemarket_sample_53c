@@ -8,9 +8,9 @@ class ItemsController < ApplicationController
 
     parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
     
-    @radies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
-    @radies_prices = @radies.map{|item| item.price_separate}
-    @radies_images = @radies.map{|item| item.images[0].image_path}
+    @ladies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
+    @ladies_prices = @ladies.map{|item| item.price_separate}
+    @ladies_images = @ladies.map{|item| item.images[0].image_path}
 
     @mens = Item.where(parent_id: parent[1]).order('id DESC').limit(10)
     @mens_prices = @mens.map{|item| item.price_separate}

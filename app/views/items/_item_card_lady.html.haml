@@ -1,0 +1,11 @@
+=link_to do
+  .top-content__items__list__header
+    %h3.top-content__items__list__header__title レディース新着アイテム
+    =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
+  .top-content__items__list__cards
+    - @ladies.each_with_index do |item, i|
+      = link_to item_path(item.id) do
+        %figure.top-content__items__list__cards__card__f
+          = image_tag @ladies_images[i], class: 'top-content__items__list__cards__card__f__img'
+          %figcaption.top-content__items__list__cards__card__f__caption=item.name
+          %span.top-content__items__list__cards__card__f__price= number_to_currency(@ladies_prices[i], :unit => '¥', :precision =>0)
