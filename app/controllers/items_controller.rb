@@ -56,11 +56,27 @@ class ItemsController < ApplicationController
 
   def pay
     card = current_user.creditcards.first
+    # トークン作成
     token = card.create_token(card.credit_number, card.security_number, card.limit_month, card.limit_year)
-    card.create_charge_by_token(token, @item.price)
+    # トークン作成時にエラーが発生したら処理を終了する
+    if token.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: token
+      return
+    end
+
+    # 支払
+    message = card.create_charge_by_token(token, @item.price)
+    # 支払処理中にエラーが発生したら処理を終了する
+    if message.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: message
+      return
+    end
     
-    @item.update(buyer_id: current_user.id)
-    redirect_to root_path, notice: '購入が完了しました'
+    if @item.update(buyer_id: current_user.id)
+      redirect_to root_path, notice: '購入が完了しました'
+    else
+      edirect_to buy_item_path(@item), alert: '購入に失敗しました。サポートにお問合せください'
+    end
   end
 
   private

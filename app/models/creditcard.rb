@@ -23,6 +23,12 @@ class Creditcard < ApplicationRecord
       } 
     )
     return token.id
+  rescue Payjp::CardError => e
+    return "[ERROR]このカードはご利用になれません"
+  rescue Payjp::InvalidRequestError => e
+    return "[ERROR]カード情報に誤りがあります"
+  rescue => e
+    return "[ERROR]何らかのエラーが発生しました"
   end
 
   # トークンで支払い
@@ -32,5 +38,8 @@ class Creditcard < ApplicationRecord
       card:     token,
       currency: 'jpy'
     )
+    return ""
+  rescue => e
+    return "[ERROR]何らかのエラーが発生しました"
   end
 end
