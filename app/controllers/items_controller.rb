@@ -38,6 +38,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    if item.seller_id == current_user.id
+      if item.destroy
+        redirect_to list_user_path(current_user.id), notice: '商品を削除しました'
+      else
+        redirect_to myitem_user_item_path(current_user.id, item.id), alert: '商品を削除できませんでした。'
+      end
+    else
+      redirect_to myitem_user_item_path(current_user.id, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
+    end
+    
+  end
+
   def myitem
     @item = Item.find_by(id: params[:id])
     @image_path = @item.images.map{|img| img.image_path}

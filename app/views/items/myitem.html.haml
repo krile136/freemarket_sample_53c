@@ -87,13 +87,16 @@
       %p
         = @item.description
   .main-item__select
-    .main-item__select__red
-      .main-item__select__in-text 商品の編集
+    = link_to "#" do
+      .main-item__select__red
+        .main-item__select__in-text 商品の編集
     .main-item__select__text or
-    .main-item__select__gray
-      .main-item__select__in-text 出品を一旦停止する
-    .main-item__select__gray
-      .main-item__select__in-text この商品を削除する
+    = link_to "#" do
+      .main-item__select__gray
+        .main-item__select__in-text 出品を一旦停止する
+    = link_to " /items/#{@item.id}",method: :delete, data: { confirm: '削除すると２度と復活できません。本当に削除しますか？' } do
+      .main-item__select__gray
+        .main-item__select__in-text この商品を削除する
   .comment
     .comment__box
       %p相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。

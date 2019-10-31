@@ -84,4 +84,14 @@
       }
     }
   }
+  &__notfound{
+    background-color: $background-white;
+    width: 700px;
+    height: 236px;
+    line-height: 236px;
+    text-align: center;
+    font-weight: bold;
+    color: $text-gray;
+    font-size: 16px;
+  }
 }
