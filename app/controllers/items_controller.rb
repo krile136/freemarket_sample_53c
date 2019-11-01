@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def myitem
-    @item = Item.find_by(id: params[:id])
+    @item = Item.find(id: params[:id])
     @image_path = @item.images.map{|img| img.image_path}
     @user = User.find(@item.seller_id)
     @category_parent = Category.find(@item.parent_id).name
