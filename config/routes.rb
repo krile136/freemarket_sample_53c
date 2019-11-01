@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show, :edit, :update] do
     resources :items, only: [:create]
-    resources :creditcards, only: [:create]
+    resources :creditcards, only: :create
 
     member do
       get :logout
