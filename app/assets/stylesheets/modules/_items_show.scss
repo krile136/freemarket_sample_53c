@@ -20,23 +20,46 @@
       &--photo {
         float: left;
         background-color: $background-beige;
-        min-width: 300px;
-        max-width: 300px;
-        min-height: 300px;
+        width: 300px;
+        height: 432px;
         position: relative;
-        div {
-          img {
-            width: 300px;
-            height: 300px;
+        &--soldout{
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          background:linear-gradient(-45deg,transparent 0%,transparent 50%,$mercari-red 50%,$mercari-red 100%);
+          &--text{
+            position: absolute;
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+            transform: rotate(-45deg);
+            top: 20px;
+          }
+        }
+        &--top{
+          width: 300px;
+          height: 300px;
+          position: relative;
+          &-image{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: auto;
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
           }
         }
         .photo {
           margin: 0;
           float: left;
-          img {
-            width: 60px;
-            height: 60px;
-          }
+          width: 60px;
+          height: 60px;
+          position: relative;
         }
       }
       &--detail {
@@ -102,6 +125,18 @@
       line-height: 60px;
       display: block;
       background: $mercari-red;
+      color: $text-white;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      margin: 0 auto;
+    }
+    &__sold{
+      width: 620px;
+      height: 60px;
+      line-height: 60px;
+      display: block;
+      background: $notice-text;
       color: $text-white;
       text-align: center;
       font-weight: bold;
@@ -248,40 +283,57 @@
           margin:0 0 20px 10px;
           a {
             color: $text-black;
-            .photo {
+            .photo-outframe {
               background-color: $text-white;
               width: 220px;
               height: 220px;
-              img {
-                width: 220px;
-                height: 220px;
-              }
+              position: relative;
+            }
+            .photo-inside{
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: auto;
+              width: auto;
+              max-width: 100%;
+              max-height: 100%;
+              margin: auto;
             }
             .text {
               width: 220px;
               height: 110px;
+              padding: 16px 16px 16px 16px;
+              &-box{
+                height: 48px;
+              }
               h3 {
                 font-size: 16px;
                 text-align: center;
                 padding-bottom: 20px;
                 margin-top: 5px;
               }
+              .item-name{
+                font-size: 16px;
+                text-align: center;
+                padding-bottom: 20px;
+                margin-top: 5px;
+              }
               .price-box {
-                padding: 20px;
                 .price {
                   font-size: 16px;
                   font-weight: bold;
                   float: left;
                 }
-                i {
+                .heart-box{
                   float: right;
+                }
+                i {
                   margin-right: 5px;
                 }
                 span {
                   font-size: 16px;
-                  float: right;
-                  position:relative;
-                  left: 36px;
                   color: $text-black;
                 }
                 p {
@@ -293,4 +345,35 @@
         }
       }
     }
+  &__select{
+    background-color: $background-white;
+    width: 700px;
+    margin: 24px auto 24px;
+    padding: 8px 16px 8px 16px;
+    &__red{
+      width: 100%;
+      height: 50px;
+      background-color: $mercari-red;
+      margin: 16px 0;
+      cursor: pointer;
+      border-style: none;
+    }
+    &__gray{
+      width: 100%;
+      height: 50px;
+      background-color: $stop-gray;
+      margin: 16px 0;
+      cursor: pointer;
+      border-style: none;
+    }
+    &__in-text{
+      line-height: 50px;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+    }
+    &__text{
+      text-align: center;
+    }
+  }
 }

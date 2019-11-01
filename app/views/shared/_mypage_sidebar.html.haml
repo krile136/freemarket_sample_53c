@@ -27,7 +27,7 @@
         %span.mypage-side__list__link__text 出品する
         %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
     %li.mypage-side__list
-      =link_to '', class: "mypage-side__list__link" do
+      =link_to list_user_path(current_user.id), class: "mypage-side__list__link" do
         %span.mypage-side__list__link__text 出品した商品 - 出品中
         %i.fa.fa-angle-right.mypage-side__list__link__arrow{"aria-hidden": "true"}
     %li.mypage-side__list

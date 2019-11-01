@@ -27,6 +27,10 @@ crumb :creditcard do
   parent :mypage
 end
 
+crumb :list do
+  link "出品した商品-出品中", list_user_path(current_user.id)
+  parent :mypage
+end
 
 
 

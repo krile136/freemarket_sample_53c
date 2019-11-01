@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :get_category_parents
+  before_action :authenticate_user!, only: [:new, :buy]
+  before_action :set_item, only: [:buy, :pay]
 
   def index
     @items = Item.order('id DESC').limit(10)
@@ -27,25 +29,22 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by(id: params[:id])
-    # パスを保存する配列を宣言
-    @image_path = []
-    case Rails.env
-    when "development"
-      # 文字列操作をいっぺんにやるとエラーが出るので分割
-      # 開発環境ではローカルのパスを生成する
-      # オリジナルパス： @item.images[0].image_url[0].file.file
-      @item.images.each do |img|
-        path = img.image_url[0].file.file
-        path.slice!(/.+(?=uploads)/)
-        path.delete!('["')
-        path.delete!(']"')
-        path = "/" + path
-        @image_path.push(path)
-      end
-    when "production"
+    @image_path = @item.images.map{|img| img.image_path}
+    @user = User.find(@item.seller_id)
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @category_grandchild = Category.find(@item.category_id).name
+    @condition = Condition.find(@item.condition_id).name
+    @postage_burden = PostageBurden.find(@item.postage_burden.id).name
+    @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
+    @prefecture = Prefecture.find(@item.prefecture_id).name
+    @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
+    @price = @item.price_separate
 
-    end
-
+    # ユーザーの他の商品
+    @items = Item.where.not(id: @item.id).limit(6).order("id ASC")
+    @prices = @items.map{|item| item.price_separate}
+    @images = @items.map{|item| item.images[0].image_path}
   end
 
   def new
@@ -61,6 +60,35 @@ class ItemsController < ApplicationController
       redicret_to user_items_path, alert: '出品に失敗しました。必須項目を確認してください。'
     end
   end
+
+  def destroy
+    item = Item.find(params[:id])
+    if item.seller_id == current_user.id
+      if item.destroy
+        redirect_to list_user_path(current_user), notice: '商品を削除しました'
+      else
+        redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できませんでした。'
+      end
+    else
+      redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
+    end
+    
+  end
+
+  def myitem
+    @item = Item.find(params[:id])
+    @image_path = @item.images.map{|img| img.image_path}
+    @user = User.find(@item.seller_id)
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @category_grandchild = Category.find(@item.category_id).name
+    @condition = Condition.find(@item.condition_id).name
+    @postage_burden = PostageBurden.find(@item.postage_burden.id).name
+    @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
+    @prefecture = Prefecture.find(@item.prefecture_id).name
+    @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
+    @price = @item.price_separate
+  end
   
   def get_category_children
     @category_children = Category.find(params[:parent_id]).children
@@ -68,6 +96,37 @@ class ItemsController < ApplicationController
 
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+  def buy
+    @image_path = @item.images.first.image_path
+    @delivery_address = current_user.delivery_address.decorate
+    @creditcard = current_user.creditcards.first.decorate
+  end
+
+  def pay
+    card = current_user.creditcards.first
+    # トークン作成
+    token = card.create_token(card.credit_number, card.security_number, card.limit_month, card.limit_year)
+    # トークン作成時にエラーが発生したら処理を終了する
+    if token.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: token
+      return
+    end
+
+    # 支払
+    message = card.create_charge_by_token(token, @item.price)
+    # 支払処理中にエラーが発生したら処理を終了する
+    if message.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: message
+      return
+    end
+    
+    if @item.update(buyer_id: current_user.id)
+      redirect_to root_path, notice: '購入が完了しました'
+    else
+      edirect_to buy_item_path(@item), alert: '購入に失敗しました。サポートにお問合せください'
+    end
   end
 
   private
@@ -88,5 +147,9 @@ class ItemsController < ApplicationController
         :child_id,
         images_attributes: {image_url: []}
       ).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

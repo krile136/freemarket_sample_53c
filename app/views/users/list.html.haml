@@ -1,0 +1,39 @@
+= render 'shared/global_header'
+- breadcrumb :list
+= render 'shared/breadcrumb_list'
+.mypage-wrapper
+  .mypage-content
+    = render 'shared/mypage_sidebar'
+    .mypage-content__main
+      .mypage-content__list__title
+        出品した商品
+      .mypage-content__main__tablist
+        %ul.mypage-content__main__tablist__header
+          %li.mypage-content__list__tablist__header__tab.mypage-content__main__tablist__header__tab-active
+            %h3.mypage-content__main__tablist__header__tab__text 出品中
+          %li.mypage-content__list__tablist__header__tab.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text 取引中
+          %li.mypage-content__list__tablist__header__tab-last.mypage-content__main__tablist__header__tab-inactive
+            %h3.mypage-content__main__tablist__header__tab__text 売却済み
+      - if @items.length > 0
+        - @items.each_with_index do |item, i|
+          = link_to myitem_user_item_path(current_user.id, item.id) do
+            .mypage-content__list__item-link
+              .mypage-content__list__item-link--figure-outframe
+                =image_tag @images[i], class: 'mypage-content__list__item-link--figure-inside'
+              .mypage-content__list__item-link__text-box
+                = item.name
+                .mypage-content__list__item-link__text-box-below
+                  .mypage-content__list__item-link__text-box-text
+                    = fa_icon "heart"
+                    0
+                  .mypage-content__list__item-link__text-box-text
+                    = fa_icon "comment"
+                    0 
+                  .mypage-content__list__item-link__text-box-sell
+                    出品中
+      - else
+        .mypage-content__notfound
+          出品中の商品がありません
+= render 'shared/global_footer'
+= render 'shared/sell_button'
