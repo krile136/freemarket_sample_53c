@@ -4,6 +4,27 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay]
 
   def index
+    @items = Item.order('id DESC').limit(10)
+    @prices = @items.map{|item| item.price_separate}
+    @images = @items.map{|item| item.images[0].image_path}
+
+    parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
+    
+    @ladies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
+    @ladies_prices = @ladies.map{|item| item.price_separate}
+    @ladies_images = @ladies.map{|item| item.images[0].image_path}
+
+    @mens = Item.where(parent_id: parent[1]).order('id DESC').limit(10)
+    @mens_prices = @mens.map{|item| item.price_separate}
+    @mens_images = @mens.map{|item| item.images[0].image_path}
+
+    @interiors = Item.where(parent_id: parent[2]).order('id DESC').limit(10)
+    @interiors_prices = @interiors.map{|item| item.price_separate}
+    @interiors_images = @interiors.map{|item| item.images[0].image_path}
+
+    @babies = Item.where(parent_id: parent[3]).order('id DESC').limit(10)
+    @babies_prices = @babies.map{|item| item.price_separate}
+    @babies_images = @babies.map{|item| item.images[0].image_path}
   end
 
   def show

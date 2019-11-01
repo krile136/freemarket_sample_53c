@@ -94,7 +94,7 @@
     &__list {
       width: 1020px;
       margin: auto;
-      padding: 42px 0 100px;
+      padding: 42px 0 20px;
       &__header {
         display: flex;
         justify-content: space-between;
@@ -102,6 +102,7 @@
         &__title {
         font-size: 24px;
         font-weight: 600;
+        color: $text-black;
         }
         &__more {
           color: #0095ee;
