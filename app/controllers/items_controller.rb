@@ -42,18 +42,18 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.seller_id == current_user.id
       if item.destroy
-        redirect_to list_user_path(current_user.id), notice: '商品を削除しました'
+        redirect_to list_user_path(current_user), notice: '商品を削除しました'
       else
-        redirect_to myitem_user_item_path(current_user.id, item.id), alert: '商品を削除できませんでした。'
+        redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できませんでした。'
       end
     else
-      redirect_to myitem_user_item_path(current_user.id, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
+      redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
     end
     
   end
 
   def myitem
-    @item = Item.find(id: params[:id])
+    @item = Item.find(params[:id])
     @image_path = @item.images.map{|img| img.image_path}
     @user = User.find(@item.seller_id)
     @category_parent = Category.find(@item.parent_id).name
