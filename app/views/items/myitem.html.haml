@@ -94,7 +94,7 @@
     = link_to "#" do
       .main-item__select__gray
         .main-item__select__in-text 出品を一旦停止する
-    = link_to " /items/#{@item.id}",method: :delete, data: { confirm: '削除すると２度と復活できません。本当に削除しますか？' } do
+    = link_to item_path(@item.id),method: :DELETE, data: { confirm: '削除すると２度と復活できません。本当に削除しますか？' } do
       .main-item__select__gray
         .main-item__select__in-text この商品を削除する
   .comment
