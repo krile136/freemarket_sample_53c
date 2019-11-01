@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user.id == current_user.id
       user.update(user_edit_params)
-      redirect_to "/users/#{current_user.id}/edit", notice: 'プロフィールを変更しました'
+      redirect_to edit_user_path(current_user), notice: 'プロフィールを変更しました'
     end
   end
 
@@ -42,6 +42,11 @@ class UsersController < ApplicationController
   end
 
   def complete
+  end
+
+  def list
+    @items = Item.where(seller_id: params[:id]).order("id DESC")
+    @images =  @items.map{|item| item.images[0].image_path}
   end
 
   private

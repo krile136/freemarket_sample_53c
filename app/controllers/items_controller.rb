@@ -39,6 +39,35 @@ class ItemsController < ApplicationController
       redicret_to user_items_path, alert: '出品に失敗しました。必須項目を確認してください。'
     end
   end
+
+  def destroy
+    item = Item.find(params[:id])
+    if item.seller_id == current_user.id
+      if item.destroy
+        redirect_to list_user_path(current_user), notice: '商品を削除しました'
+      else
+        redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できませんでした。'
+      end
+    else
+      redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
+    end
+    
+  end
+
+  def myitem
+    @item = Item.find(params[:id])
+    @image_path = @item.images.map{|img| img.image_path}
+    @user = User.find(@item.seller_id)
+    @category_parent = Category.find(@item.parent_id).name
+    @category_child = Category.find(@item.child_id).name
+    @category_grandchild = Category.find(@item.category_id).name
+    @condition = Condition.find(@item.condition_id).name
+    @postage_burden = PostageBurden.find(@item.postage_burden.id).name
+    @delivery_method = DeliveryMethod.find(@item.delivery_method_id).name
+    @prefecture = Prefecture.find(@item.prefecture_id).name
+    @delivery_day = DeliveryDay.find(@item.delivery_day_id).name
+    @price = @item.price_separate
+  end
   
   def get_category_children
     @category_children = Category.find(params[:parent_id]).children
