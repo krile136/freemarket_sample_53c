@@ -8,6 +8,6 @@ class Image < ApplicationRecord
       self.image_url[0].url.gsub(/%5B%22/, "").gsub(/%22%5D/, "")
     else
       self.image_url[0].file.file.sub(/.*public/,'').sub(/\["/,'').sub(/"\]/,'')
-    end  
+    end 
   end
 end
