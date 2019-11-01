@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :get_category_parents
+  before_action :authenticate_user!, only: [:new, :buy]
+  before_action :set_item, only: [:buy, :pay]
 
   def index
   end
@@ -75,6 +77,37 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
+  def buy
+    @image_path = @item.images.first.image_path
+    @delivery_address = current_user.delivery_address.decorate
+    @creditcard = current_user.creditcards.first.decorate
+  end
+
+  def pay
+    card = current_user.creditcards.first
+    # トークン作成
+    token = card.create_token(card.credit_number, card.security_number, card.limit_month, card.limit_year)
+    # トークン作成時にエラーが発生したら処理を終了する
+    if token.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: token
+      return
+    end
+
+    # 支払
+    message = card.create_charge_by_token(token, @item.price)
+    # 支払処理中にエラーが発生したら処理を終了する
+    if message.match(/\[ERROR\].*/)
+      redirect_to buy_item_path(@item), alert: message
+      return
+    end
+    
+    if @item.update(buyer_id: current_user.id)
+      redirect_to root_path, notice: '購入が完了しました'
+    else
+      edirect_to buy_item_path(@item), alert: '購入に失敗しました。サポートにお問合せください'
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(
@@ -93,5 +126,9 @@ class ItemsController < ApplicationController
         :child_id,
         images_attributes: {image_url: []}
       ).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

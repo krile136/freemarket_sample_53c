@@ -23,91 +23,91 @@ describe DeliveryAddress do
     it "is invalid without a delivery_last_name" do
       @user.delivery_address = build(:delivery_address, delivery_last_name: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_last_name"]).to include("can't be blank", "is invalid")
+      expect(@user.errors[:"delivery_address.delivery_last_name"]).to include("を入力してください", "は不正な値です")
     end
 
     # delivery_last_nameが全角ひらがなもしくは漢字でないと登録できないこと
     it "is invalid if delivery_last_name is not a full_witdh hiragana or kanji" do
       @user.delivery_address = build(:delivery_address, delivery_last_name: "katou")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_last_name"]).to include("is invalid")
+      expect(@user.errors[:"delivery_address.delivery_last_name"]).to include("は不正な値です")
     end
 
     # delivery_first_nameが空の時登録できないこと
     it "is invalid without a delivery_first_name" do
       @user.delivery_address = build(:delivery_address, delivery_first_name: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_first_name"]).to include("can't be blank", "is invalid")
+      expect(@user.errors[:"delivery_address.delivery_first_name"]).to include("を入力してください", "は不正な値です")
     end
 
     # delivery_first_nameが全角ひらがなもしくは漢字でないと登録できないこと
     it "is invalid if delivery_first_name is not a full_witdh hiragana or kanji" do
       @user.delivery_address = build(:delivery_address, delivery_first_name: "sadao")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_first_name"]).to include("is invalid")
+      expect(@user.errors[:"delivery_address.delivery_first_name"]).to include("は不正な値です")
     end
 
     # delivery_last_name_kanaが空の時登録できないこと
     it "is invalid without a delivery_last_name_kana" do
       @user.delivery_address = build(:delivery_address, delivery_last_name_kana: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_last_name_kana"]).to include("can't be blank", "is invalid")
+      expect(@user.errors[:"delivery_address.delivery_last_name_kana"]).to include("を入力してください", "は不正な値です")
     end
 
     # delivery_last_name_kanaが全角カタカナでないと登録できないこと
     it "is invalid if delivery_last_name is not a full_witdh katakana" do
       @user.delivery_address = build(:delivery_address, delivery_last_name_kana: "かとう")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_last_name_kana"]).to include("is invalid")
+      expect(@user.errors[:"delivery_address.delivery_last_name_kana"]).to include("は不正な値です")
     end
 
     # delivery_first_name_kanaが空の時登録できないこと
     it "is invalid without a delivery_first_name_kana" do
       @user.delivery_address = build(:delivery_address, delivery_first_name_kana: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_first_name_kana"]).to include("can't be blank", "is invalid")
+      expect(@user.errors[:"delivery_address.delivery_first_name_kana"]).to include("を入力してください", "は不正な値です")
     end
 
     # delivery_first_name_kanaが全角カタカナでないと登録できないこと
     it "is invalid if delivery_first_name is not a full_witdh katakana" do
       @user.delivery_address = build(:delivery_address, delivery_first_name_kana: "かとう")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_first_name_kana"]).to include("is invalid")
+      expect(@user.errors[:"delivery_address.delivery_first_name_kana"]).to include("は不正な値です")
     end
 
     # delivery_postal_codeが空の時登録できないこと
     it "is invalid without a delivery_postal_code" do
       @user.delivery_address = build(:delivery_address, delivery_postal_code: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_postal_code"]).to include("can't be blank", "is invalid")
+      expect(@user.errors[:"delivery_address.delivery_postal_code"]).to include("を入力してください", "は不正な値です")
     end
 
     # delivery_postal_codeがxxx-xxxxの形式でないと登録できないこと
     it "is invalid if delivery_postal_code is not a type 'xxx-xxxx' " do
       @user.delivery_address = build(:delivery_address, delivery_postal_code: "1234567")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_postal_code"]).to include("is invalid")
+      expect(@user.errors[:"delivery_address.delivery_postal_code"]).to include("は不正な値です")
     end
 
     # prefecture_idが空の時登録できないこと
     it "is invalid without a prefecture_id" do
       @user.delivery_address = build(:delivery_address, prefecture_id: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.prefecture_id"]).to include("can't be blank")
+      expect(@user.errors[:"delivery_address.prefecture_id"]).to include("を入力してください")
     end
 
     # delivery_cityが空の時登録できないこと
     it "is invalid without a delivery_city" do
       @user.delivery_address = build(:delivery_address, delivery_city: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_city"]).to include("can't be blank")
+      expect(@user.errors[:"delivery_address.delivery_city"]).to include("を入力してください")
     end
 
     # delivery_addressが空の時登録できないこと
     it "is invalid without a delivery_city" do
       @user.delivery_address = build(:delivery_address, delivery_address: "")
       @user.valid?
-      expect(@user.errors[:"delivery_address.delivery_address"]).to include("can't be blank")
+      expect(@user.errors[:"delivery_address.delivery_address"]).to include("を入力してください")
     end
   end
 end

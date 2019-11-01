@@ -76,6 +76,9 @@
       font-size: 14px;
       font-weight: bold;
       border: $mercari-red;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   &__delivery {
