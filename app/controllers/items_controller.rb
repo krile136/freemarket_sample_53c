@@ -75,6 +75,16 @@ class ItemsController < ApplicationController
     
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @image_path = @item.images.map{|img| img.image_path}
+    5.times { @item.images.build }
+  end
+
+  # def update
+    
+  # end
+
   def myitem
     @item = Item.find(params[:id])
     @image_path = @item.images.map{|img| img.image_path}
