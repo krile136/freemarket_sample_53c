@@ -22,14 +22,7 @@
           %li.top-content__items__class__detail__list
             =link_to "ベビー・キッズ", '', class: "top-content__items__class__detail__list__link"
       .top-content__items__list
-        = render partial: 'item_card'
-      .top-content__items__list
-        = render partial: 'item_card_lady'
-      .top-content__items__list
-        = render partial: 'item_card_mens'
-      .top-content__items__list
-        = render partial: 'item_card_interiors'
-      .top-content__items__list
-        = render partial: 'item_card_babies'
+        - @items.each_with_index do |item, i|
+          = render partial: 'item_card_list', locals: {category: @category[i],items: item, prices: @prices[i], images: @images[i]}
     = render 'shared/global_footer'
     = render 'shared/sell_button'
