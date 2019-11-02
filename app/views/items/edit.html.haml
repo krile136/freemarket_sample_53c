@@ -39,10 +39,10 @@
               = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category', required: true}
               %i.fas.fa-chevron-down
             .sell__about__right__wrap--box.hide#category-child-1
-              = f.collection_select :child_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'child_category', required: true}
+              = f.collection_select :child_id, @category_children, :id, :name, {prompt: "---"}, {class:'select', id: 'child_category', required: true}
               %i.fas.fa-chevron-down
             .sell__about__right__wrap--box.hide#category-child-2
-              = f.collection_select :category_id, {}, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category', required: true}
+              = f.collection_select :category_id, @category_grandchildren, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :size_id, "サイズ"
@@ -72,11 +72,11 @@
             .sell__about__right__wrap--box
               = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name,{prompt: "---"}, {class:'select', id:'paying-side-selection', required: true}
               %i.fas.fa-chevron-down
-          .sell__about__right__wrap.hide#delivery-method-box
+          .sell__about__right__wrap.delivery-method-box
             = f.label :delivery_method_id, "配送の方法"
             %span.required
             .sell__about__right__wrap--box
-              = f.collection_select :delivery_method_id, {}, :id, :name, {prompt: "---"}, {class:'select', id:'delivery-method-selection', required: true}
+              = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, {prompt: "---"}, {class:'select', id:'delivery-method-selection', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap
             = f.label :prefecture_id, "発送元の地域"

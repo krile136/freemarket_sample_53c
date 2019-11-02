@@ -8,7 +8,8 @@ class ItemsController < ApplicationController
     @prices = @items.map{|item| item.price_separate}
     @images = @items.map{|item| item.images[0].image_path}
 
-    parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
+    # parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
+    parent = Category.where("id < ?", 5).limit(4)
     
     @ladies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
     @ladies_prices = @ladies.map{|item| item.price_separate}
@@ -79,11 +80,28 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @image_path = @item.images.map{|img| img.image_path}
     5.times { @item.images.build }
+    
+    @category_parents = Category.where(ancestry: nil)
+    @category_children = Category.where(ancestry: @item.parent_id)
+    @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
+
+    # @category_parents = Category.where(ancestry: nil)
+    # @category_children = Category.where(ancestry: @item.parent_id)
+    # @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
+
+    # @category_children = Category.find(params[:parent_id]).children
+    # @category_grandchildren = Category.find(params[:child_id]).children
+    
+    
   end
 
-  # def update
-    
-  # end
+  def update
+    if @item.update(item_params)
+      redirect_to root_path ,notice: '商品を編集しました'
+    else
+      redicret_to edit_item_path, alert: '編集に失敗しました。必須項目を確認してください。'
+    end
+  end
 
   def myitem
     @item = Item.find(params[:id])
