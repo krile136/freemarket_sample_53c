@@ -38,10 +38,10 @@
             .sell__about__right__wrap--box.parent
               = f.collection_select :parent_id, @category_parents, :id, :name, {prompt: "---"}, {class:'select', id: 'parent_category', required: true}
               %i.fas.fa-chevron-down
-            .sell__about__right__wrap--box.hide#category-child-1
+            .sell__about__right__wrap--box#category-child-1
               = f.collection_select :child_id, @category_children, :id, :name, {prompt: "---"}, {class:'select', id: 'child_category', required: true}
               %i.fas.fa-chevron-down
-            .sell__about__right__wrap--box.hide#category-child-2
+            .sell__about__right__wrap--box#category-child-2
               = f.collection_select :category_id, @category_grandchildren, :id, :name, {prompt: "---"}, {class:'select', id: 'grandchild_category', required: true}
               %i.fas.fa-chevron-down
           .sell__about__right__wrap

@@ -84,6 +84,7 @@ class ItemsController < ApplicationController
     @category_parents = Category.where(ancestry: nil)
     @category_children = Category.where(ancestry: @item.parent_id)
     @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
+     
 
     # @category_parents = Category.where(ancestry: nil)
     # @category_children = Category.where(ancestry: @item.parent_id)

@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
     if (parent_id.length != 0){
       $('#category-child-1').removeClass('hide');
       $.ajax({
-        url: 'get_category_children',
+        url: '/items/get_category_children',
         type: 'Get',
         data: {parent_id: parent_id},
         dataType: 'json'
@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
     if (child_id.length != 0){
       $('#category-child-2').removeClass('hide');
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/items/get_category_grandchildren',
         type: 'Get',
         data: {child_id: child_id},
         dataType: 'json'
