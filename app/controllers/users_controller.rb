@@ -1,25 +1,23 @@
 class UsersController < ApplicationController
   before_action :get_category_parents
+  before_action :set_user, only: [:show, :edit, :update, :show_creditcard]
 
   def new
 
   end
 
   def show
-    user = User.find(params[:id])
-    @nickname = user.nickname
+    @nickname = @user.nickname
   end
 
   def edit
-    user = User.find(params[:id])
-    @nickname = user.nickname
-    @profile = user.profile
+    @nickname = @user.nickname
+    @profile = @user.profile
   end
 
   def update
-    user = User.find(params[:id])
-    if user.id == current_user.id
-      user.update(user_edit_params)
+    if @user.id == current_user.id
+      @user.update(user_edit_params)
       redirect_to edit_user_path(current_user), notice: 'プロフィールを変更しました'
     end
   end
@@ -29,8 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show_creditcard
-    user = User.find(params[:id])
-    @creditcards = user.creditcards
+    @creditcards = @user.creditcards
     if @creditcards.length > 0 
       # クレジットカード番号の先頭から12桁までを*に置換する
       @creditcards[0].credit_number = @creditcards[0].credit_number.sub(/[0-9]{12}/,"************")
@@ -55,5 +52,9 @@ class UsersController < ApplicationController
 
   def user_edit_params
     params.permit(:nickname, :profile)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
