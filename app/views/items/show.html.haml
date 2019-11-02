@@ -86,7 +86,7 @@
     - if @item.buyer_id
       .item-box__sold 売り切れました
     - else
-      =link_to "購入画面に進む", '', class: "item-box__buy"
+      =link_to "購入画面に進む", buy_item_path(@item), class: "item-box__buy"
     .item-box__description
       %p
         ご覧いただきありがとうございます！
