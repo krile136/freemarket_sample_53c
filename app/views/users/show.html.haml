@@ -8,7 +8,7 @@
       .mypage-content__main__userinfo
         =link_to '', class: "mypage-content__main__userinfo__link" do
           =image_tag 'member_photo_noimage_thumb.png', class: "mypage-content__main__userinfo__link__img"
-          %p.mypage-content__main__userinfo__link__username テストユーザー
+          %p.mypage-content__main__userinfo__link__username=@nickname
           .mypage-content__main__userinfo__link__counter
             .mypage-content__main__userinfo__link__counter__rating
               評価
