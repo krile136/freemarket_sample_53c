@@ -80,15 +80,6 @@ class ItemsController < ApplicationController
     @category_parents = Category.where(ancestry: nil)
     @category_children = Category.where(ancestry: @item.parent_id)
     @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
-
-    # @category_parents = Category.where(ancestry: nil)
-    # @category_children = Category.where(ancestry: @item.parent_id)
-    # @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
-
-    # @category_children = Category.find(params[:parent_id]).children
-    # @category_grandchildren = Category.find(params[:child_id]).children
-    
-    
   end
 
   def update
