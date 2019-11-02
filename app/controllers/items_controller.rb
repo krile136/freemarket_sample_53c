@@ -4,27 +4,24 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay]
 
   def index
-    @items = Item.order('id DESC').limit(10)
-    @prices = @items.map{|item| item.price_separate}
-    @images = @items.map{|item| item.images[0].image_path}
+    parents = Category.where("id < ?", 5)
+    @items = []
+    @category = []
+    @items.push(Item.where(buyer_id: nil).order('id DESC').limit(10))
+    @category.push("新着アイテム")
+    for num in 0..3 do
+      @items.push(Item.where(buyer_id: nil).where(parent_id: parents[num]).order('id DESC').limit(10))
+      @category.push(Category.find(parents[num].id).name)
+    end
 
-    parent = Item.group(:parent_id).order('count_parent_id DESC').limit(4).count(:parent_id).keys
-    
-    @ladies = Item.where(parent_id: parent[0]).order('id DESC').limit(10)
-    @ladies_prices = @ladies.map{|item| item.price_separate}
-    @ladies_images = @ladies.map{|item| item.images[0].image_path}
-
-    @mens = Item.where(parent_id: parent[1]).order('id DESC').limit(10)
-    @mens_prices = @mens.map{|item| item.price_separate}
-    @mens_images = @mens.map{|item| item.images[0].image_path}
-
-    @interiors = Item.where(parent_id: parent[2]).order('id DESC').limit(10)
-    @interiors_prices = @interiors.map{|item| item.price_separate}
-    @interiors_images = @interiors.map{|item| item.images[0].image_path}
-
-    @babies = Item.where(parent_id: parent[3]).order('id DESC').limit(10)
-    @babies_prices = @babies.map{|item| item.price_separate}
-    @babies_images = @babies.map{|item| item.images[0].image_path}
+    @prices = []
+    @images = []
+    @items.each_with_index do |item, i|
+      price = item.map{|itm| itm.price_separate}
+      image = item.map{|img| img.images[0].image_path}
+      @prices.push(price)
+      @images.push(image)
+    end
   end
 
   def show
@@ -73,6 +70,24 @@ class ItemsController < ApplicationController
       redirect_to myitem_user_item_path(current_user, item.id), alert: '商品を削除できません。ユーザー情報が間違っています'
     end
     
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    @image_path = @item.images.map{|img| img.image_path}
+    5.times { @item.images.build }
+    
+    @category_parents = Category.where(ancestry: nil)
+    @category_children = Category.where(ancestry: @item.parent_id)
+    @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path ,notice: '商品を編集しました'
+    else
+      redicret_to edit_item_path, alert: '編集に失敗しました。必須項目を確認してください。'
+    end
   end
 
   def myitem
