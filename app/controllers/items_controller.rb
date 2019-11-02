@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay]
 
   def index
-    parents = Category.where("id < ?", 5).limit(4)
+    parents = Category.where("id < ?", 5)
     @items = []
     @category = []
     @items.push(Item.where(buyer_id: nil).order('id DESC').limit(10))
