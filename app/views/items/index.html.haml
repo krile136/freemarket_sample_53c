@@ -21,8 +21,8 @@
             =link_to "ベビー・キッズ", '#top-3', class: "top-content__items__class__detail__list__link"
           %li.top-content__items__class__detail__list
             =link_to "インテリア・住まい・小物", '#top-4', class: "top-content__items__class__detail__list__link"
-      .top-content__items__list
-        - @items.each_with_index do |item, i|
+      - @items.each_with_index do |item, i|
+        .top-content__items__list
           .jump_trigger{id: "top-#{i}"}
           = render partial: 'item_card_list', locals: {category: @category[i],items: item, prices: @prices[i], images: @images[i]}
     = render 'shared/global_footer'
