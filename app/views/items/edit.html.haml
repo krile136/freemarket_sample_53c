@@ -11,18 +11,19 @@
           ドラッグアンドドロップ
           %br
           またはクリックしてファイルをアップロード
-          %ul.sell__image--select__ul
+          %ul.sell__image--select__ul#image--exist
             - @item.images.each_with_index do |image, i|
-              %label{class: "sell__image--select__ul--text ul--id--#{i}"}
+              %label{class: "sell__image--select__ul--text ul--id--#{i} " + (image.image_path.present? ? 'image--exist__opacity' : '')}
                 = f.fields_for :images, image do |img|
                   = img.file_field :image_url, multiple: true, "data-id": "#{i}",id: "file-input-id-#{i}"
+                  = image_tag image.image_path , size: "114x116"
                   %li
-                  .btn-box
+                  .btn-box{class:('image--exist__display' if image.image_path.present?)}
                     %a 編集
                     %a.delete-btn 削除
       .sell__about
         .sell__about__name
-          = f.label :name, "商品名"
+          = f.label :name, "商品名" 
           %span.required
           = f.text_field :name, class: "form", placeholder: "商品名（必須40文字まで）", required: true, maxlength: 40
         .sell__about__description
