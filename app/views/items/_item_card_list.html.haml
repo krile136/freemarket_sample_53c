@@ -6,7 +6,7 @@
     =link_to "もっと見る >", '', class: "top-content__items__list__header__more"
   .top-content__items__list__cards
     - items.each_with_index do |item, i|
-      = link_to item_path(item.id), class: "top-content__items__list__cards__card" do
+      = link_to item.path_from_item_card(current_user.id), class: "top-content__items__list__cards__card" do
         %figure.top-content__items__list__cards__card__f
           .top-content__items__list__cards__card__outframe
             = image_tag images[i], class: 'top-content__items__list__cards__card__inside'

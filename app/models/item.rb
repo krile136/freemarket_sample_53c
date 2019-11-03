@@ -27,4 +27,12 @@ class Item < ApplicationRecord
   def price_separate
     self.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,')
   end
+
+  def path_from_item_card(current_user_id)
+    if self.seller_id == current_user_id
+      "/users/#{current_user_id}/items/#{self.id}/myitem"
+    else
+      "/items/#{self.id}"
+    end
+  end
 end
