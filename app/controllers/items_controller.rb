@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     @category.push("新着アイテム")
     for num in 0..3 do
       @items.push(Item.where(buyer_id: nil).where(parent_id: parents[num]).order('id DESC').limit(10))
-      @category.push(Category.find(parents[num].id).name)
+      @category.push("#{Category.find(parents[num].id).name}新着アイテム")
     end
 
     @prices = []
