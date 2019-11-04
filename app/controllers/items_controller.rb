@@ -85,6 +85,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find_by(id: params[:id])
     if @item.update(item_params)
       redirect_to root_path ,notice: '商品を編集しました'
     else

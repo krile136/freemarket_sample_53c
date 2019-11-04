@@ -1,6 +1,6 @@
 = render 'shared/logo_header'
 .container
-  = form_with model: @item, url: user_items_path(current_user.id), method: :post, local: true do |f|
+  = form_with model: @item, url: user_item_path(current_user.id), method: :PATCH, local: true do |f|
     .sell
       .sell__title 商品の情報を入力
       .sell__image
