@@ -79,21 +79,9 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @image_path = @item.images.map{|img| img.image_path}
-    5.times { @item.images.build }
-    
-    @category_parents = Category.where(ancestry: nil)
+    (5 - @item.images.count).times { @item.images.build }
     @category_children = Category.where(ancestry: @item.parent_id)
     @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
-     
-
-    # @category_parents = Category.where(ancestry: nil)
-    # @category_children = Category.where(ancestry: @item.parent_id)
-    # @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
-
-    # @category_children = Category.find(params[:parent_id]).children
-    # @category_grandchildren = Category.find(params[:child_id]).children
-    
-    
   end
 
   def update

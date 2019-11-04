@@ -4,6 +4,7 @@ class Image < ApplicationRecord
   mount_uploaders :image_url, ImageUploader
 
   def image_path
+    return '' if self.image_url[0].try(:file).nil?
     if Rails.env.production?
       self.image_url[0].url.gsub(/%5B%22/, "").gsub(/%22%5D/, "")
     else
