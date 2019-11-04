@@ -16,11 +16,21 @@ class ItemsController < ApplicationController
 
     @prices = []
     @images = []
+    @urls = []
     @items.each_with_index do |item, i|
       price = item.map{|itm| itm.price_separate}
       image = item.map{|img| img.images[0].image_path}
+      url = item.map do |itm|
+        if user_signed_in? && itm.seller_id == current_user.id
+          myitem_user_item_path(current_user, itm)
+        else
+          item_path(itm)
+        end
+      end
+      
       @prices.push(price)
       @images.push(image)
+      @urls.push(url)
     end
   end
 
