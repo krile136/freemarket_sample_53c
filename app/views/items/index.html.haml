@@ -24,6 +24,6 @@
       - @items.each_with_index do |item, i|
         .top-content__items__list
           .jump_trigger{id: "top-#{i}"}
-          = render partial: 'item_card_list', locals: {category: @category[i],items: item, prices: @prices[i], images: @images[i]}
+          = render partial: 'item_card_list', locals: {category: @category[i],items: item, prices: @prices[i], images: @images[i], urls: @urls[i]}
     = render 'shared/global_footer'
     = render 'shared/sell_button'

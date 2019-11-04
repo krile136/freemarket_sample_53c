@@ -11,16 +11,26 @@ class ItemsController < ApplicationController
     @category.push("新着アイテム")
     for num in 0..3 do
       @items.push(Item.where(buyer_id: nil).where(parent_id: parents[num]).order('id DESC').limit(10))
-      @category.push(Category.find(parents[num].id).name)
+      @category.push("#{Category.find(parents[num].id).name}新着アイテム")
     end
 
     @prices = []
     @images = []
+    @urls = []
     @items.each_with_index do |item, i|
       price = item.map{|itm| itm.price_separate}
       image = item.map{|img| img.images[0].image_path}
+      url = item.map do |itm|
+        if user_signed_in? && itm.seller_id == current_user.id
+          myitem_user_item_path(current_user, itm)
+        else
+          item_path(itm)
+        end
+      end
+      
       @prices.push(price)
       @images.push(image)
+      @urls.push(url)
     end
   end
 
