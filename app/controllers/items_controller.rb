@@ -86,6 +86,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(id: params[:id])
+
     if @item.update(item_params)
       redirect_to root_path ,notice: '商品を編集しました'
     else
@@ -163,7 +164,7 @@ class ItemsController < ApplicationController
         :brand,
         :parent_id,
         :child_id,
-        images_attributes: {image_url: []}
+        images_attributes: [:id, {image_url: []} ,_destroy]
       ).merge(seller_id: current_user.id)
   end
 
