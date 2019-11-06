@@ -37,11 +37,13 @@ $(document).on('turbolinks:load', function () {
 
 	// 削除ボタンを押した時
 	$(".delete-btn").on("click", function () {
-		console.log($(this).parent().prev().prev()[0].value);
 		$(this).parent().prev().empty();
 		// 削除ボタンを押した時、inputの中身を空っぽにする
 		$(this).parent().prev().prev()[0].value = "";
+		$(this).prev('input[type=hidden]').val('1');
+		console.log(this); 
 		$(this).parent().parent().css('opacity', '0');
 		return false;
 	});
+
 });
