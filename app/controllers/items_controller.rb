@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
     @price = @item.price_separate
 
     # ユーザーの他の商品
-    @items = Item.where.not(id: @item.id).limit(6).order("id ASC")
+    @items = Item.where(seller_id: @item.seller_id).where.not(id: @item.id).limit(6).order("id ASC");
     @prices = @items.map{|item| item.price_separate}
     @images = @items.map{|item| item.images[0].image_path}
   end
