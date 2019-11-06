@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function () {
 
 		reader.readAsDataURL(file);
 	});
-
+	
 	// 削除ボタンを押した時
 	$(".delete-btn").on("click", function () {
 		$(this).parent().prev().empty();
@@ -45,5 +45,4 @@ $(document).on('turbolinks:load', function () {
 		$(this).parent().parent().css('opacity', '0');
 		return false;
 	});
-
 });
