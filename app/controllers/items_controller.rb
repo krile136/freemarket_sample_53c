@@ -87,6 +87,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     if @item.update(item_params)
+      binding.pry
       redirect_to root_path ,notice: '商品を編集しました'
     else
       redicret_to edit_item_path, alert: '編集に失敗しました。必須項目を確認してください。'
@@ -141,7 +142,6 @@ class ItemsController < ApplicationController
     end
     
     if @item.update(buyer_id: current_user.id)
-      binding.pry
       redirect_to root_path, notice: '購入が完了しました'
     else
       edirect_to buy_item_path(@item), alert: '購入に失敗しました。サポートにお問合せください'
@@ -166,7 +166,7 @@ class ItemsController < ApplicationController
         :child_id,
         images_attributes: [:id, {image_url: []}, :_destroy]
       ).merge(seller_id: current_user.id)
-  end
+  end 
 
   def set_item
     @item = Item.find(params[:id])
