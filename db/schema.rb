@@ -70,19 +70,22 @@ ActiveRecord::Schema.define(version: 2019_11_07_134041) do
     t.integer "size_id"
     t.integer "condition_id", null: false
     t.integer "category_id", null: false
+    t.integer "brand_id"
     t.integer "delivery_day_id", null: false
     t.integer "delivery_method_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "seller_id", null: false
     t.integer "buyer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "postage_burden_id", null: false
     t.integer "parent_id", null: false
     t.integer "child_id", null: false
     t.string "brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "good"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["child_id"], name: "index_items_on_child_id"
+    t.index ["parent_id"], name: "index_items_on_parent_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
@@ -115,6 +118,9 @@ ActiveRecord::Schema.define(version: 2019_11_07_134041) do
     t.string "icon"
     t.boolean "active"
     t.integer "receivable"
+    t.string "uid"
+    t.string "provider"
+    t.string "image"
     t.integer "good"
     t.integer "fair"
     t.integer "bad"
