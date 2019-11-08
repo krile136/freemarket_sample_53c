@@ -85,14 +85,13 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @image_path = @item.images.map{|img| img.image_path}
-    5.times { @item.images.build }
-    
-    @category_parents = Category.where(ancestry: nil)
+    (5 - @item.images.count).times { @item.images.build }
     @category_children = Category.where(ancestry: @item.parent_id)
     @category_grandchildren = Category.where(ancestry: "#{@item.parent_id}"+"/"+"#{@item.child_id}")
   end
 
   def update
+    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path ,notice: '商品を編集しました'
     else
@@ -170,9 +169,9 @@ class ItemsController < ApplicationController
         :brand,
         :parent_id,
         :child_id,
-        images_attributes: {image_url: []}
+        images_attributes: [:id, {image_url: []}, :_destroy]
       ).merge(seller_id: current_user.id)
-  end
+  end 
 
   def set_item
     @item = Item.find(params[:id])
