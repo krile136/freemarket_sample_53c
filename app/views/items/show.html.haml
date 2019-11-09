@@ -140,7 +140,7 @@
     .other-item-contents
       - @items.each_with_index do |item, i|
         .other-item-contents__box
-          = link_to "" do
+          = link_to item_path(item) do
             .photo-outframe
               = image_tag @images[i], class: 'photo-inside'
               - if item.buyer_id
